@@ -1,6 +1,9 @@
 import { MenuIcon } from "lucide-react"
 
+
 import Link from "next/link"
+import { Avatar, AvatarFallback, AvatarImage } from "./UI/avatar"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./UI/navigation-menu"
 
 const Header = () => {
     return (
@@ -17,6 +20,21 @@ const Header = () => {
                             <Link href='/updates'>Updates</Link>
                             <Link href='/help'>Help</Link>
                             <button className="bg-black text-white px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight">Get for free</button>
+                            <Avatar>
+                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                            <NavigationMenu>
+                                <NavigationMenuList>
+                                    <NavigationMenuItem>
+                                        <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+                                        <NavigationMenuContent>
+                                            <NavigationMenuLink>Link</NavigationMenuLink>
+                                        </NavigationMenuContent>
+                                    </NavigationMenuItem>
+                                </NavigationMenuList>
+                            </NavigationMenu>
+
                         </nav>
                     </div>
                 </div>
