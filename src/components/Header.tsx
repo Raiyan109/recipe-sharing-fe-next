@@ -1,5 +1,5 @@
 import { MenuIcon } from "lucide-react"
-import UpperHeader from "./UpperHeader"
+
 import Link from "next/link"
 
 const Header = () => {

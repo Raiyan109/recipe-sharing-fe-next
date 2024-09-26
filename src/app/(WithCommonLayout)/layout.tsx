@@ -10,4 +10,4 @@ const CommonLayout = ({ children }: { children: ReactNode }) => {
     )
 }
 
-export default CommonLayout
+export default CommonLayout 
