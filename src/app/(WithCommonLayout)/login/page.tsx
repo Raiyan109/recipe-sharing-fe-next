@@ -1,7 +1,21 @@
+'use client'
 import Image from 'next/image'
 import loginImg from '@/assets/login.jpg'
+import ReusableForm from '@/components/form/ReusableForm'
+import { useForm, useFormContext } from 'react-hook-form'
 
 const Login = () => {
+    // const { register } = useFormContext()
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
+    const onSubmit = (data) => {
+        console.log(data);
+    }
+
     return (
         <div className='w-full h-[calc(100vh-85px)] flex items-start'>
             <div className='relative w-1/2 h-full hidden lg:flex flex-col '>
@@ -27,23 +41,30 @@ const Login = () => {
                         <p className='text-base mb-2'>Welcome Back! Please enter your details</p>
                     </div>
 
-                    <div className='w-full flex flex-col '>
-                        <input type="email" className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
+                    <ReusableForm onSubmit={handleSubmit(onSubmit)}>
+                        <div className='w-full flex flex-col '>
+                            <input type="email"
+                                {...register('email')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
 
-                        <input type="password" className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
-                    </div>
+                            <input type="password"
+                                {...register('password')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
 
-                    <div className='w-full flex items-center justify-center'>
-                        <div className='w-full flex'>
-                            <input type="checkbox" className='w-4 h-4 mr-2' />
-                            <p className='text-sm'>Remember Me for 30 days</p>
                         </div>
-                        <p className='text-sm font-medium whitespace-nowrap underline underline-offset-2 cursor-pointer'>Forgot Password</p>
-                    </div>
 
-                    <div className="w-full flex flex-col my-4">
-                        <button className='w-full bg-black rounded-md p-4 text-center flex items-center justify-center text-white'>Log in</button>
-                    </div>
+                        <div className='w-full flex items-center justify-center'>
+                            <div className='w-full flex'>
+                                <input type="checkbox" className='w-4 h-4 mr-2' />
+                                <p className='text-sm'>Remember Me for 30 days</p>
+                            </div>
+                            <p className='text-sm font-medium whitespace-nowrap underline underline-offset-2 cursor-pointer'>Forgot Password</p>
+                        </div>
+
+                        <div className="w-full flex flex-col my-4">
+                            <button className='w-full bg-black rounded-md p-4 text-center flex items-center justify-center text-white'>Log in</button>
+                        </div>
+                    </ReusableForm>
                 </div>
 
                 <div className='w-full flex items-center justify-center'>
