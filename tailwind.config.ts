@@ -27,6 +27,9 @@ const config: Config = {
 			animation: {
 				'bounce-404': 'bounce404 2.5s infinite',
 			},
+			backgroundImage: {
+				'custom-radial': 'radial-gradient(ellipse 200% 100% at bottom left, #183ec2, #EAEEFE 66%)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

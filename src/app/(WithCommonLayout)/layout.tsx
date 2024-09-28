@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 
 const CommonLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto px-8 md:px-0 bg-custom-radial">
             <Header />
             {children}
         </div>
