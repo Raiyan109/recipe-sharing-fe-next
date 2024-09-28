@@ -6,7 +6,7 @@ import { ThemeSwitch } from "./shared/ThemeSwitch"
 
 const Header = () => {
     return (
-        <div className="sticky top-0">
+        <div className="sticky top-0 backdrop-blur-sm z-20">
             <header className="py-5">
                 <div className="container">
                     <div className="flex items-center justify-between">
