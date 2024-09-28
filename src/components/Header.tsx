@@ -1,6 +1,7 @@
 import { MenuIcon } from "lucide-react"
 import Link from "next/link"
 import NavMenu from "./UIComponents/NavMenu"
+import { ThemeSwitch } from "./shared/ThemeSwitch"
 
 
 const Header = () => {
@@ -18,9 +19,9 @@ const Header = () => {
                             <Link href='/updates'>Updates</Link>
                             <Link href='/help'>Help</Link>
                             <button className="bg-black text-white px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight">Get for free</button>
-                            
-                            <NavMenu />
 
+                            <NavMenu />
+                            <ThemeSwitch />
                         </nav>
                     </div>
                 </div>
