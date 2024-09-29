@@ -1,8 +1,8 @@
 export interface IUser {
-    userId: UserId;
-    role: string;
-    iat: number;
-    exp: number;
+    userId?: UserId;
+    role?: string;
+    iat?: number;
+    exp?: number;
 }
 interface UserId {
     _id: string;
