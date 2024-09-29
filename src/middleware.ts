@@ -13,18 +13,9 @@ const roleBasedRoutes = {
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl
-    console.log(pathname);
-    const userToken = await getCurrentUser()
-    console.log(userToken, 'user token from middleware');
 
+    const user = await getCurrentUser()
 
-    const user = {
-        name: 'raiyan',
-        token: 'kkjkjl',
-        role: 'user'
-    }
-
-    // const user = undefined
     if (!user) {
         if (AuthRoutes.includes(pathname)) {
             return NextResponse.next()
@@ -44,5 +35,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/profile', '/admin', '/login', '/register'],
+    matcher: ['/profile', '/profile/:page*', '/admin', '/login', '/register'],
 }
