@@ -7,7 +7,7 @@ type Role = keyof typeof roleBasedRoutes
 const AuthRoutes = ['/login', '/register']
 
 const roleBasedRoutes = {
-    user: [/^\/profile/],
+    user: [/^\/user-dashboard/],
     admin: [/^\/admin/]
 }
 
@@ -35,5 +35,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/profile', '/admin', '/login', '/register'],
+    matcher: ['/user-dashboard', '/user-dashboard/:page*', '/admin', '/login', '/register'],
 }

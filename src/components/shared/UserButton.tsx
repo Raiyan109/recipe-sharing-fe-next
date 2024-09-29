@@ -7,6 +7,7 @@ import Image from "next/image"
 import { logout } from "@/services/AuthService"
 import { useRouter } from "next/navigation"
 import { useUser } from "@/context/user.provider"
+import Link from "next/link"
 
 
 const UserButton = () => {
@@ -49,7 +50,7 @@ const UserButton = () => {
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+              <Link href='/user-dashboard'>Profile</Link>
             </DropdownMenuItem>
             {/* <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
