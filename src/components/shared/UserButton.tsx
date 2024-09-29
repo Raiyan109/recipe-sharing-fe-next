@@ -6,7 +6,9 @@ import avatarImg from '@/assets/avatar.png'
 import Image from "next/image"
 import { logout } from "@/services/AuthService"
 
+
 const UserButton = () => {
+
     return (
         <div>
             <DropdownMenu>

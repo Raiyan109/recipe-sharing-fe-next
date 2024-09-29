@@ -3,25 +3,18 @@ import Image from 'next/image'
 import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { loginUser } from '@/services/AuthService'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { toast } from 'sonner'
 import GlassSpinner from '@/components/shared/spinner/GlassSpinner'
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useUserLogin } from '@/hooks/auth.hook'
 
 
 const Login = () => {
-
-    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter()
+    const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
 
     const searchParams = useSearchParams()
     const redirect = searchParams.get('redirect')
-    if (redirect) {
-        router.push(redirect)
-    } else {
-        router.push('/')
-    }
 
     const { register, handleSubmit } = useForm({
         defaultValues: {
@@ -30,21 +23,24 @@ const Login = () => {
         }
     });
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true);
-        try {
-            loginUser(data)
-            toast.success('User logged in successfully')
-            // router.push('/')
-        } catch (error) {
-            toast.error('Something wrong in login')
-        } finally {
-            setIsLoading(false);  // End loading
-        }
+        handleUserLogin(data);
     }
+
+    useEffect(() => {
+        if (!isPending && isSuccess) {
+            if (redirect) {
+                router.push(redirect);
+            } else {
+                router.push("/");
+            }
+        }
+    }, [isPending, isSuccess]);
+
+
 
     return (
         <>
-            {isLoading && <GlassSpinner />}
+            {isPending && <GlassSpinner />}
             <div className='w-full h-screen flex items-start'>
                 <div className='relative w-1/2 h-full hidden lg:flex flex-col '>
                     <div className='absolute top-[20%] left-[10%] flex flex-col'>

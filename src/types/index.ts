@@ -1,10 +1,10 @@
-export interface IUser {
-    userId?: UserId;
-    role?: string;
-    iat?: number;
-    exp?: number;
+export interface IUserWithIat {
+    userId: IUser;
+    role: string;
+    iat: number;
+    exp: number;
 }
-interface UserId {
+export interface IUser {
     _id: string;
     name: string;
     email: string;

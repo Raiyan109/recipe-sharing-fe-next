@@ -4,9 +4,11 @@ import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
 import { useForm } from 'react-hook-form'
 import { registerUser } from '@/services/AuthService'
+import { useUserRegistration } from '@/hooks/auth.hook'
 
 const Register = () => {
-    // const { register } = useFormContext()
+    const { mutate: handleUserRegistration, isPending } = useUserRegistration();
+
     const { register, handleSubmit } = useForm({
         defaultValues: {
             name: '',
@@ -24,9 +26,9 @@ const Register = () => {
             ...data,
             photo: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
         }
-        console.log('inside form user data ', userData);
 
-        registerUser(userData)
+
+        handleUserRegistration(userData)
     }
 
     return (
