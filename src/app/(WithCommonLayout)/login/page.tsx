@@ -2,10 +2,14 @@
 import Image from 'next/image'
 import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
-import { useForm, useFormContext } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { loginUser } from '@/services/AuthService'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 const Login = () => {
     // const { register } = useFormContext()
+    const router = useRouter()
     const { register, handleSubmit } = useForm({
         defaultValues: {
             email: '',
@@ -14,10 +18,13 @@ const Login = () => {
     });
     const onSubmit = (data) => {
         console.log(data);
+        loginUser(data)
+        toast.success('User logged in successfully')
+        router.push('/')
     }
 
     return (
-        <div className='w-full h-[calc(100vh-85px)] flex items-start'>
+        <div className='w-full h-screen flex items-start'>
             <div className='relative w-1/2 h-full hidden lg:flex flex-col '>
                 <div className='absolute top-[20%] left-[10%] flex flex-col'>
                     <h1 className='text-3xl text-white font-bold my-4'>Turn your ideas into reality</h1>
