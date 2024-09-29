@@ -7,11 +7,13 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import GlassSpinner from '@/components/shared/spinner/GlassSpinner'
 import { useEffect } from 'react'
 import { useUserLogin } from '@/hooks/auth.hook'
+import { useUser } from '@/context/user.provider'
 
 
 const Login = () => {
     const router = useRouter()
     const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
+    const { setIsLoading: userLoading } = useUser()
 
     const searchParams = useSearchParams()
     const redirect = searchParams.get('redirect')
@@ -24,6 +26,7 @@ const Login = () => {
     });
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         handleUserLogin(data);
+        userLoading(true)
     }
 
     useEffect(() => {
