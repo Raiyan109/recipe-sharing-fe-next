@@ -2,14 +2,21 @@
 import Image from 'next/image'
 import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
-import { useForm, useFormContext } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { registerUser } from '@/services/AuthService'
 
 const Register = () => {
     // const { register } = useFormContext()
     const { register, handleSubmit } = useForm({
         defaultValues: {
+            name: '',
             email: '',
-            password: ''
+            password: '',
+            phone: '',
+            role: 'user',
+            address: '',
+            membership: 'free',
+            photo: '',
         }
     });
     const onSubmit = (data) => {
@@ -17,6 +24,9 @@ const Register = () => {
             ...data,
             photo: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
         }
+        console.log('inside form user data ', userData);
+
+        registerUser(userData)
     }
 
     return (
@@ -40,12 +50,16 @@ const Register = () => {
 
                 <div className='w-full flex flex-col max-w-[550px]'>
                     <div className="w-full flex flex-col mb-2">
-                        <h3 className='text-3xl font-semibold mb-4'>Login</h3>
+                        <h3 className='text-3xl font-semibold mb-4'>Sign up</h3>
                         <p className='text-base mb-2'>Welcome Back! Please enter your details</p>
                     </div>
 
                     <ReusableForm onSubmit={handleSubmit(onSubmit)}>
                         <div className='w-full flex flex-col '>
+                            <input type="text"
+                                {...register('name')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Name' />
+
                             <input type="email"
                                 {...register('email')}
                                 className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
@@ -53,6 +67,18 @@ const Register = () => {
                             <input type="password"
                                 {...register('password')}
                                 className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
+
+                            <input type="text"
+                                {...register('phone')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Phone' />
+
+                            <input type="text"
+                                {...register('address')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Address' />
+
+                            <input type="text"
+                                {...register('photo')}
+                                className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Photo' />
 
                         </div>
 
