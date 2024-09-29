@@ -2,30 +2,39 @@
 import Image from 'next/image'
 import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
-import { useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { loginUser } from '@/services/AuthService'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import GlassSpinner from '@/components/shared/spinner/GlassSpinner'
 import { useState } from 'react'
 
 
 const Login = () => {
-    // const { register } = useFormContext()
+
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter()
+
+    const searchParams = useSearchParams()
+    const redirect = searchParams.get('redirect')
+    if (redirect) {
+        router.push(redirect)
+    } else {
+        router.push('/')
+    }
+
     const { register, handleSubmit } = useForm({
         defaultValues: {
             email: '',
             password: ''
         }
     });
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         try {
             loginUser(data)
             toast.success('User logged in successfully')
-            router.push('/')
+            // router.push('/')
         } catch (error) {
             toast.error('Something wrong in login')
         } finally {
@@ -87,7 +96,7 @@ const Login = () => {
                     </div>
 
                     <div className='w-full flex items-center justify-center'>
-                        <p className='text-sm font-normal'>Don't have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</span></p>
+                        <p className='text-sm font-normal'>Do not have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</span></p>
                     </div>
                 </div>
             </div>

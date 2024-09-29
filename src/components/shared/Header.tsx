@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ThemeSwitch } from "./ThemeSwitch"
 import SearchField from "./SearchField"
+import UserButton from "./UserButton"
 
 
 const Header = () => {
@@ -11,8 +12,11 @@ const Header = () => {
                     bugbook
                 </Link>
                 <SearchField />
-                {/* <UserButton className="sm:ms-auto" /> */}
-                <ThemeSwitch />
+                {/* sm:ms-auto */}
+                <div className="flex gap-4 items-center">
+                    <UserButton />
+                    <ThemeSwitch />
+                </div>
             </div>
         </header>
     )
