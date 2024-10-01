@@ -1,8 +1,12 @@
+import CreateRecipe from '@/components/user/CreateRecipe'
 import React from 'react'
 
 const page = () => {
     return (
-        <div>Create Recipe page</div>
+        <div className=''>
+
+            <CreateRecipe />
+        </div>
     )
 }
 

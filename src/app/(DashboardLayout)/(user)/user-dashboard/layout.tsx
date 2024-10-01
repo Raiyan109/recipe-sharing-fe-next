@@ -1,5 +1,5 @@
 import UserSidebar, { SidebarItem } from '@/components/user/UserSidebar'
-import { LayoutDashboard } from 'lucide-react'
+import { CookingPot, LayoutDashboard, LibraryBig, UserPen } from 'lucide-react'
 import React, { ReactNode } from 'react'
 
 const UserLayout = ({ children }: { children: ReactNode }) => {
@@ -10,7 +10,25 @@ const UserLayout = ({ children }: { children: ReactNode }) => {
                     <SidebarItem
                         icon={<LayoutDashboard size={20} />}
                         text='Dashboard'
-                        link='/profile'
+                        link='/user-dashboard'
+                        alert
+                    />
+                    <SidebarItem
+                        icon={<CookingPot size={20} />}
+                        text='Create new recipe'
+                        link='/user-dashboard/create-recipe'
+                        alert
+                    />
+                    <SidebarItem
+                        icon={<LibraryBig size={20} />}
+                        text='My recipes'
+                        link='/user-dashboard/my-recipes'
+                        alert
+                    />
+                    <SidebarItem
+                        icon={<UserPen size={20} />}
+                        text='Profile'
+                        link='/user-dashboard/profile'
                         alert
                     />
                     {/* <SidebarItem

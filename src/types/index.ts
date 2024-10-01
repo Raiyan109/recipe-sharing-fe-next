@@ -19,3 +19,11 @@ export interface IUser {
     updatedAt?: string;
     __v?: number;
 }
+
+export interface IRecipe {
+    title: string;
+    desc: string;
+    image: string;
+    rating: string;
+    contentAvailability: string;
+}
