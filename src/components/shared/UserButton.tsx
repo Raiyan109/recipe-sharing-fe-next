@@ -5,14 +5,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import avatarImg from '@/assets/avatar.png'
 import Image from "next/image"
 import { logout } from "@/services/AuthService"
-import { useRouter } from "next/navigation"
 import { useUser } from "@/context/user.provider"
 import Link from "next/link"
 
 
 const UserButton = () => {
-
-  const router = useRouter();
   const { user, setIsLoading: userLoading } = useUser();
 
   const handleLogout = () => {
@@ -20,9 +17,9 @@ const UserButton = () => {
     userLoading(true);
   };
 
-  const handleNavigation = (pathname: string) => {
-    router.push(pathname);
-  };
+  // const handleNavigation = (pathname: string) => {
+  //   router.push(pathname);
+  // };
 
   return (
     <div>

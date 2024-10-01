@@ -1,8 +1,12 @@
+import { IRecipe } from "@/types"
 
 
-const Recipe = () => {
+const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
-        <div>Recipe</div>
+        <div className="space-y-3">
+            <h1 className="font-semibold capitalize text-xl">{recipe.title}</h1>
+            <h1 className="text-lg">{recipe.desc}</h1>
+        </div>
     )
 }
 

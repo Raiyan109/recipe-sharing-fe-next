@@ -21,9 +21,17 @@ export interface IUser {
 }
 
 export interface IRecipe {
+    _id: string;
     title: string;
     desc: string;
     image: string;
     rating: string;
     contentAvailability: string;
+}
+
+export interface IRecipes {
+    data: IRecipe[];
+    message: string;
+    statusCode: number;
+    success: boolean;
 }
