@@ -10,7 +10,6 @@ import { useUser } from "@/context/user.provider"
 const Header = () => {
     const { user } = useUser()
 
-
     return (
         <header className="sticky top-0 z-10 bg-card shadow-sm">
             <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5 px-5 py-3">

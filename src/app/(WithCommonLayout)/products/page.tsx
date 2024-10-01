@@ -1,5 +1,4 @@
-import Product from '@/components/home/products/Product';
-import nexiosInstance from '@/config/nexios.config';
+
 
 
 const ProductsPage = async () => {

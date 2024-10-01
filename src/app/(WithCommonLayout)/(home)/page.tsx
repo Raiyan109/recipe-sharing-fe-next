@@ -1,9 +1,12 @@
+import Recipes from "@/components/home/recipeFeed/Recipes"
+import { getRecipes } from "@/services/RecipeService"
 
 
 const HomePage = () => {
+  const recipes = getRecipes()
   return (
     <div>
-      {/* <Hero /> */}
+      <Recipes recipes={recipes} />
     </div>
   )
 }

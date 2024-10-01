@@ -32,15 +32,16 @@ const UserButton = () => {
           <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1">
             <div>
               <Image
-                src={avatarImg}
+                src={user?.photo ? user?.photo : avatarImg}
                 height={40}
                 width={40}
                 alt="avatar"
+                className="rounded-full object-contain"
               />
             </div>
             <div className="hidden md:block">
-              <h3 className="text-sm font-bold">Raiyan kabir</h3>
-              <h3 className="text-sm text-gray-400">Recipe Master</h3>
+              <h3 className="text-sm font-bold">{user?.name}</h3>
+              <h3 className="text-sm text-gray-400">{user?.email}</h3>
             </div>
           </div>
         </DropdownMenuTrigger>
