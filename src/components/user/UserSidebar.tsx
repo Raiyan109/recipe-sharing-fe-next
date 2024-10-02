@@ -8,6 +8,7 @@ import { useUser } from "@/context/user.provider";
 import { logout } from "@/services/AuthService";
 import Link from "next/link";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "../UI/dropdown-menu";
+import Image from "next/image";
 
 
 // Define the shape of your context value
@@ -65,7 +66,17 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                 </SidebarContext.Provider>
 
                 <div className="border-t flex items-center justify-center p-3">
-                    <User size={40} className="text-grayText" />
+                    {user ? (
+                        <Image
+                            src={user?.photo}
+                            height={40}
+                            width={40}
+                            alt="user photo"
+                            className="rounded-full"
+                        />
+                    ) : (
+                        <User size={40} className="text-grayText" />
+                    )}
                     <div
                         className={`
                 flex justify-between items-center
@@ -74,7 +85,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                     >
                         <div className="">
                             <h4 className="font-semibold text-grayText text-xl">{user?.name}</h4>
-                            <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+                            <span className="text-xs text-gray-600">{user?.email}</span>
                         </div>
                         <DropdownMenu>
                             <DropdownMenuTrigger>

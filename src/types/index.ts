@@ -17,7 +17,7 @@ export interface IUser {
     membership: string;
     following?: string;
     followers?: string;
-    passwordChangedAt?: Date;
+    passwordChangedAt?: string;
     createdAt?: string;
     updatedAt?: string;
     __v?: number;
@@ -41,6 +41,10 @@ export interface IRecipe {
     image: string;
     rating: string;
     contentAvailability: string;
+    user: IUser;
+    createdAt: string;
+    updatedAt: string;
+    __v: number
 }
 
 export interface IRecipes {

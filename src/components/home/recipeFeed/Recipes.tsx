@@ -4,6 +4,7 @@ import { useUser } from "@/context/user.provider"
 import { LayoutList, Pizza, UtensilsCrossed } from "lucide-react"
 import Recipe from "./Recipe"
 import { IRecipe, IRecipes } from "@/types"
+import Image from "next/image"
 
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
     console.log(recipes);
@@ -38,11 +39,9 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                     </div>
                 </div>
 
-                <div className="p-5 bg-gray-50 rounded-md h-96 w-full">
+                <div className="p-5 rounded-md w-full relative">
                     <div className="px-8 space-y-3">
-                        <h1 className="font-bold">{user?.name}</h1>
-
-                        <div className="space-y-3">
+                        <div className="grid grid-cols-1 gap-7">
                             {recipes?.data?.map((recipe: IRecipe) => (
                                 <Recipe key={recipe?._id}
                                     recipe={recipe}
