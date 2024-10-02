@@ -1,122 +1,131 @@
-'use client'
-import { createRecipe } from "@/services/RecipeService";
-import { IRecipe } from "@/types";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { FormControl, FormField, FormItem, FormLabel } from "../UI/form";
-import TipTap from "../richTextEditor/TipTap";
+"use client"
 
-const CreateRecipe = () => {
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../UI/form"
+import { Button } from "../UI/button"
+import { Input } from "../UI/input"
+import TipTap from "../richTextEditor/TipTap"
+import { createRecipe } from "@/services/RecipeService"
 
-    const { register, handleSubmit, formState: { errors }, control } = useForm<IRecipe>();
 
-    const onSubmit: SubmitHandler<IRecipe> = async (data) => {
+
+const formSchema = z.object({
+    _id: z.string().optional(),
+    title: z.string().min(2, {
+        message: "title must be at least 2 characters.",
+    }),
+    image: z
+        .string(),
+    desc: z
+        .string()
+        .min(5, { message: 'Hey the description is not long enough' })
+        .max(100, { message: 'Its too loong' })
+        .trim(),
+    rating: z
+        .string(),
+})
+
+export function CreateRecipe() {
+    // 1. Define your form.
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            title: "",
+            image: '',
+            desc: '',
+            rating: '',
+        },
+    })
+
+    // 2. Define a submit handler.
+    function onSubmit(values: z.infer<typeof formSchema>) {
         const recipeData = {
-            ...data,
+            ...values,
             contentAvailability: 'free'
         }
-        createRecipe(recipeData)
-    };
+        console.log(recipeData);
 
-    const handleContentChange = () => {
-
+        // createRecipe(recipeData)
     }
 
     return (
         <div>
-            <div className="rounded-md space-y-10 flex flex-col items-center py-12">
+            <div className="rounded-md space-y-10 py-12">
                 <h1 className="text-3xl md:text-5xl text-grayText text-center font-bold">Create Recipe</h1>
-                <form className="space-y-10 w-96 px-2 lg:px-0" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="grid grid-cols-1 gap-x-10 gap-y-5 items-end">
-                        <div>
-                            <label className="block mb-1 text-sm text-grayText">Title</label>
-                            <TipTap description="dkkjk" onChange={(newContent: string) => handleContentChange(newContent)} />
-                            <input
-                                type="text"
-                                {...register('title', {
-                                    required: {
-                                        value: true,
-                                        message: "Title is required."
-                                    }
-                                })}
-                                className="w-full appearance-none text-primary  placeholder:text-primary  inline-block bg-secondary  px-3 h-9 border border-grayText  rounded-md focus:outline-none focus:bg-neutral-100 "
+
+                <div className="px-2 md:px-24">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                            <FormField
+                                control={form.control}
+                                name="title"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Title</FormLabel>
+                                        <FormControl>
+                                            {/* <Input placeholder="Title" {...field} /> */}
+                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[50px]' />
+                                        </FormControl>
+                                        {/* <FormDescription>
+                                            This is your public display name.
+                                        </FormDescription> */}
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                        </div>
-                        <div>
-                            {errors.image && <p>{errors.image?.message}</p>}
-                        </div>
-                        <div>
-                            <label className="block mb-1 text-sm text-grayText">Image</label>
-                            <input
-                                type="text"
-                                {...register('image', {
-                                    required: {
-                                        value: true,
-                                        message: "Image is required."
-                                    }
-                                })}
-                                className="w-full appearance-none text-primary  placeholder:text-primary  inline-block bg-secondary  px-3 h-9 border border-grayText  rounded-md focus:outline-none focus:bg-neutral-100 "
+
+                            <FormField
+                                control={form.control}
+                                name="image"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Image</FormLabel>
+                                        <FormControl>
+                                            {/* <Input placeholder="Image" {...field} /> */}
+                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                        </div>
-                        <div>
-                            {errors.image && <p>{errors.image?.message}</p>}
-                        </div>
-                        <div>
-                            <label className="block mb-1 text-sm text-grayText">Title</label>
-                            <input
-                                type="text"
-                                {...register('title', {
-                                    required: {
-                                        value: true,
-                                        message: "Title is required."
-                                    }, minLength: { value: 5, message: 'This input requires 5 character' }
-                                })}
-                                className="w-full appearance-none text-primary  placeholder:text-primary  inline-block bg-secondary  px-3 h-9 border border-grayText  rounded-md focus:outline-none focus:bg-neutral-100 "
+
+                            <FormField
+                                control={form.control}
+                                name="desc"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Description</FormLabel>
+                                        <FormControl>
+                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
                             />
-                        </div>
-                        <div>
-                            {errors.title && <p>{errors.title?.message}</p>}
-                        </div>
-                        <div>
-                            <label className="block mb-1 text-sm text-grayText">Description</label>
-                            <input
-                                type="text"
-                                {...register('desc', {
-                                    required: {
-                                        value: true,
-                                        message: "Description is required."
-                                    }, minLength: { value: 5, message: 'This input requires 5 character' }
-                                })}
-                                className="w-full appearance-none text-primary  placeholder:text-primary  inline-block bg-secondary  px-3 h-9 border border-grayText  rounded-md focus:outline-none focus:bg-neutral-100 "
+
+                            <FormField
+                                control={form.control}
+                                name="rating"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Rating</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Rating" {...field} />
+                                        </FormControl>
+                                        {/* <FormDescription>
+                                            This is your public display name.
+                                        </FormDescription> */}
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                        </div>
-                        <div>
-                            {errors.desc && <p>{errors.desc?.message}</p>}
-                        </div>
-                        <div>
-                            <label className="block mb-1 text-sm text-grayText">Rating</label>
-                            <input
-                                type="number"
-                                {...register('rating', {
-                                    required: {
-                                        value: true,
-                                        message: "Rating is required."
-                                    }
-                                })}
-                                className="w-full appearance-none text-primary  placeholder:text-primary  inline-block bg-secondary  px-3 h-9 border border-grayText  rounded-md focus:outline-none focus:bg-neutral-100 "
-                            />
-                        </div>
-                        <div>
-                            {errors.rating && <p>{errors.rating?.message}</p>}
-                        </div>
-                    </div>
-                    <div className="flex justify-center items-center">
-                        <button className="w-full bg-accent hover:bg-primary/80 text-grayText font-medium py-3 px-6 rounded-full ease-in-out duration-100">
-                            Create
-                        </button>
-                    </div>
-                </form>
+
+                            <Button type="submit">Submit</Button>
+                        </form>
+                    </Form>
+                </div>
             </div>
         </div>
     )
 }
-export default CreateRecipe

@@ -10,7 +10,7 @@ const ToolBar = ({ editor }: IToolBar) => {
         return null
     }
     return (
-        <div className='border border-input bg-transparent rounded-md'>
+        <div className='border border-input bg-transparent rounded-md w-20'>
             <Toggle
                 size='sm'
                 pressed={editor.isActive('heading')}

@@ -1,13 +1,9 @@
-import { CreatePractice } from '@/components/user/CreatePractice'
-import CreateRecipe from '@/components/user/CreateRecipe'
-import React from 'react'
+import { CreateRecipe } from "../../../../../components/user/CreateRecipe"
 
 const page = () => {
     return (
         <div className=''>
-
-            {/* <CreateRecipe /> */}
-            <CreatePractice />
+            <CreateRecipe />
         </div>
     )
 }
