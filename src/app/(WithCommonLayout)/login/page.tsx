@@ -8,6 +8,7 @@ import GlassSpinner from '@/components/shared/spinner/GlassSpinner'
 import { useEffect } from 'react'
 import { useUserLogin } from '@/hooks/auth.hook'
 import { useUser } from '@/context/user.provider'
+import Link from 'next/link'
 
 
 const Login = () => {
@@ -69,7 +70,7 @@ const Login = () => {
                         </div>
 
                         <ReusableForm onSubmit={handleSubmit(onSubmit)}>
-                            <div className='w-full flex flex-col '>
+                            <div className='w-full flex flex-col mb-5'>
                                 <input type="email"
                                     {...register('email')}
                                     className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
@@ -85,7 +86,7 @@ const Login = () => {
                                     <input type="checkbox" className='w-4 h-4 mr-2' />
                                     <p className='text-sm'>Remember Me for 30 days</p>
                                 </div>
-                                <p className='text-sm font-medium whitespace-nowrap underline underline-offset-2 cursor-pointer'>Forgot Password</p>
+                                <Link href='/forget-password' className='text-sm font-medium whitespace-nowrap underline underline-offset-2 cursor-pointer'>Forgot Password?</Link>
                             </div>
 
                             <div className="w-full flex flex-col my-4">

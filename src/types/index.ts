@@ -13,11 +13,25 @@ export interface IUser {
     role: string;
     address: string;
     photo: string;
+    bio?: string;
     membership: string;
-    followers: string[];
+    following?: string;
+    followers?: string;
+    passwordChangedAt?: Date;
     createdAt?: string;
     updatedAt?: string;
     __v?: number;
+}
+
+export interface IRegisterUser {
+    name: string,
+    email: string,
+    password: string,
+    phone: string,
+    role: 'user',
+    address: string,
+    membership: 'string',
+    photo: string,
 }
 
 export interface IRecipe {
