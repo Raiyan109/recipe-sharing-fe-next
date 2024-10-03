@@ -41,6 +41,7 @@ export interface IRecipe {
     desc: string;
     image: string;
     rating: string;
+    category: [string];
     contentAvailability: string;
     user: IUser;
     createdAt: string;

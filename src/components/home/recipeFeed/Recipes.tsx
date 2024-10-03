@@ -5,16 +5,58 @@ import Recipe from "./Recipe"
 import { IRecipe, IRecipes } from "@/types"
 import BlurredRecipe from "@/components/premium/BlurredRecipe"
 import { useUser } from "@/context/user.provider"
+import { useEffect, useState } from "react"
 
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
+    const [selectedFilters, setSelectedFilters] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]);
+    console.log(filteredItems);
+
     const { user } = useUser()
+
+    const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
+
+    const handleFilterButtonClick = (selectedCategory: string[]) => {
+        if (selectedFilters.includes(selectedCategory)) {
+            const filters = selectedFilters.filter((el) => el !== selectedCategory);
+            setSelectedFilters(filters);
+        } else {
+            setSelectedFilters([...selectedFilters, selectedCategory]);
+        }
+    };
+
+    useEffect(() => {
+        filterItems();
+    }, [selectedFilters, recipes.data]);
+
+    const filterItems = () => {
+        if (selectedFilters.length > 0) {
+            let tempItems = recipes?.data?.filter((item) =>
+                item.category.some((cat) => selectedFilters.includes(cat))
+            );
+            setFilteredItems(tempItems);
+        } else {
+            setFilteredItems(recipes.data || []);
+        }
+    };
+
     return (
         <div className="">
             <div className="p-5 bg-gray-300 rounded-md">
                 {/* Categories */}
                 <div className="p-5 rounded-md mb-5">
                     <div className="flex flex-wrap items-center justify-center gap-2">
-                        <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                        {filters.map((category, idx) => (
+                            <button
+                                onClick={() => handleFilterButtonClick(category)}
+                                className={`flex items-center gap-2  px-3 py-3 rounded-full ${selectedFilters?.includes(category) ? "bg-orange-200" : ""
+                                    }`}
+                                key={`filters-${idx}`}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                        {/* <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
                             <LayoutList size={20} />
                             All Topics
                         </div>
@@ -33,14 +75,14 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                         <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
                             <UtensilsCrossed size={20} />
                             Restaurants
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
                 <div className="p-5 rounded-md w-full relative">
                     <div className="px-8 space-y-3">
                         <div className="grid grid-cols-1 gap-7">
-                            {recipes?.data?.map((recipe: IRecipe) => {
+                            {filteredItems?.map((recipe: IRecipe) => {
                                 // Check if the recipe is free and the user has premium membership
                                 const isFree = recipe.contentAvailability === 'free';
                                 const isPremiumUser = user?.membership === 'premium';

@@ -1,0 +1,93 @@
+[
+    {
+      "title": "Classic Margherita Pizza",
+      "desc": "A simple, yet delicious pizza topped with fresh basil, mozzarella cheese, and ripe tomatoes.",
+      "image": "https://example.com/images/margherita_pizza.jpg",
+      "rating": "4.8",
+      "contentAvailability": "free",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Dinner", "Vegetarian"]
+    },
+    {
+      "title": "Creamy Garlic Parmesan Chicken",
+      "desc": "Juicy chicken breasts smothered in a creamy garlic parmesan sauce. Perfect for a quick dinner!",
+      "image": "https://example.com/images/creamy_garlic_chicken.jpg",
+      "rating": "4.7",
+      "contentAvailability": "premium",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Breakfast", "Healthy"]
+    },
+    {
+      "title": "Avocado Toast with Poached Egg",
+      "desc": "A healthy and delicious breakfast option featuring creamy avocado and perfectly poached eggs on toasted bread.",
+      "image": "https://example.com/images/avocado_toast.jpg",
+      "rating": "4.5",
+      "contentAvailability": "free",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Breakfast", "Vegetarian"]
+    },
+    {
+      "title": "Spaghetti Carbonara",
+      "desc": "A rich and creamy Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+      "image": "https://example.com/images/spaghetti_carbonara.jpg",
+      "rating": "4.9",
+      "contentAvailability": "premium",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Healthy"]
+    },
+    {
+      "title": "Vegan Buddha Bowl",
+      "desc": "A nutritious and colorful bowl packed with quinoa, roasted vegetables, and a tahini dressing.",
+      "image": "https://example.com/images/buddha_bowl.jpg",
+      "rating": "4.6",
+      "contentAvailability": "free",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Vegetarian", "Healthy"]
+    },
+    {
+      "title": "Thai Green Curry",
+      "desc": "A flavorful Thai curry made with coconut milk, green curry paste, chicken, and vegetables.",
+      "image": "https://example.com/images/thai_green_curry.jpg",
+      "rating": "4.8",
+      "contentAvailability": "premium",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Healthy", "Dinner"]
+    },
+    {
+      "title": "Blueberry Pancakes",
+      "desc": "Fluffy pancakes loaded with fresh blueberries, perfect for a weekend breakfast.",
+      "image": "https://example.com/images/blueberry_pancakes.jpg",
+      "rating": "4.7",
+      "contentAvailability": "free",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Dinner", "Vegetarian"]
+    },
+    {
+      "title": "Beef Stroganoff",
+      "desc": "A creamy and savory Russian dish made with tender beef and mushrooms, served over egg noodles.",
+      "image": "https://example.com/images/beef_stroganoff.jpg",
+      "rating": "4.9",
+      "contentAvailability": "premium",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Breakfast", "Vegetarian"]
+    },
+    {
+      "title": "Chocolate Lava Cake",
+      "desc": "A decadent dessert with a gooey, molten chocolate center that's sure to satisfy any sweet tooth.",
+      "image": "https://example.com/images/chocolate_lava_cake.jpg",
+      "rating": "4.8",
+      "contentAvailability": "free",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Breakfast", "Healthy"]
+    },
+    {
+      "title": "Shrimp Tacos",
+      "desc": "Spicy shrimp served in soft corn tortillas with fresh salsa and a lime crema.",
+      "image": "https://example.com/images/shrimp_tacos.jpg",
+      "rating": "4.7",
+      "contentAvailability": "premium",
+      "user": "65312ecf9f1234567b89b0de",
+      "category": ["Dinner", "Vegetarian"]
+    }
+  ]
+  
