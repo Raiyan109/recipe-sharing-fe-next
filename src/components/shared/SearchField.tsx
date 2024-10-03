@@ -3,67 +3,63 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import useDebounce from "@/hooks/debounce.hook";
+
 import { IRecipe, IRecipes } from "@/types";
 import { useState } from "react";
-import Link from "next/link";
+
 
 export default function SearchField({ recipes }: { recipes: IRecipes }) {
     const [query, setQuery] = useState('');
-    //Our search filter function
+
+    const { register, handleSubmit } = useForm();
+
+    // Our search filter function
     const searchFilter = (array: IRecipe[]) => {
-        return array.filter(
-            (el) => el.title.toLowerCase().includes(query)
-        )
-    }
+        return array.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()));
+    };
 
-    //Applying our search filter function to our array of countries recieved from the API
-    const filtered = searchFilter(recipes.data)
-    console.log(filtered);
+    // Applying the search filter function to the array of recipes received from the API
+    const filtered = searchFilter(recipes.data);
 
+    // Handling form submission
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        console.log(data);
 
-    //Handling the input on our search bar
-    const handleChange = (e) => {
-        setQuery(e.target.value)
-        console.log(query);
-    }
-
-
-    // const { register, handleSubmit, watch } = useForm();
-
-
-    // const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    //     setQuery(data)
-    //     console.log(query);
-
-    // };
+        setQuery(data.search);  // Set query based on form data
+    };
 
     return (
-        <form >
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="relative">
-                {/* <Input
-                    {...register('search')}
+                <Input
+                    {...register('search', {
+                        onChange: (e) => {
+                            setQuery(e.target.value)
+                        },
+                    })}
                     aria-label='Search'
                     placeholder="Search"
                     className="pe-10"
-                /> */}
-                <input type="text" placeholder="Type here"
-                    onChange={handleChange}
-                    className="input input-bordered input-primary w-full max-w-xs" />
+                />
+
                 <div className="">
-                    {
-                        query &&
-                        <div className="   space-y-3">
-                            {
-                                query && filtered.map((recipe) => (
-                                    <div key={recipe._id} className="border border-primary/75 hover:border-primary hover:bg-secondary hover:text-neutral font-bold cursor-pointer  rounded-2xl px-3 py-3 text-lg">
+                    {/* Show filtered results only if there's a query */}
+                    {query && (
+                        <div className="mt-3 space-y-3 absolute bg-white/20 top-12 z-20 backdrop-blur-sm w-96">
+                            {filtered.length > 0 ? (
+                                filtered.map((recipe) => (
+                                    <div
+                                        key={recipe._id}
+                                        className="  font-bold cursor-pointer rounded-2xl px-3 py-3 text-lg w-56"
+                                    >
                                         <h1 className="">{recipe.title}</h1>
-                                        {/* <Link href={`recipeDetails/${recipe?._id}`}><button className="btn btn-xs btn-primary">Details</button></Link> */}
                                     </div>
                                 ))
-                            }
+                            ) : (
+                                <div>No results found</div>
+                            )}
                         </div>
-                    }
+                    )}
                 </div>
                 <SearchIcon className="absolute right-3 top-1/2 size-5 -translate-y-1/2 transform text-muted-foreground" />
             </div>
