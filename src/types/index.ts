@@ -14,6 +14,7 @@ export interface IUser {
     address: string;
     photo: string;
     bio?: string;
+    isBlocked: boolean;
     membership: string;
     following?: string;
     followers?: string;

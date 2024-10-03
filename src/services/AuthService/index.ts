@@ -51,18 +51,22 @@ export const getAllUsers = async () => {
     }
 }
 
-export const updateUserIsBlocked = async () => {
+export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
-        const { data } = await axiosInstance.put(`/auth`, {
-            headers: {
-                "Authorization": `Bearer ${accessToken}`
+        const { data } = await axiosInstance.put(
+            `/auth/${id}`,
+            { isBlocked }, // Pass the isBlocked field in the body
+            {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                },
             }
-        });
+        );
 
-        return data
+        return data;
     } catch (error: any) {
-        throw new Error(error)
+        throw new Error(error.response?.data?.message || error.message);
     }
 }
 

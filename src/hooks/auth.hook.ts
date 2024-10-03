@@ -1,4 +1,4 @@
-import { forgetPassword, loginUser, registerUser } from "@/services/AuthService";
+import { forgetPassword, loginUser, registerUser, updateUserIsBlocked } from "@/services/AuthService";
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -38,6 +38,19 @@ export const useForgetPassword = () => {
         mutationFn: async (userData) => await forgetPassword(userData),
         onSuccess: () => {
             toast.success("Reset link sent to your email successfully.");
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        },
+    });
+};
+
+export const useUpdateUserIsBlocked = () => {
+    return useMutation<void, Error, { id: string; isBlocked: boolean }>({
+        mutationKey: ["UPDATE_USER_ISBLOCKED"],
+        mutationFn: async ({ id, isBlocked }) => await updateUserIsBlocked(id, isBlocked),
+        onSuccess: () => {
+            toast.success("User status updated successfully.");
         },
         onError: (error) => {
             toast.error(error.message);
