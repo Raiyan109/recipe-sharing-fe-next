@@ -1,8 +1,15 @@
+import ManageUsers from "@/components/admin/mangeUsers/ManageUsers";
+import { getAllUsers } from "@/services/AuthService"
 
 
-const page = () => {
+const page = async () => {
+    const users = await getAllUsers()
+    console.log(users);
+
     return (
-        <div>page</div>
+        <div>
+            <ManageUsers users={users} />
+        </div>
     )
 }
 

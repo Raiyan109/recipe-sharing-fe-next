@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 
 import axiosInstance from "@/lib/AxiosInstance";
@@ -30,6 +31,21 @@ export const loginUser = async (userData: FieldValues) => {
         }
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
+export const getAllUsers = async () => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.get("/auth", {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
     } catch (error: any) {
         throw new Error(error)
     }
