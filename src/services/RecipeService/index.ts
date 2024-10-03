@@ -26,6 +26,16 @@ export const getRecipes = async () => {
     }
 }
 
+export const getSingleRecipe = async (id: string) => {
+    try {
+        const { data } = await axiosInstance.get(`/recipe/${id}`);
+
+        return data
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
 export const getRecipesOfUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
     try {

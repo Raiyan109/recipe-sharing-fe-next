@@ -1,5 +1,6 @@
 import { IRecipe } from "@/types"
 import Image from "next/image"
+import Link from "next/link"
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
@@ -18,13 +19,15 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
             <h1 className="font-semibold capitalize">{recipe.title}</h1>
             <h1 className=" text-gray-600 font-medium">{recipe.desc}</h1>
             <div className="grid grid-cols-4 gap-3">
-                <Image
-                    src={recipe.image}
-                    width={200}
-                    height={200}
-                    alt="recipe photo"
-                    className="rounded-md"
-                />
+                <Link href={`/${recipe._id}`}>
+                    <Image
+                        src={recipe.image}
+                        width={200}
+                        height={200}
+                        alt="recipe photo"
+                        className="rounded-md"
+                    />
+                </Link>
                 <Image
                     src={recipe.image}
                     width={200}
