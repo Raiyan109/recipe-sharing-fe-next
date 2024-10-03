@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use server'
 import axiosInstance from "@/lib/AxiosInstance";
 import { cookies } from "next/headers";
 
@@ -16,15 +17,21 @@ export const createRecipe = async (recipe: FieldValues) => {
     }
 }
 
-// export const deleteRecipe = async (id: string) => {
-//     try {
-//         const { data } = await axiosInstance.delete(`/recipe/${id}`);
+export const deleteRecipe = async (id: string) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.delete(`/recipe/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+        console.log(data);
 
-//         return data
-//     } catch (error: any) {
-//         throw new Error(error)
-//     }
-// }
+        return data
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
 
 export const getRecipes = async () => {
     try {

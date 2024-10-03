@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react'
 const UserLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="flex items-start justify-start">
-            <header className=" bg-secondary fixed z-10">
+            <header className=" bg-secondary fixed z-20">
                 <UserSidebar>
                     <SidebarItem
                         icon={<LayoutDashboard size={20} />}
