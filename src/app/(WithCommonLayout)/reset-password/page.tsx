@@ -8,7 +8,7 @@ const page = async () => {
 
     return (
         <div>
-            <ResetPassword />
+            <ResetPassword user={userInfo} />
         </div>
     )
 }
