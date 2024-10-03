@@ -1,8 +1,14 @@
+import Profile from '@/components/user/Profile'
+import { getAnUser } from '@/services/AuthService';
 import React from 'react'
 
-const page = () => {
+const page = async () => {
+    const userInfo = await getAnUser()
+    console.log(userInfo);
     return (
-        <div>Profile</div>
+        <div>
+            <Profile user={userInfo.data} />
+        </div>
     )
 }
 

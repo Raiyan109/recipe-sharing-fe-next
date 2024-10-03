@@ -1,4 +1,5 @@
-import { forgetPassword, loginUser, registerUser, updateUserIsBlocked } from "@/services/AuthService";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { forgetPassword, loginUser, registerUser, updateProfile, updateUserIsBlocked } from "@/services/AuthService";
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -54,7 +55,22 @@ export const useUpdateUserIsBlocked = () => {
         },
         onError: (error) => {
             // Check if the error response contains a message
-            const errorMessage = error.response?.data?.message || 'An unexpected error occurred.';
+            const errorMessage = error.message || 'An unexpected error occurred.';
+            toast.error(errorMessage);
+        },
+    });
+};
+
+export const useUpdateProfile = () => {
+    return useMutation<void, Error, { id: string; payload: Record<string, any> }>({
+        mutationKey: ["UPDATE_PROFILE"],
+        mutationFn: async ({ id, payload }) => await updateProfile(id, payload),
+        onSuccess: () => {
+            toast.success("Profile updated successfully.");
+        },
+        onError: (error) => {
+            // Check if the error response contains a message
+            const errorMessage = error.message || 'An unexpected error occurred.';
             toast.error(errorMessage);
         },
     });

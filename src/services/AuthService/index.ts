@@ -51,6 +51,21 @@ export const getAllUsers = async () => {
     }
 }
 
+export const getAnUser = async () => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.get("/auth/user", {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
 export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
@@ -66,6 +81,30 @@ export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
 
         return data;
     } catch (error: any) {
+        throw new Error(error.response?.data?.message || error.message);
+    }
+}
+
+export const updateProfile = async (id: string, payload: Record<string, any>) => {
+    console.log(id, 'from updateProfile service');
+
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.put(
+            `/auth/updateProfile/${id}`,
+            payload,
+            {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                },
+            }
+        );
+        console.log(data);
+
+        return data;
+    } catch (error: any) {
+        console.log(error);
+
         throw new Error(error.response?.data?.message || error.message);
     }
 }
