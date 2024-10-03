@@ -1,6 +1,6 @@
 'use client'
-import { Avatar, AvatarFallback, AvatarImage } from "../UI/avatar"
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../UI/navigation-menu"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu"
 
 const NavMenu = () => {
     return (

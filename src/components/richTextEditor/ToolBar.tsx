@@ -1,5 +1,5 @@
 import { Editor } from '@tiptap/react'
-import { Toggle } from '../UI/toggle'
+import { Toggle } from '../ui/toggle'
 import { Bold, Heading2 } from 'lucide-react'
 
 type IToolBar = {

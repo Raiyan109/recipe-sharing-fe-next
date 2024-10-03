@@ -9,10 +9,7 @@ const page = () => {
                         <h2 className="text-3xl font-semibold text-gray-900 mb-4 text-center">
                             How can we help you
                         </h2>
-                        <p className="text-gray-700 mb-8 text-center">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis velit
-                            eget nisi lobortis dignissim.
-                        </p>
+
                         <form className="bg-white rounded-lg px-6 py-8 shadow-md">
                             <div className="mb-4">
                                 <label className="block text-gray-700 font-bold mb-2">Name</label>

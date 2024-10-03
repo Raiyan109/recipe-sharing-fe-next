@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/context/user.provider";
 import { logout } from "@/services/AuthService";
 import Link from "next/link";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "../UI/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import Image from "next/image";
 
 

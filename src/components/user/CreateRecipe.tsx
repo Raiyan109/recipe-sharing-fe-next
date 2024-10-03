@@ -3,9 +3,9 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../UI/form"
-import { Button } from "../UI/button"
-import { Input } from "../UI/input"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
 import TipTap from "../richTextEditor/TipTap"
 import { createRecipe } from "@/services/RecipeService"
 

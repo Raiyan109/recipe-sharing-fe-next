@@ -2,7 +2,7 @@
 
 import { SearchIcon } from "lucide-react";
 
-import { Input } from "../UI/input";
+import { Input } from "../ui/input";
 
 
 export default function SearchField() {

@@ -1,7 +1,7 @@
 'use client'
 
 import { LogOut, User } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../UI/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu"
 import avatarImg from '@/assets/avatar.png'
 import Image from "next/image"
 import { logout } from "@/services/AuthService"

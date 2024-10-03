@@ -1,7 +1,7 @@
 
 import { Contact, Home, Users } from "lucide-react";
 import Link from "next/link";
-import { Button } from "../UI/button";
+import { Button } from "../ui/button";
 
 
 interface MenuBarProps {
