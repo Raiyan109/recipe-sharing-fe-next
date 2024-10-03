@@ -1,5 +1,5 @@
 
-import { Home, Users } from "lucide-react";
+import { Contact, Home, Users } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../UI/button";
 
@@ -37,6 +37,18 @@ export default async function MenuBar({ className }: MenuBarProps) {
                 <Link href="/about">
                     <Users />
                     <span className="hidden lg:inline">About</span>
+                </Link>
+            </Button>
+
+            <Button
+                variant="ghost"
+                className="flex items-center justify-start gap-3"
+                title="Contact Us"
+                asChild
+            >
+                <Link href="/contact">
+                    <Contact />
+                    <span className="hidden lg:inline">Contact Us</span>
                 </Link>
             </Button>
         </div>
