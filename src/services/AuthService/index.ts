@@ -51,6 +51,21 @@ export const getAllUsers = async () => {
     }
 }
 
+export const updateUserIsBlocked = async () => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.put(`/auth`, {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}
+
 export const logout = () => {
     cookies().delete('accessToken')
 
