@@ -33,13 +33,16 @@ export const getRecipesOfUser = async () => {
                 "Authorization": `Bearer ${accessToken}`
             }
         });
-        if (!data) {
-            return null
-        }
+
         console.log(data);
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        // If the error is 404 (Not Found), return an empty array or handle it gracefully
+        if (error.response && error.response.status === 404) {
+            return { data: [] }; // Returning empty data
+        }
+        // For other errors, rethrow the error
+        throw new Error(error);
     }
 }

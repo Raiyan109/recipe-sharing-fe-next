@@ -3,8 +3,6 @@ import Image from "next/image"
 
 
 const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
-    console.log(recipe, 'from MyRecipe');
-
     return (
         <div
             className="relative bg-cover group rounded-3xl bg-center overflow-hidden mx-auto sm:mr-0 xl:mx-auto cursor-pointer">
