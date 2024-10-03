@@ -5,13 +5,8 @@ import Image from "next/image"
 
 
 const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
-    console.log(recipe);
-
     const { mutate: handleDeleteRecipe } = useDeleteRecipe();
-    console.log('outside of deleteRecipe', recipe._id);
-
     const deleteRecipe = (id: string) => {
-        console.log('deleteRecipe called with:', id);
         handleDeleteRecipe({ id })
     }
 

@@ -25,7 +25,7 @@ export const deleteRecipe = async (id: string) => {
                 "Authorization": `Bearer ${accessToken}`
             }
         });
-        console.log(data);
+
 
         return data
     } catch (error: any) {

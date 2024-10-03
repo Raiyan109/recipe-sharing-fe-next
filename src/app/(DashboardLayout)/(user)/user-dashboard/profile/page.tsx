@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = async () => {
     const userInfo = await getAnUser()
-    console.log(userInfo);
+
     return (
         <div>
             <Profile user={userInfo.data} />

@@ -150,3 +150,19 @@ export const forgetPassword = async (userData: FieldValues) => {
         throw new Error(error)
     }
 }
+
+export const resetPassword = async (userData: FieldValues) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.post("/auth/reset-password", userData, {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        throw new Error(error)
+    }
+}

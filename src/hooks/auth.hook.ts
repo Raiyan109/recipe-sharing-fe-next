@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { forgetPassword, loginUser, registerUser, updateProfile, updateUserIsBlocked } from "@/services/AuthService";
+import { forgetPassword, loginUser, registerUser, resetPassword, updateProfile, updateUserIsBlocked } from "@/services/AuthService";
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -39,6 +39,20 @@ export const useForgetPassword = () => {
         mutationFn: async (userData) => await forgetPassword(userData),
         onSuccess: () => {
             toast.success("Reset link sent to your email successfully.");
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        },
+    });
+};
+
+export const useResetPassword = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return useMutation<any, Error, FieldValues>({
+        mutationKey: ["RESET_PASSWORD"],
+        mutationFn: async (userData) => await resetPassword(userData),
+        onSuccess: () => {
+            toast.success("Password reset successfully.");
         },
         onError: (error) => {
             toast.error(error.message);

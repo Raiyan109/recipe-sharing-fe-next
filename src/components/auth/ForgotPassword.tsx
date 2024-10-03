@@ -16,7 +16,7 @@ const ForgotPassword = () => {
 
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto py-12">
             <h2 className="text-2xl font-bold mb-4">Forgot Password</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
