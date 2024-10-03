@@ -36,9 +36,9 @@ export const getRecipesOfUser = async () => {
         });
         return data
     } catch (error: any) {
-        // If the error is 404 (Not Found), return an empty array or handle it gracefully
+
         if (error.response && error.response.status === 404) {
-            return { data: [] }; // Returning empty data
+            return { data: [] };
         }
         toast.error(error)
     }
