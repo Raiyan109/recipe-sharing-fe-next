@@ -132,6 +132,7 @@ export const getCurrentUser = async () => {
             photo: decodedToken.userId.photo,
             membership: decodedToken.userId.membership,
             followers: decodedToken.userId.followers,
+            isBlocked: decodedToken.userId.isBlocked || false,
         }
     }
 

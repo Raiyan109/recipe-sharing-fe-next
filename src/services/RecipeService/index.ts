@@ -16,6 +16,16 @@ export const createRecipe = async (recipe: FieldValues) => {
     }
 }
 
+// export const deleteRecipe = async (id: string) => {
+//     try {
+//         const { data } = await axiosInstance.delete(`/recipe/${id}`);
+
+//         return data
+//     } catch (error: any) {
+//         throw new Error(error)
+//     }
+// }
+
 export const getRecipes = async () => {
     try {
         const { data } = await axiosInstance.get("/recipe");
@@ -35,6 +45,8 @@ export const getSingleRecipe = async (id: string) => {
         throw new Error(error)
     }
 }
+
+
 
 export const getRecipesOfUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
