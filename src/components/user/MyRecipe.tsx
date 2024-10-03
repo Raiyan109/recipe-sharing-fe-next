@@ -2,8 +2,8 @@ import { IRecipe } from "@/types";
 import Image from "next/image"
 
 
-const MyRecipe = ({ recipe }: { recipes: IRecipe }) => {
-    console.log(recipe);
+const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
+    console.log(recipe, 'from MyRecipe');
 
     return (
         <div
