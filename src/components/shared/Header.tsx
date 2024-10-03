@@ -1,14 +1,11 @@
-'use client'
-
 import Link from "next/link"
 import { ThemeSwitch } from "./ThemeSwitch"
 import SearchField from "./SearchField"
-import UserButton from "./UserButton"
-import { useUser } from "@/context/user.provider"
+import UserDropdown from "./UserDropdown"
+import { getRecipes } from "@/services/RecipeService"
 
-
-const Header = () => {
-    const { user } = useUser()
+const Header = async () => {
+    const recipes = await getRecipes()
 
     return (
         <header className="sticky top-0 z-10 bg-card shadow-sm">
@@ -16,12 +13,10 @@ const Header = () => {
                 <Link href="/" className="text-2xl font-bold text-primary">
                     bugbook
                 </Link>
-                <SearchField />
+                <SearchField recipes={recipes} />
                 {/* sm:ms-auto */}
                 <div className="flex gap-4 items-center">
-                    {user ?
-                        (<UserButton />) :
-                        (<Link href='/login'>Login</Link>)}
+                    <UserDropdown />
                     <ThemeSwitch />
                 </div>
             </div>

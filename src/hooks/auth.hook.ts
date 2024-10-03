@@ -53,7 +53,9 @@ export const useUpdateUserIsBlocked = () => {
             toast.success("User status updated successfully.");
         },
         onError: (error) => {
-            toast.error(error.message);
+            // Check if the error response contains a message
+            const errorMessage = error.response?.data?.message || 'An unexpected error occurred.';
+            toast.error(errorMessage);
         },
     });
 };
