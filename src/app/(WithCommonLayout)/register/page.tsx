@@ -4,6 +4,7 @@ import loginImg from '@/assets/login.jpg'
 import ReusableForm from '@/components/form/ReusableForm'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useUserRegistration } from '@/hooks/auth.hook'
+import Link from 'next/link'
 
 const Register = () => {
     const { mutate: handleUserRegistration } = useUserRegistration();
@@ -56,7 +57,7 @@ const Register = () => {
                     </div>
 
                     <ReusableForm onSubmit={handleSubmit(onSubmit)}>
-                        <div className='w-full flex flex-col '>
+                        <div className='w-full flex flex-col mb-5 '>
                             <input type="text"
                                 {...register('name')}
                                 className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Name' />
@@ -83,7 +84,7 @@ const Register = () => {
 
                         </div>
 
-                        <div className='w-full flex items-center justify-center'>
+                        <div className='w-full flex items-center justify-center mb-7'>
                             <div className='w-full flex'>
                                 <input type="checkbox" className='w-4 h-4 mr-2' />
                                 <p className='text-sm'>Remember Me for 30 days</p>
@@ -98,7 +99,7 @@ const Register = () => {
                 </div>
 
                 <div className='w-full flex items-center justify-center'>
-                    <p className='text-sm font-normal'>Already have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Login here</span></p>
+                    <Link href='/login' className='text-sm font-normal'>Already have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Login here</span></Link>
                 </div>
             </div>
         </div>

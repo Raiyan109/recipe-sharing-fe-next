@@ -46,10 +46,17 @@ const UserButton = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              <Link href='/user-dashboard'>Profile</Link>
-            </DropdownMenuItem>
+            {user?.role === 'user' ? (
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <Link href='/user-dashboard'>Profile</Link>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <Link href='/admin'>Admin dashboard</Link>
+              </DropdownMenuItem>
+            )}
             {/* <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Billing</span>

@@ -97,7 +97,7 @@ const Login = () => {
                     </div>
 
                     <div className='w-full flex items-center justify-center'>
-                        <p className='text-sm font-normal'>Do not have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</span></p>
+                        <Link href='/register' className='text-sm font-normal'>Do not have an account? <span className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</span></Link>
                     </div>
                 </div>
             </div>
