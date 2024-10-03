@@ -8,9 +8,6 @@ import { useUser } from "@/context/user.provider"
 
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
     const { user } = useUser()
-    console.log(user?.membership);
-
-
     return (
         <div className="">
             <div className="p-5 bg-gray-300 rounded-md">
