@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { LayoutList, Pizza, UtensilsCrossed } from "lucide-react"
+
 import Recipe from "./Recipe"
 import { IRecipe, IRecipes } from "@/types"
 import BlurredRecipe from "@/components/premium/BlurredRecipe"
@@ -8,15 +9,15 @@ import { useUser } from "@/context/user.provider"
 import { useEffect, useState } from "react"
 
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
-    const [selectedFilters, setSelectedFilters] = useState([]);
-    const [filteredItems, setFilteredItems] = useState([]);
-    console.log(filteredItems);
+    const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+    const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
+
 
     const { user } = useUser()
 
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
-    const handleFilterButtonClick = (selectedCategory: string[]) => {
+    const handleFilterButtonClick = (selectedCategory: string) => {
         if (selectedFilters.includes(selectedCategory)) {
             const filters = selectedFilters.filter((el) => el !== selectedCategory);
             setSelectedFilters(filters);
@@ -31,7 +32,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
 
     const filterItems = () => {
         if (selectedFilters.length > 0) {
-            let tempItems = recipes?.data?.filter((item) =>
+            const tempItems = recipes?.data?.filter((item) =>
                 item.category.some((cat) => selectedFilters.includes(cat))
             );
             setFilteredItems(tempItems);
