@@ -1,0 +1,29 @@
+.blur-text {
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+}
+
+#paywall-wrapper * {
+    text-align: center;
+}
+
+#paywall-wrapper .btn {
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.fade-out {
+    position: relative;
+}
+
+.fade-out:after {
+    content: "";
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+}

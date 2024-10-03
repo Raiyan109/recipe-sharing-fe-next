@@ -47,6 +47,10 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                     className="rounded-md"
                 />
             </div>
+
+            <div>
+                <h1 className="font-semibold capitalize text-xl">Ingredients</h1>
+            </div>
         </div>
     )
 }

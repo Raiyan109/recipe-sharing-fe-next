@@ -1,15 +1,18 @@
 'use client'
 
-import { useUser } from "@/context/user.provider"
 import { LayoutList, Pizza, UtensilsCrossed } from "lucide-react"
 import Recipe from "./Recipe"
 import { IRecipe, IRecipes } from "@/types"
-import Image from "next/image"
+import BlurredRecipe from "@/components/premium/BlurredRecipe"
+import { useUser } from "@/context/user.provider"
 
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
-    console.log(recipes);
+    const freeRecipes = recipes.data.filter((recipe) => recipe.contentAvailability === 'free')
 
     const { user } = useUser()
+    console.log(user);
+
+
     return (
         <div className="">
             <div className="p-5 bg-gray-300 rounded-md">
@@ -43,14 +46,12 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                     <div className="px-8 space-y-3">
                         <div className="grid grid-cols-1 gap-7">
                             {recipes?.data?.map((recipe: IRecipe) => (
-                                <Recipe key={recipe?._id}
+                                recipe.contentAvailability === 'free' ? (<Recipe key={recipe?._id}
                                     recipe={recipe}
-                                />
+                                />) : (
+                                    <BlurredRecipe key={recipe?._id} recipe={recipe} />
+                                )
                             ))}
-                        </div>
-
-                        <div>
-                            <h1 className="font-semibold capitalize text-xl">Ingredients</h1>
                         </div>
                     </div>
                 </div>
