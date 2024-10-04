@@ -1,11 +1,12 @@
 import { IUser } from "@/types"
 import Image from "next/image"
+import Link from "next/link"
 
 
 const UsersAvatar = ({ user }: { user: IUser }) => {
     return (
         <div className="flex flex-col items-center">
-            <div>
+            <Link href={{ pathname: '/search', query: { keyword: 'this way' } }}>
                 <Image
                     src={user.photo}
                     height={60}
@@ -13,7 +14,7 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
                     alt='user image'
                     className='rounded-full object-contain'
                 />
-            </div>
+            </Link>
             <h1>{user.name}</h1>
         </div>
     )

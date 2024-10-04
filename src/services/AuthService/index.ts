@@ -66,6 +66,24 @@ export const getAnUser = async () => {
     }
 }
 
+export const getSingleUser = async (id: string) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.put(
+            `/auth/${id}`, // Pass the isBlocked field in the body
+            {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                },
+            }
+        );
+
+        return data;
+    } catch (error: any) {
+        throw new Error(error.response?.data?.message || error.message);
+    }
+}
+
 export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
@@ -148,7 +166,7 @@ export const forgetPassword = async (userData: FieldValues) => {
 export const resetPassword = async (userData: FieldValues, token: string) => {
     console.log(token);
 
-    const accessToken = cookies().get('accessToken')?.value
+    // const accessToken = cookies().get('accessToken')?.value
     try {
         const { data } = await axiosInstance.post("/auth/reset-password", userData, {
             headers: {

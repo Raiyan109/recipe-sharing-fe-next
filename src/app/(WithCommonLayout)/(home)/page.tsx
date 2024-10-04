@@ -1,11 +1,13 @@
+import UsersAvatars from "@/components/home/usersAvatars/UsersAvatars"
+import { getAllUsers } from "@/services/AuthService"
 
 
 
 const HomePage = async () => {
-  // const recipes = await getRecipes()
+  const users = await getAllUsers()
   return (
     <div>
-      {/* <Recipes recipes={recipes} /> */}
+      <UsersAvatars users={users.data} />
     </div>
   )
 }
