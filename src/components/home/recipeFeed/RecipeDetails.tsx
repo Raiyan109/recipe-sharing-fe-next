@@ -1,11 +1,11 @@
 import { IRecipe } from "@/types"
-import { Star } from "lucide-react"
+
 import Image from "next/image"
 
 
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
-    const stars = Array(5).fill(0)
+    // const stars = Array(5).fill(0)
     console.log(typeof recipe.rating);
 
     return (
