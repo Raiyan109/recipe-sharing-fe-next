@@ -1,5 +1,5 @@
 'use client'
-import { useFollow } from "@/hooks/follow.hook";
+import { useFollow, useUnfollow } from "@/hooks/follow.hook";
 import { IUser } from "@/types"
 import Image from "next/image"
 
@@ -7,10 +7,15 @@ import Image from "next/image"
 
 const UsersAvatar = ({ user }: { user: IUser }) => {
     const { mutate: handleFollow } = useFollow();
+    const { mutate: handleUnFollow } = useUnfollow();
 
     const handleFollowUser = () => {
-        // Toggle isBlocked status
         handleFollow({ followeeId: user?._id });
+    }
+
+    const handleUnFollowUser = () => {
+        // Toggle isBlocked status
+        handleUnFollow({ followeeId: user?._id });
     }
     return (
         <div className="flex flex-col items-center">
