@@ -11,7 +11,7 @@ const ResetPassword = ({ user }: { user: IUser }) => {
     const { register, handleSubmit } = useForm({})
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const token = new URLSearchParams(window.location.search).get("token");
+        // const token = new URLSearchParams(window.location.search).get("token");
         // console.log(token, 'token fromresetpassword compo');
 
         // console.log(data, 'data onsubmit');
@@ -23,7 +23,7 @@ const ResetPassword = ({ user }: { user: IUser }) => {
 
         // console.log(payload, 'payload');
 
-        handleResetPassword(payload, token)
+        handleResetPassword(payload)
     }
 
 

@@ -163,14 +163,14 @@ export const forgetPassword = async (userData: FieldValues) => {
     }
 }
 
-export const resetPassword = async (userData: FieldValues, token: string) => {
-    console.log(token);
+export const resetPassword = async (userData: FieldValues) => {
+    const accessToken = cookies().get('accessToken')?.value
 
     // const accessToken = cookies().get('accessToken')?.value
     try {
         const { data } = await axiosInstance.post("/auth/reset-password", userData, {
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${accessToken}`
             }
         });
 
