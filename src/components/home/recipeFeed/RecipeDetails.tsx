@@ -1,9 +1,13 @@
 import { IRecipe } from "@/types"
+import { Star } from "lucide-react"
 import Image from "next/image"
 
 
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
+    const stars = Array(5).fill(0)
+    console.log(typeof recipe.rating);
+
     return (
         <div className="bg-gray-100 dark:bg-gray-800 py-8">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,6 +35,16 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                                 <span className="font-bold text-gray-700 dark:text-gray-300">Rating:</span>
                                 <span className="text-gray-600 dark:text-gray-300">
                                     {/* <Rating value={recipe?.rating} /> */}
+                                    {/* {stars.map((_, index) => {
+                                        return (
+                                            <Star
+                                                key={index}
+                                                size={24}
+                                                color={(recipe?.rating) > index ? colors.orange : colors.grey}
+                                            />
+
+                                        )
+                                    })} */}
                                     {recipe?.rating}
                                 </span>
                             </div>
