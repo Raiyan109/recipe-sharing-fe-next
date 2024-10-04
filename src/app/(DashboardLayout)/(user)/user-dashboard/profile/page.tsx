@@ -7,7 +7,7 @@ const page = async () => {
 
     return (
         <div>
-            <Profile user={userInfo.data} />
+            <Profile user={userInfo?.data} />
         </div>
     )
 }

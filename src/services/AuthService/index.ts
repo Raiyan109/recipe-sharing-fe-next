@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form"
 
 
+
 export const registerUser = async (userData: FieldValues) => {
     try {
         const { data } = await axiosInstance.post("/auth/signup", userData);
@@ -18,7 +19,10 @@ export const registerUser = async (userData: FieldValues) => {
         return data
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -32,7 +36,10 @@ export const loginUser = async (userData: FieldValues) => {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -47,7 +54,10 @@ export const getAllUsers = async () => {
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -62,7 +72,10 @@ export const getAnUser = async () => {
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -80,7 +93,10 @@ export const getSingleUser = async (id: string) => {
 
         return data;
     } catch (error: any) {
-        throw new Error(error.response?.data?.message || error.message);
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -99,7 +115,10 @@ export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
 
         return data;
     } catch (error: any) {
-        throw new Error(error.response?.data?.message || error.message);
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -117,7 +136,10 @@ export const updateProfile = async (id: string, payload: Record<string, any>) =>
         );
         return data;
     } catch (error: any) {
-        throw new Error(error.response?.data?.message || error.message);
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -159,7 +181,10 @@ export const forgetPassword = async (userData: FieldValues) => {
         return data
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }
 
@@ -177,6 +202,9 @@ export const resetPassword = async (userData: FieldValues) => {
         return data
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
     }
 }

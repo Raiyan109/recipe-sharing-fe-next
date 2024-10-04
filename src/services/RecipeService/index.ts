@@ -12,7 +12,10 @@ export const createRecipe = async (recipe: FieldValues) => {
         return data
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        toast.error(error)
     }
 }
 
@@ -28,7 +31,10 @@ export const deleteRecipe = async (id: string) => {
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        toast.error(error)
     }
 }
 
@@ -38,7 +44,10 @@ export const getRecipes = async () => {
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        toast.error(error)
     }
 }
 
@@ -48,7 +57,10 @@ export const getSingleRecipe = async (id: string) => {
 
         return data
     } catch (error: any) {
-        throw new Error(error)
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        toast.error(error)
     }
 }
 

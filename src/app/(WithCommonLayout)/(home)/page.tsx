@@ -7,7 +7,7 @@ const HomePage = async () => {
   const users = await getAllUsers()
   return (
     <div>
-      <UsersAvatars users={users.data} />
+      <UsersAvatars users={users?.data} />
     </div>
   )
 }
