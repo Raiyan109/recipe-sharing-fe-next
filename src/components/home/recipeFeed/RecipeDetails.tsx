@@ -2,6 +2,7 @@ import { IRecipe } from "@/types"
 import Image from "next/image"
 
 
+
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
     return (
         <div className="bg-gray-100 dark:bg-gray-800 py-8">
@@ -27,8 +28,11 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                         </p>
                         <div className="flex mb-4">
                             <div className="mr-4">
-                                <span className="font-bold text-gray-700 dark:text-gray-300">Price:</span>
-                                <span className="text-gray-600 dark:text-gray-300">${recipe?.rating}</span>
+                                <span className="font-bold text-gray-700 dark:text-gray-300">Rating:</span>
+                                <span className="text-gray-600 dark:text-gray-300">
+                                    {/* <Rating value={recipe?.rating} /> */}
+                                    {recipe?.rating}
+                                </span>
                             </div>
 
                         </div>

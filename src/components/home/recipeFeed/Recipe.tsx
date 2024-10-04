@@ -1,18 +1,19 @@
 import { IRecipe } from "@/types"
 import { Forward, Heart, MessagesSquare, Star } from "lucide-react"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+
 
 
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
-    const router = useRouter()
-    const handleGoToRecipeDetail = () => {
-        router.push(`/${recipe._id}`)
-    }
+    // const router = useRouter()
+    // const handleGoToRecipeDetail = () => {
+    //     router.push(`/${recipe._id}`)
+    //     onClick={() => handleGoToRecipeDetail()}
+    // }
     return (
-        <div className="flex flex-col gap-5 relative bg-gray-50 p-3 rounded-md cursor-pointer" onClick={() => handleGoToRecipeDetail()}>
+        <div className="flex flex-col gap-5 relative bg-gray-50 p-3 rounded-md cursor-pointer" >
             <div className="absolute -left-12 top-0 rounded-full">
                 <Image
                     src={recipe.user?.photo}

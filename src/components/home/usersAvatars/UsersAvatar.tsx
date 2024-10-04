@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { useFollow, useUnfollow } from "@/hooks/follow.hook";
 import { IUser } from "@/types"
@@ -15,6 +16,7 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
         handleFollow({ followeeId: user?._id });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleUnFollowUser = () => {
 
 

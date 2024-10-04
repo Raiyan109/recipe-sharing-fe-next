@@ -38,9 +38,9 @@ export const deleteRecipe = async (id: string) => {
     }
 }
 
-export const getRecipes = async (offset: number, limit: number) => {
+export const getRecipes = async () => {
     try {
-        const { data } = await axiosInstance.get(`/recipe?offset=${offset}&limit=${limit}`);
+        const { data } = await axiosInstance.get(`/recipe`);
 
         return data
     } catch (error: any) {
