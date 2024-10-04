@@ -48,7 +48,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                 {/* Categories */}
                 <div className="p-5 rounded-md mb-5">
                     <div className="flex flex-wrap items-center justify-center gap-2">
-                        {filters.map((category, idx) => (
+                        {filters?.map((category, idx) => (
                             <button
                                 onClick={() => handleFilterButtonClick(category)}
                                 className={`flex items-center gap-2  px-3 py-3 rounded-full shadow-xl bg-gray-50 ${selectedFilters?.includes(category) ? "bg-orange-200" : ""

@@ -44,8 +44,8 @@ export default function SearchField({ recipes }: { recipes: IRecipes }) {
                     {/* Show filtered results only if there's a query */}
                     {query && (
                         <div className="mt-3 space-y-3 absolute bg-white/20 top-12 z-20 backdrop-blur-sm w-96">
-                            {filtered.length > 0 ? (
-                                filtered.map((recipe) => (
+                            {filtered?.length > 0 ? (
+                                filtered?.map((recipe) => (
                                     <div
                                         key={recipe._id}
                                         className="  font-bold cursor-pointer rounded-2xl px-3 py-3 text-lg w-56"
