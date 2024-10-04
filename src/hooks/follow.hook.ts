@@ -1,5 +1,4 @@
 import { followUser } from "@/services/FollowService";
-import { deleteRecipe } from "@/services/RecipeService";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
