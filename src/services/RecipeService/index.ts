@@ -4,7 +4,7 @@ import axiosInstance from "@/lib/AxiosInstance";
 import { cookies } from "next/headers";
 
 import { FieldValues } from "react-hook-form";
-import { toast } from "sonner";
+
 
 export const createRecipe = async (recipe: FieldValues) => {
     try {
@@ -15,7 +15,7 @@ export const createRecipe = async (recipe: FieldValues) => {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-        toast.error(error)
+        // toast.error(error)
     }
 }
 
@@ -34,7 +34,7 @@ export const deleteRecipe = async (id: string) => {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-        toast.error(error)
+        // toast.error(error)
     }
 }
 
@@ -47,7 +47,7 @@ export const getRecipes = async () => {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-        toast.error(error)
+        // toast.error(error)
     }
 }
 
@@ -60,7 +60,7 @@ export const getSingleRecipe = async (id: string) => {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-        toast.error(error)
+        // toast.error(error)
     }
 }
 
@@ -80,6 +80,6 @@ export const getRecipesOfUser = async () => {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-        toast.error(error)
+        // toast.error(error)
     }
 }

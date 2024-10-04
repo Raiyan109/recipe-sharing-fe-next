@@ -43,3 +43,21 @@ export const unfollowUser = async (followeeId: string) => {
         }
     }
 };
+
+export const getFollowers = async (id: string) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.get(`/follow/${id}/followers`, {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
+    }
+}
