@@ -30,8 +30,8 @@ const UserButton = () => {
             <div>
               <Image
                 src={user?.photo ? user?.photo : avatarImg}
-                height={40}
-                width={40}
+                height={35}
+                width={35}
                 alt="avatar"
                 className="rounded-full object-contain"
               />

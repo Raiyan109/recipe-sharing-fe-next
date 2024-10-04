@@ -9,13 +9,13 @@ const Header = async () => {
 
     return (
         <header className="sticky top-0 z-10 bg-card shadow-sm">
-            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-5 px-5 py-3">
-                <Link href="/" className="text-2xl font-bold text-primary">
+            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-0 md:gap-5 px-5 py-3">
+                <Link href="/" className="text-xl font-bold text-primary">
                     Culinary Circle
                 </Link>
                 <SearchField recipes={recipes} />
                 {/* sm:ms-auto */}
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-2 md:gap-4 items-center">
                     <UserDropdown />
                     <ThemeSwitch />
                 </div>
