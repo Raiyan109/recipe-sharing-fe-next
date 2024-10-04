@@ -86,8 +86,6 @@ export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
 }
 
 export const updateProfile = async (id: string, payload: Record<string, any>) => {
-    console.log(id, 'from updateProfile service');
-
     const accessToken = cookies().get('accessToken')?.value
     try {
         const { data } = await axiosInstance.put(
@@ -99,12 +97,8 @@ export const updateProfile = async (id: string, payload: Record<string, any>) =>
                 },
             }
         );
-        console.log(data);
-
         return data;
     } catch (error: any) {
-        console.log(error);
-
         throw new Error(error.response?.data?.message || error.message);
     }
 }
@@ -151,12 +145,14 @@ export const forgetPassword = async (userData: FieldValues) => {
     }
 }
 
-export const resetPassword = async (userData: FieldValues) => {
+export const resetPassword = async (userData: FieldValues, token: string) => {
+    console.log(token);
+
     const accessToken = cookies().get('accessToken')?.value
     try {
         const { data } = await axiosInstance.post("/auth/reset-password", userData, {
             headers: {
-                "Authorization": `Bearer ${accessToken}`
+                "Authorization": `Bearer ${token}`
             }
         });
 

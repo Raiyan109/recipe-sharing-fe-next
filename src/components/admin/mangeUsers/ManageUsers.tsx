@@ -8,8 +8,6 @@ type IProps = {
     data: IUser[];
 }
 const ManageUsers = ({ users }: { users: IProps }) => {
-    console.log(users);
-
     return (
         <div>
             <table className="min-w-full divide-y divide-gray-200">

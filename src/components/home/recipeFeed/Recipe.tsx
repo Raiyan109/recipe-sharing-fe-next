@@ -6,16 +6,16 @@ import Link from "next/link"
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
         <div className="flex flex-col gap-2 relative bg-gray-50 p-3 rounded-md">
-            <div className="absolute -left-11 top-0 rounded-full">
+            <div className="absolute -left-12 top-0 rounded-full">
                 <Image
                     src={recipe.user?.photo}
-                    width={30}
-                    height={30}
+                    width={40}
+                    height={40}
                     alt="user photo"
                     className="rounded-full"
                 />
             </div>
-            <h1 className="font-bold">{recipe.user?.name}</h1>
+            <h1 className="font-bold text-sm">{recipe.user?.name}</h1>
             <h1 className="font-semibold capitalize">{recipe.title}</h1>
             <h1 className=" text-gray-600 font-medium">{recipe.desc}</h1>
             <div className="grid grid-cols-4 gap-3">
@@ -51,9 +51,9 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                 />
             </div>
 
-            <div>
+            {/* <div>
                 <h1 className="font-semibold capitalize text-xl">Ingredients</h1>
-            </div>
+            </div> */}
         </div>
     )
 }

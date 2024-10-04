@@ -45,7 +45,6 @@ export function CreateRecipe() {
             ...values,
             contentAvailability: 'free'
         }
-        console.log(recipeData);
 
         // createRecipe(recipeData)
     }

@@ -11,16 +11,19 @@ const ResetPassword = ({ user }: { user: IUser }) => {
     const { register, handleSubmit } = useForm({})
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data, 'data onsubmit');
+        const token = new URLSearchParams(window.location.search).get("token");
+        // console.log(token, 'token fromresetpassword compo');
+
+        // console.log(data, 'data onsubmit');
 
         const payload = {
             email: user.email,
             newPassword: data
         }
 
-        console.log(payload, 'payload');
+        // console.log(payload, 'payload');
 
-        handleResetPassword(payload)
+        handleResetPassword(payload, token)
     }
 
 

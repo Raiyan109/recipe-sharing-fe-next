@@ -3,8 +3,6 @@ import Image from "next/image"
 
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
-    console.log(recipe);
-
     return (
         <div className="bg-gray-100 dark:bg-gray-800 py-8">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

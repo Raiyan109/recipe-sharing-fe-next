@@ -1,11 +1,22 @@
 import { IRecipe } from '@/types'
 import './blurredRecipe.css'
+import Image from 'next/image'
 
 const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
   return (
-    <div className="p-8 bg-gray-50 rounded-md">
+    <div className="p-4 bg-gray-50 rounded-md relative">
       <article>
-        <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
+        <div className="absolute -left-12 top-0 rounded-full">
+          <Image
+            src={recipe.user?.photo}
+            width={40}
+            height={40}
+            alt="user photo"
+            className="rounded-full"
+          />
+        </div>
+        <h1 className="font-bold text-sm absolute top-2">{recipe.user?.name}</h1>
+        <h1 className="font-semibold capitalize mb-4 mt-6">{recipe.title}</h1>
         <p className="blur-text">
           { }
         </p>

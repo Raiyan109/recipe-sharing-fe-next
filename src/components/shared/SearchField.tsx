@@ -23,8 +23,6 @@ export default function SearchField({ recipes }: { recipes: IRecipes }) {
 
     // Handling form submission
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data);
-
         setQuery(data.search);  // Set query based on form data
     };
 
