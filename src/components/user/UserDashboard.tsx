@@ -1,9 +1,13 @@
-import { getFollowers } from "@/services/FollowService";
+import { getFollowees, getFollowers } from "@/services/FollowService";
 import { IUser } from "@/types";
 
 
 const UserDashboard = async ({ user }: { user: IUser }) => {
     const followers = await getFollowers(user?._id)
+    const followees = await getFollowees(user?._id)
+    console.log(followers, 'my followers');
+    console.log(followees, 'my followees');
+
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4 mt-8 sm:px-8">
@@ -17,6 +21,19 @@ const UserDashboard = async ({ user }: { user: IUser }) => {
                 <div className="px-4 text-gray-700">
                     <h3 className="text-sm tracking-wider">Total Followers</h3>
                     <p className="text-3xl">{followers?.data?.length}</p>
+                </div>
+            </div>
+
+            <div className="flex items-center bg-white border rounded-sm overflow-hidden shadow">
+                <div className="p-4 bg-green-400"><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                    </path>
+                </svg></div>
+                <div className="px-4 text-gray-700">
+                    <h3 className="text-sm tracking-wider">Total Followees</h3>
+                    <p className="text-3xl">{followees?.data?.length}</p>
                 </div>
             </div>
             {/* <div className="flex items-center bg-white border rounded-sm overflow-hidden shadow">

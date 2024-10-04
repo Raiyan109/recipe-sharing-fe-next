@@ -6,6 +6,8 @@ import Image from "next/image"
 
 
 const UsersAvatar = ({ user }: { user: IUser }) => {
+    console.log(user);
+
     const { mutate: handleFollow } = useFollow();
     const { mutate: handleUnFollow } = useUnfollow();
 
@@ -14,8 +16,9 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
     }
 
     const handleUnFollowUser = () => {
-        // Toggle isBlocked status
-        handleUnFollow({ followeeId: user?._id });
+
+
+        // handleUnFollow({ followeeId: user?._id });
     }
     return (
         <div className="flex flex-col items-center">
