@@ -8,11 +8,10 @@ import BlurredRecipe from "@/components/premium/BlurredRecipe"
 import { useUser } from "@/context/user.provider"
 import { useEffect, useState } from "react"
 
-
-
 const Recipes = ({ recipes }: { recipes: IRecipes }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
+
 
 
     const { user } = useUser()
@@ -60,7 +59,26 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                                 {category}
                             </button>
                         ))}
-
+                        {/* <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                            <LayoutList size={20} />
+                            All Topics
+                        </div>
+                        <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                            <UtensilsCrossed size={20} />
+                            Restaurants
+                        </div>
+                        <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                            <Pizza size={20} />
+                            Street food
+                        </div>
+                        <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                            <UtensilsCrossed size={20} />
+                            Restaurants
+                        </div>
+                        <div className="flex items-center gap-2 bg-orange-200 px-3 py-3 rounded-full">
+                            <UtensilsCrossed size={20} />
+                            Restaurants
+                        </div> */}
                     </div>
                 </div>
 

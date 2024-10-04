@@ -1,9 +1,9 @@
 import Recipes from "@/components/home/recipeFeed/Recipes"
 import { getRecipes } from "@/services/RecipeService"
 
-export const revalidate = 10;
+const INITIAL_NUMBER_OF_USERS = 10
 const page = async () => {
-    const recipes = await getRecipes()
+    const recipes = await getRecipes(0, INITIAL_NUMBER_OF_USERS)
 
     return (
         <div>
