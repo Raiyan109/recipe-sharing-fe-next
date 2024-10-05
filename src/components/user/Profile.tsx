@@ -21,6 +21,7 @@ const Profile = ({ user }: { user: IUser }) => {
         const updatedUserInfo = {
             name: data.name || user?.name,
             email: data.email || user?.email,
+            password: data.password || user?.password,
             phone: data.phone || user?.phone,
             address: data.address || user?.address,
             membership: data.membership || user?.membership,
@@ -60,15 +61,14 @@ const Profile = ({ user }: { user: IUser }) => {
                                 />
                             </div>
 
-                            {/* <div>
+                            <div>
                                 <label className="text-gray-600 dark:text-gray-400">Password</label>
                                 <input
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
-                                    type="text"
-                                    defaultValue={user?.password}
+                                    type="password"
                                     {...register('password')}
                                 />
-                            </div> */}
+                            </div>
 
                             <div>
                                 <label className="text-gray-600 dark:text-gray-400">Bio</label>
