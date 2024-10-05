@@ -84,7 +84,7 @@ export const getAnUser = async () => {
 export const getSingleUser = async (id: string) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
-        const { data } = await axiosInstance.put(
+        const { data } = await axiosInstance.get(
             `/auth/${id}`, // Pass the isBlocked field in the body
             {
                 headers: {
@@ -92,6 +92,7 @@ export const getSingleUser = async (id: string) => {
                 },
             }
         );
+        console.log(data, 'from getSingleUser');
 
         return data;
     } catch (error: any) {

@@ -35,12 +35,19 @@ export interface IRegisterUser {
     photo: string,
 }
 
+export type IReview = {
+    _id?: string;
+    user: string;
+    rating: number;
+    comment: string;
+}
+
 export interface IRecipe {
     _id: string;
     title: string;
     desc: string;
     image: string;
-    rating: string;
+    reviews?: [IReview],
     category: [string];
     contentAvailability: string;
     user: IUser;

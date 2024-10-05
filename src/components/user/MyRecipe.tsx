@@ -24,7 +24,6 @@ const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
 
                 <div className="flex items-center justify-between">
                     <h6 className="font-semibold text-base leading-7 text-black ">{recipe?.title}</h6>
-                    <h6 className="font-semibold text-base leading-7 text-indigo-600 text-right">{recipe?.rating}</h6>
                 </div>
                 {/* <p className="text-xs leading-5 text-gray-500">Women Winter Wear</p> */}
             </div>
