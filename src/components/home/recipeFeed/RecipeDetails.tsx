@@ -2,6 +2,7 @@ import { IRecipe, IReview } from "@/types"
 
 import Image from "next/image"
 import Reviews from "../reviews/Reviews";
+import ReviewForm from "../reviews/ReviewForm";
 
 
 
@@ -76,8 +77,11 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                     </div>
                     <div>
                         {recipe.reviews?.map((review: IReview) => (
-                            <Reviews key={review._id} review={review} />
+                            <Reviews key={review._id} review={review} recipe={recipe} />
                         ))}
+                    </div>
+                    <div className="py-10">
+                        <ReviewForm recipe={recipe} />
                     </div>
                 </div>
             </div>

@@ -7,8 +7,6 @@ import Image from "next/image"
 
 
 const UsersAvatar = ({ user }: { user: IUser }) => {
-    console.log(user);
-
     const { mutate: handleFollow } = useFollow();
     const { mutate: handleUnFollow } = useUnfollow();
 
