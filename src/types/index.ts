@@ -53,6 +53,7 @@ export interface IRecipe {
     user: IUser;
     createdAt: string;
     updatedAt: string;
+    votes: [string];
     __v: number
 }
 

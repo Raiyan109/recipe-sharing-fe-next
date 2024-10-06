@@ -1,12 +1,13 @@
-import { IRecipe, IReview } from "@/types"
 
+import { IRecipe, IReview } from "@/types"
 import Image from "next/image"
 import Reviews from "../reviews/Reviews";
 import ReviewForm from "../reviews/ReviewForm";
-
-
+import Vote from "./Vote";
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
+
+
     // const stars = Array(5).fill(0)
     // console.log(typeof recipe.rating);
 
@@ -33,6 +34,8 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                                 {recipe?.desc}
                             </p>
+
+                            <Vote recipe={recipe} />
                             {/* <div className="flex mb-4">
                                 <div className="mr-4">
                                     <span className="font-bold text-gray-700 dark:text-gray-300">Rating:</span>

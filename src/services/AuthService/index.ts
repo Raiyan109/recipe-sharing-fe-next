@@ -90,7 +90,6 @@ export const getSingleUser = async (id: string) => {
                 },
             }
         );
-        console.log(data, 'from getSingleUser');
 
         return data;
     } catch (error: any) {
