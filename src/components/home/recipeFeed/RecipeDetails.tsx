@@ -77,7 +77,7 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                     </div>
                     <div>
                         {recipe.reviews?.map((review: IReview) => (
-                            <Reviews key={review._id} review={review} recipe={recipe} />
+                            <Reviews key={review._id} review={review} />
                         ))}
                     </div>
                     <div className="py-10">

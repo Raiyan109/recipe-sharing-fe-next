@@ -1,8 +1,8 @@
 import { getSingleUser } from "@/services/AuthService"
-import { IRecipe, IReview } from "@/types"
+import { IReview } from "@/types"
 import { Star } from "lucide-react"
 import Image from "next/image"
-import ReviewForm from "./ReviewForm"
+
 
 
 const colors = {
@@ -10,7 +10,7 @@ const colors = {
     grey: "#D8D8D8"
 }
 
-const Reviews = async ({ review, recipe }: { review: IReview, recipe: IRecipe }) => {
+const Reviews = async ({ review }: { review: IReview }) => {
     const singleUser = await getSingleUser(review?.user)
     const stars = Array(5).fill(0)
 
