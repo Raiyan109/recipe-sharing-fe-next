@@ -1,6 +1,6 @@
 'use client'
 
-import { useFollow, useGetFollowees, useUnfollow } from "@/hooks/follow.hook";
+import { useFollow, useUnfollow } from "@/hooks/follow.hook";
 import { IUser } from "@/types";
 
 
@@ -12,8 +12,8 @@ type IProps = {
 }
 
 const FollowButton = ({ userId, followees }: { userId: string, followees: IProps }) => {
-    const { data } = useGetFollowees(userId);
-    console.log(data);
+    // const { data } = useGetFollowees(userId);
+    // console.log(data);
 
     const followeesId = followees.data.map((f) => f?._id)
     const isFollowing = followeesId.includes(userId);
@@ -33,7 +33,7 @@ const FollowButton = ({ userId, followees }: { userId: string, followees: IProps
     return (
         <div>
             <button
-                className={`px-3 py-1 text-xs font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-400`}
+                className={`px-3 py-1 text-xs font-medium ${isFollowing ? 'text-red-400 border border-red-400' : 'text-blue-400 border border-blue-400'} hover:bg-blue-100 rounded-md transition duration-150 ease-in-out `}
                 onClick={isFollowing ? handleUnFollowUser : handleFollowUser}
             >
                 {isFollowing ? 'UnFollow' : 'Follow'}

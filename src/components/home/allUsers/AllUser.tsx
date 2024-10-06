@@ -1,8 +1,14 @@
+import { getAnUser } from "@/services/AuthService"
+import { getFollowees } from "@/services/FollowService"
 import { IUser } from "@/types"
 import Image from "next/image"
+import FollowButton from "../follow/FollowButton"
 
 
-const AllUser = ({ user }: { user: IUser }) => {
+const AllUser = async ({ user }: { user: IUser }) => {
+    const anUser = await getAnUser()
+
+    const followees = await getFollowees(anUser?.data?._id)
     return (
         <div className="p-3 flex items-center justify-between border-t cursor-pointer hover:bg-gray-200">
             <div className="flex items-center">
@@ -17,7 +23,7 @@ const AllUser = ({ user }: { user: IUser }) => {
                     <div className="leading-snug text-xs text-gray-600">{user.email}</div>
                 </div>
             </div>
-            <button className="h-8 px-3 text-md font-bold text-blue-400 border border-blue-400 rounded-full hover:bg-blue-100">Follow</button>
+            <FollowButton userId={user?._id} followees={followees} />
         </div>
     )
 }
