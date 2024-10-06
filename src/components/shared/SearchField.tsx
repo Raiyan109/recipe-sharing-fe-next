@@ -19,7 +19,7 @@ export default function SearchField({ recipes }: { recipes: IRecipes }) {
     };
 
     // Applying the search filter function to the array of recipes received from the API
-    const filtered = searchFilter(recipes.data);
+    const filtered = searchFilter(recipes?.data);
 
     // Handling form submission
     const onSubmit: SubmitHandler<FieldValues> = (data) => {

@@ -15,7 +15,7 @@ const FollowButton = ({ userId, followees }: { userId: string, followees: IProps
     // const { data } = useGetFollowees(userId);
     // console.log(data);
 
-    const followeesId = followees.data.map((f) => f?._id)
+    const followeesId = followees?.data?.map((f) => f?._id)
     const isFollowing = followeesId.includes(userId);
 
     const { mutate: handleFollow } = useFollow();

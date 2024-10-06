@@ -29,7 +29,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
 
     useEffect(() => {
         filterItems();
-    }, [selectedFilters, recipes.data]);
+    }, [selectedFilters, recipes?.data]);
 
     const filterItems = () => {
         if (selectedFilters.length > 0) {
@@ -38,7 +38,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
             );
             setFilteredItems(tempItems);
         } else {
-            setFilteredItems(recipes.data || []);
+            setFilteredItems(recipes?.data || []);
         }
     };
 
