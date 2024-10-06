@@ -21,7 +21,7 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
         // handleUnFollow({ followeeId: user?._id });
     }
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center border border-gray-300 p-2 rounded-md h-32">
             {/* <Link href={{ pathname: '/search', query: { keyword: 'this way' } }}> */}
             <Image
                 src={user.photo}
@@ -35,7 +35,7 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
             <h1>{user.name}</h1>
 
             <button
-                className={`px-4 py-2 font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-400`}
+                className={`px-3 py-1 text-xs font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-400`}
                 onClick={handleFollowUser}
             >
                 Follow
