@@ -63,8 +63,6 @@ export const getAllUsers = async () => {
 
 export const getAnUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
-    console.log(accessToken, 'accessToken from getAnUser');
-
     try {
         const { data } = await axiosInstance.get("/auth/user", {
             headers: {

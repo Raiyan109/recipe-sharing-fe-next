@@ -1,25 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-'use client'
-import { useFollow, useUnfollow } from "@/hooks/follow.hook";
+
+import { getFollowees } from "@/services/FollowService";
 import { IUser } from "@/types"
 import Image from "next/image"
+import FollowButton from "../follow/FollowButton";
+import { getAnUser } from "@/services/AuthService";
 
 
 
-const UsersAvatar = ({ user }: { user: IUser }) => {
-    const { mutate: handleFollow } = useFollow();
-    const { mutate: handleUnFollow } = useUnfollow();
+const UsersAvatar = async ({ user }: { user: IUser }) => {
+    const anUser = await getAnUser()
 
-    const handleFollowUser = () => {
-        handleFollow({ followeeId: user?._id });
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const handleUnFollowUser = () => {
+    const followees = await getFollowees(anUser?.data?._id)
 
 
-        // handleUnFollow({ followeeId: user?._id });
-    }
     return (
         <div className="flex flex-col items-center border border-gray-300 p-2 rounded-md h-32">
             {/* <Link href={{ pathname: '/search', query: { keyword: 'this way' } }}> */}
@@ -34,12 +28,7 @@ const UsersAvatar = ({ user }: { user: IUser }) => {
             {/* </Link> */}
             <h1>{user.name}</h1>
 
-            <button
-                className={`px-3 py-1 text-xs font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-400`}
-                onClick={handleFollowUser}
-            >
-                Follow
-            </button>
+            <FollowButton userId={user?._id} followees={followees} />
         </div>
     )
 }
