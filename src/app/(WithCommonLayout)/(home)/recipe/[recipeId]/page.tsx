@@ -1,6 +1,6 @@
 import RecipeDetails from "@/components/home/recipeFeed/RecipeDetails";
-import { getRecipes, getSingleRecipe } from "@/services/RecipeService";
-import { IRecipe } from "@/types";
+import { getSingleRecipe } from "@/services/RecipeService";
+
 
 interface RecipeId {
     params: {
@@ -8,16 +8,16 @@ interface RecipeId {
     };
 }
 
-export async function generateStaticParams() {
-    const recipes = await getRecipes()
-    console.log(recipes, '');
+// export async function generateStaticParams() {
+//     const recipes = await getRecipes()
+//     console.log(recipes, '');
 
 
 
-    return recipes?.data?.map((recipe: IRecipe) => ({
-        recipeId: recipe?._id,
-    }))
-}
+//     return recipes?.data?.map((recipe: IRecipe) => ({
+//         recipeId: recipe?._id,
+//     }))
+// }
 const DynamicRecipePage = async ({ params }: RecipeId) => {
     const recipe = await getSingleRecipe(params.recipeId)
     return (
