@@ -9,7 +9,10 @@ interface RecipeId {
 }
 
 export async function generateStaticParams() {
-    const recipes = await fetch('http://localhost:5000/api/v1/recipe').then((res) => res.json())
+    const result = await fetch('http://localhost:5000/api/v1/recipe')
+    const recipes = await result.json()
+    console.log(recipes);
+
 
     return recipes?.data?.map((recipe: IRecipe) => ({
         recipeId: recipe?._id,
