@@ -15,7 +15,7 @@ export default function SearchField({ recipes }: { recipes: IRecipes }) {
 
     // Our search filter function
     const searchFilter = (array: IRecipe[]) => {
-        return array.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()));
+        return array?.filter((el) => el.title.toLowerCase().includes(query.toLowerCase()));
     };
 
     // Applying the search filter function to the array of recipes received from the API

@@ -20,7 +20,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
 
     const handleFilterButtonClick = (selectedCategory: string) => {
         if (selectedFilters.includes(selectedCategory)) {
-            const filters = selectedFilters.filter((el) => el !== selectedCategory);
+            const filters = selectedFilters?.filter((el) => el !== selectedCategory);
             setSelectedFilters(filters);
         } else {
             setSelectedFilters([...selectedFilters, selectedCategory]);
