@@ -5,7 +5,7 @@ import { getRecipes } from "@/services/RecipeService"
 
 
 
-const page = async () => {
+const HomePage = async () => {
   const users = await getAllUsers()
   const recipes = await getRecipes()
   return (
@@ -16,4 +16,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default HomePage
