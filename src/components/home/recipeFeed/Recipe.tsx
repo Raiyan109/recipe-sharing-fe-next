@@ -8,7 +8,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
 
     return (
         <div className="flex flex-col gap-5 relative bg-gray-50 p-3 rounded-md cursor-pointer">
-            <Link href={`/${recipe?._id}`}>
+            <Link href={`/recipe/${recipe?._id}`}>
                 <div className="absolute -left-12 top-0 rounded-full">
                     <Image
                         src={recipe.user?.photo}
