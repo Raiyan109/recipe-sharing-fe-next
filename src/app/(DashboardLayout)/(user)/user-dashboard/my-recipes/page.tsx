@@ -15,6 +15,7 @@ const MyRecipePage = async ({ searchParams }: {
     const currentPage = Number(searchParams?.page) || 1;
     try {
         const recipes = await getRecipesOfUser(query, currentPage);
+        console.log(recipes);
 
         return (
             <div>

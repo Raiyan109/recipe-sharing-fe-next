@@ -1,9 +1,24 @@
+'use client'
 import { IRecipe, IRecipes } from "@/types"
 import MyRecipe from "./MyRecipe"
 import SearchingFiltering from "./SearchingFiltering"
+import PaginationComponent from "./PaginationComponent"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 
-const MyRecipes = ({ recipes, query, currentPage }: { recipes: IRecipes, query: string, currentPage: number }) => {
+const MyRecipes = ({ recipes, query, currentPage: initialPage }: { recipes: IRecipes, query: string, currentPage: number }) => {
+    const [currentPage, setCurrentPage] = useState(initialPage);
+    const totalPages = recipes?.meta?.totalPages;
+    const router = useRouter();
+    console.log(recipes, 'from MyRecipes');
+
+
+    const handlePageChange = (newPage: number) => {
+        setCurrentPage(newPage);
+        router.push(`?query=${query}&page=${newPage}`);
+    };
+
     return (
         <section className="py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
@@ -19,6 +34,14 @@ const MyRecipes = ({ recipes, query, currentPage }: { recipes: IRecipes, query: 
                         />
                     ))}
 
+                </div>
+
+                <div>
+                    <PaginationComponent
+                        currentPage={currentPage}
+                        onPageChange={handlePageChange}
+                        totalPages={totalPages}
+                    />
                 </div>
             </div>
         </section>

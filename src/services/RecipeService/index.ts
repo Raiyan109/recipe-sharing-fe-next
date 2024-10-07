@@ -76,7 +76,7 @@ export const getRecipesOfUser = async (query: string = "", page: number = 1) => 
             params: {
                 query,
                 page,
-                limit: 10, // You can adjust this limit as needed
+                limit: 2, // You can adjust this limit as needed
             },
         });
         return data

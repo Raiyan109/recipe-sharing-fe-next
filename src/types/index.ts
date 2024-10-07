@@ -57,9 +57,16 @@ export interface IRecipe {
     __v: number
 }
 
+type TMeta = {
+    total: number;
+    currentPage: number;
+    totalPages: number;
+}
+
 export interface IRecipes {
     data: IRecipe[];
     message: string;
     statusCode: number;
     success: boolean;
+    meta?: TMeta;
 }
