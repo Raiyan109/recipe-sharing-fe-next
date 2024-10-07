@@ -8,6 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import TipTap from "../richTextEditor/TipTap"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 
 
@@ -24,9 +25,11 @@ const formSchema = z.object({
         .min(5, { message: 'Hey the description is not long enough' })
         .max(100, { message: 'Its too loong' })
         .trim(),
-    rating: z
+    category: z
         .string(),
 })
+
+const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
 export function CreateRecipe() {
     // 1. Define your form.
@@ -36,7 +39,7 @@ export function CreateRecipe() {
             title: "",
             image: '',
             desc: '',
-            rating: '',
+            category: '',
         },
     })
 
@@ -46,6 +49,7 @@ export function CreateRecipe() {
             ...values,
             contentAvailability: 'free'
         }
+        console.log(recipeData);
 
         // createRecipe(recipeData)
     }
@@ -58,23 +62,6 @@ export function CreateRecipe() {
                 <div className="px-2 md:px-24">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                            <FormField
-                                control={form.control}
-                                name="title"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Title</FormLabel>
-                                        <FormControl>
-                                            {/* <Input placeholder="Title" {...field} /> */}
-                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[50px]' />
-                                        </FormControl>
-                                        {/* <FormDescription>
-                                            This is your public display name.
-                                        </FormDescription> */}
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
 
                             <FormField
                                 control={form.control}
@@ -83,9 +70,27 @@ export function CreateRecipe() {
                                     <FormItem>
                                         <FormLabel>Image</FormLabel>
                                         <FormControl>
-                                            {/* <Input placeholder="Image" {...field} /> */}
-                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' />
+                                            <Input placeholder="Image" {...field} />
+
                                         </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="title"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Title</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Title" {...field} />
+
+                                        </FormControl>
+                                        {/* <FormDescription>
+                                            This is your public display name.
+                                        </FormDescription> */}
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -106,6 +111,30 @@ export function CreateRecipe() {
 
                             <FormField
                                 control={form.control}
+                                name="category"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Select Category</FormLabel>
+                                        <Select value={field.value} onValueChange={field.onChange}>
+                                            <FormControl>
+                                                <SelectTrigger className="w-[180px]">
+                                                    <SelectValue placeholder="Select Category" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {filters.map((filter) => (
+                                                    <SelectItem key={filter} value={filter}>{filter}</SelectItem>
+                                                ))}
+                                            </SelectContent>
+
+                                        </Select>
+
+                                    </FormItem>
+                                )}
+                            />
+
+                            {/* <FormField
+                                control={form.control}
                                 name="rating"
                                 render={({ field }) => (
                                     <FormItem>
@@ -113,13 +142,11 @@ export function CreateRecipe() {
                                         <FormControl>
                                             <Input placeholder="Rating" {...field} />
                                         </FormControl>
-                                        {/* <FormDescription>
-                                            This is your public display name.
-                                        </FormDescription> */}
+                                        
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            />
+                            /> */}
 
                             <Button type="submit">Submit</Button>
                         </form>
