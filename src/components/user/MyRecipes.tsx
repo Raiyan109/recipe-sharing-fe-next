@@ -7,7 +7,10 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 
 
-const MyRecipes = ({ recipes, query, currentPage: initialPage }: { recipes: IRecipes, query: string, currentPage: number }) => {
+const MyRecipes = ({ recipes, query, currentPage: initialPage, category, sortOrder }: {
+    recipes: IRecipes; query: string; currentPage: number; category: string;
+    sortOrder: string;
+}) => {
     const [currentPage, setCurrentPage] = useState(initialPage);
     const totalPages = recipes?.meta?.totalPages;
     const router = useRouter();
@@ -16,6 +19,18 @@ const MyRecipes = ({ recipes, query, currentPage: initialPage }: { recipes: IRec
         setCurrentPage(newPage);
         router.push(`?query=${query}&page=${newPage}`);
     };
+
+    const filteredRecipes = recipes?.data
+        .filter((recipe: IRecipe) => !category || recipe.category.includes(category))
+        .sort((a: IRecipe, b: IRecipe) => {
+            if (sortOrder === 'asc') {
+                return a.title.localeCompare(b.title);
+            } else {
+                return b.title.localeCompare(a.title);
+            }
+        });
+
+
 
     return (
         <section className="py-24">
@@ -26,7 +41,7 @@ const MyRecipes = ({ recipes, query, currentPage: initialPage }: { recipes: IRec
                     <SearchingFiltering placeholder="Search for recipes" />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
-                    {recipes?.data?.map((recipe: IRecipe) => (
+                    {filteredRecipes.map((recipe: IRecipe) => (
                         <MyRecipe key={recipe?._id}
                             recipe={recipe}
                         />

@@ -9,16 +9,26 @@ const MyRecipePage = async ({ searchParams }: {
     searchParams?: {
         query?: string;
         page?: string;
+        category?: string;
+        sortOrder?: string;
     };
 }) => {
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
+    const category = searchParams?.category || '';
+    const sortOrder = searchParams?.sortOrder || '';
     try {
         const recipes = await getRecipesOfUser(query, currentPage);
         return (
             <div>
                 {recipes?.data?.length > 0 ? (
-                    <MyRecipes recipes={recipes} query={query} currentPage={currentPage} />
+                    <MyRecipes
+                        recipes={recipes}
+                        query={query}
+                        currentPage={currentPage}
+                        category={category}
+                        sortOrder={sortOrder}
+                    />
                 ) : query ? (
                     // Case: No results for the current search query
                     <section className="py-24">
