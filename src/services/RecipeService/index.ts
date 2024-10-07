@@ -66,13 +66,18 @@ export const getSingleRecipe = async (id: string) => {
 
 
 
-export const getRecipesOfUser = async () => {
+export const getRecipesOfUser = async (query: string = "", page: number = 1) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
         const { data } = await axiosInstance.get("/recipe/user", {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
-            }
+            },
+            params: {
+                query,
+                page,
+                limit: 10, // You can adjust this limit as needed
+            },
         });
         return data
     } catch (error: any) {

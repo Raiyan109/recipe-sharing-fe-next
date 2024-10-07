@@ -5,6 +5,7 @@ import Image from "next/image"
 
 
 const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
+
     const { mutate: handleDeleteRecipe } = useDeleteRecipe();
     const deleteRecipe = (id: string) => {
         handleDeleteRecipe({ id })
