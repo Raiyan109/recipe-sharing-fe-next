@@ -11,8 +11,6 @@ const MyRecipes = ({ recipes, query, currentPage: initialPage }: { recipes: IRec
     const [currentPage, setCurrentPage] = useState(initialPage);
     const totalPages = recipes?.meta?.totalPages;
     const router = useRouter();
-    console.log(recipes, 'from MyRecipes');
-
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);

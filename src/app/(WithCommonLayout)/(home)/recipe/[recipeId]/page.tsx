@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
 
 
-    return recipes?.data?.map((recipe: IRecipe) => ({
+    return recipes?.data.slice(0, 4).map((recipe: IRecipe) => ({
         recipeId: recipe?._id,
     }))
 }
