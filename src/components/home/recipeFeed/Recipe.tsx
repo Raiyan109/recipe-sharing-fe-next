@@ -5,9 +5,6 @@ import Link from "next/link"
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
-    console.log(recipe, 'from Recipe.tsx');
-
-
     return (
         <div className=" relative bg-gray-50 p-3 rounded-md cursor-pointer">
             <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">

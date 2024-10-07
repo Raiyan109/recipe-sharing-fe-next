@@ -9,9 +9,9 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import TipTap from "../richTextEditor/TipTap"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-
-
-
+import { createRecipe } from "@/services/RecipeService"
+import { useUser } from "@/context/user.provider"
+import { useCreateRecipe } from "@/hooks/recipe.hook"
 
 const formSchema = z.object({
     _id: z.string().optional(),
@@ -32,7 +32,9 @@ const formSchema = z.object({
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
 export function CreateRecipe() {
-    // 1. Define your form.
+    const { user } = useUser()
+    const { mutate: handleCreateRecipe } = useCreateRecipe();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -47,11 +49,12 @@ export function CreateRecipe() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         const recipeData = {
             ...values,
-            contentAvailability: 'free'
+            contentAvailability: 'free',
+            user: user?._id
         }
         console.log(recipeData);
 
-        // createRecipe(recipeData)
+        handleCreateRecipe(recipeData)
     }
 
     return (
@@ -133,20 +136,6 @@ export function CreateRecipe() {
                                 )}
                             />
 
-                            {/* <FormField
-                                control={form.control}
-                                name="rating"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Rating</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Rating" {...field} />
-                                        </FormControl>
-                                        
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            /> */}
 
                             <Button type="submit">Submit</Button>
                         </form>
