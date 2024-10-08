@@ -4,6 +4,7 @@ import Image from "next/image"
 import Reviews from "../reviews/Reviews";
 import ReviewForm from "../reviews/ReviewForm";
 import Vote from "./Vote";
+import parse from "html-react-parser";
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
 
@@ -32,7 +33,7 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                         <div className="md:flex-1 px-4">
                             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 capitalize">{recipe?.title}</h2>
                             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                {recipe?.desc}
+                                {parse(recipe.desc)}
                             </p>
 
                             <Vote recipe={recipe} />
