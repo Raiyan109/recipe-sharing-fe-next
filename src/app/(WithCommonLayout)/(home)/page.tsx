@@ -8,8 +8,6 @@ import { getRecipes } from "@/services/RecipeService"
 const HomePage = async () => {
   const users = await getAllUsers()
   const recipes = await getRecipes()
-  console.log(recipes, 'homepage');
-
   const user = await getAnUser()
   return (
     <div>

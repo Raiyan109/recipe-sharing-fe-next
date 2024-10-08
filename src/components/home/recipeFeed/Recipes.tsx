@@ -18,7 +18,6 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
 
-    console.log(filteredItems);
 
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 

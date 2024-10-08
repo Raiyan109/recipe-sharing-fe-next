@@ -5,9 +5,6 @@ import { IUser } from "@/types";
 const UserDashboard = async ({ user }: { user: IUser }) => {
     const followers = await getFollowers(user?._id)
     const followees = await getFollowees(user?._id)
-    console.log(followers, 'my followers');
-    console.log(followees, 'my followees');
-
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4 mt-8 sm:px-8">

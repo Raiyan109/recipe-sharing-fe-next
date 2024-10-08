@@ -1,7 +1,7 @@
 
 
 const Rating = ({ value }: { value: string }) => {
-    console.log(typeof value);
+    (typeof value);
 
     return (
         <div>Rating</div>

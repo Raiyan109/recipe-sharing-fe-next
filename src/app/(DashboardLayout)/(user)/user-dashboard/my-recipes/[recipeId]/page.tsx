@@ -12,8 +12,6 @@ interface RecipeId {
 
 
 const DynamicMyRecipePage = async ({ params }: RecipeId) => {
-    console.log(params);
-
     const recipe = await getSingleRecipe(params.recipeId)
     return (
         <div>

@@ -4,8 +4,6 @@ import { IUser } from "@/types";
 
 
 const AllUsers = ({ users }: { users: IUser[] }) => {
-    console.log(users);
-
     return (
         <div>
             <Header />

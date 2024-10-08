@@ -24,8 +24,6 @@ const CreateRecipeAdmin = ({ user }: { user: IProps }) => {
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
-    console.log(user);
-
 
     const { mutate: handleCreateRecipe } = useCreateRecipe();
 
