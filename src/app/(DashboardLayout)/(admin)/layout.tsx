@@ -1,5 +1,5 @@
 import AdminSidebar, { SidebarItem } from '@/components/admin/AdminSidebar'
-import { CookingPot, LayoutDashboard, UserRoundCog } from 'lucide-react'
+import { CookingPot, LayoutDashboard, SquarePlus, UserRoundCog } from 'lucide-react'
 import React, { ReactNode } from 'react'
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {
@@ -17,6 +17,13 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
                         icon={<CookingPot size={20} />}
                         text='Manage recipes'
                         link='/admin/manage-recipes'
+                        alert
+                    />
+
+                    <SidebarItem
+                        icon={<SquarePlus size={20} />}
+                        text='Create recipe'
+                        link='/admin/create-recipe'
                         alert
                     />
 

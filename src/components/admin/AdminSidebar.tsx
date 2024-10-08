@@ -146,7 +146,7 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
                 <div
                     className={`
             absolute left-full rounded-md px-2 py-1 ml-6
-            bg-grayText text-secondary text-sm
+            bg-blue-400 text-secondary text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
         `}
