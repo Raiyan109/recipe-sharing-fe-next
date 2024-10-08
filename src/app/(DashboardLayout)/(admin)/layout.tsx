@@ -1,5 +1,5 @@
 import AdminSidebar, { SidebarItem } from '@/components/admin/AdminSidebar'
-import { CookingPot, LayoutDashboard, SquarePlus, UserRoundCog } from 'lucide-react'
+import { CookingPot, LayoutDashboard, ShieldPlus, SquarePlus, UserRoundCog } from 'lucide-react'
 import React, { ReactNode } from 'react'
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {
@@ -31,6 +31,13 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
                         icon={<UserRoundCog size={20} />}
                         text='Manage users'
                         link='/admin/manage-users'
+                        alert
+                    />
+
+                    <SidebarItem
+                        icon={<ShieldPlus size={20} />}
+                        text='Make admin'
+                        link='/admin/make-admin'
                         alert
                     />
 

@@ -1,11 +1,13 @@
+import { getAnUser } from "@/services/AuthService"
 import { CreateRecipe } from "../../../../../components/user/CreateRecipe"
 
-const page = () => {
+const CreateRecipeUserPage = async () => {
+    const user = await getAnUser()
     return (
         <div className=''>
-            <CreateRecipe />
+            <CreateRecipe user={user} />
         </div>
     )
 }
 
-export default page
+export default CreateRecipeUserPage

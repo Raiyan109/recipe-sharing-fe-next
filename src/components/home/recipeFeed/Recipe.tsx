@@ -44,17 +44,17 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                         <div className="flex items-center gap-1">
                             <Heart size={16} />
                             <h1 className="font-bold">{recipe?.votes?.length}</h1>
-                            <h1>Up votes</h1>
+                            <h1 className="hidden md:block">Up votes</h1>
                         </div>
                         <div className="flex items-center gap-1">
                             <Star size={16} />
                             <h1 className="font-bold">{recipe?.reviews?.length}</h1>
-                            <h1>Rating</h1>
+                            <h1 className="hidden md:block">Rating</h1>
                         </div>
                         <div className="flex items-center gap-1">
                             <Forward size={16} />
                             <h1 className="font-bold">55</h1>
-                            <h1>Share</h1>
+                            <h1 className="hidden md:block">Share</h1>
                         </div>
                     </div>
                     <div>
