@@ -54,7 +54,7 @@ export function CreateRecipe() {
         }
         console.log(recipeData);
 
-        handleCreateRecipe(recipeData)
+        // handleCreateRecipe(recipeData)
     }
 
     return (
@@ -106,7 +106,7 @@ export function CreateRecipe() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' />
+                                            {/* <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' /> */}
                                         </FormControl>
                                     </FormItem>
                                 )}
