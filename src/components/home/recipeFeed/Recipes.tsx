@@ -19,10 +19,6 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
 
 
-    console.log(user);
-
-
-
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
     const handleFilterButtonClick = (selectedCategory: string) => {

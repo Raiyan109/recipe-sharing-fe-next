@@ -1,10 +1,12 @@
 import CreateRecipeAdmin from '@/components/admin/createRecipe/CreateRecipeAdmin'
+import { getAnUser } from '@/services/AuthService'
 
 
-const CreateRecipeForAdmin = () => {
+const CreateRecipeForAdmin = async () => {
+    const user = await getAnUser()
     return (
         <div>
-            <CreateRecipeAdmin />
+            <CreateRecipeAdmin user={user} />
         </div>
     )
 }
