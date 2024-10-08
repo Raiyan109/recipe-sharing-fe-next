@@ -1,6 +1,6 @@
 import Recipes from "@/components/home/recipeFeed/Recipes"
 import UsersAvatars from "@/components/home/usersAvatars/UsersAvatars"
-import { getAllUsers } from "@/services/AuthService"
+import { getAllUsers, getAnUser } from "@/services/AuthService"
 import { getRecipes } from "@/services/RecipeService"
 
 
@@ -8,10 +8,11 @@ import { getRecipes } from "@/services/RecipeService"
 const HomePage = async () => {
   const users = await getAllUsers()
   const recipes = await getRecipes()
+  const user = await getAnUser()
   return (
     <div>
       <UsersAvatars users={users?.data} />
-      <Recipes recipes={recipes} />
+      <Recipes recipes={recipes} user={user} />
     </div>
   )
 }

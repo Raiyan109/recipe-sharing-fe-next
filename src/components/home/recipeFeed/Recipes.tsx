@@ -1,20 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+type IProps = {
+    data: IUser;
+    message: string;
+    statusCode: number;
+    success: boolean;
+}
 
 import Recipe from "./Recipe"
-import { IRecipe, IRecipes } from "@/types"
+import { IRecipe, IRecipes, IUser } from "@/types"
 import BlurredRecipe from "@/components/premium/BlurredRecipe"
-import { useUser } from "@/context/user.provider"
+
 import { useEffect, useState } from "react"
 
-const Recipes = ({ recipes }: { recipes: IRecipes }) => {
+const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
 
 
+    console.log(user);
 
-    const { user } = useUser()
+
 
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
@@ -88,7 +95,7 @@ const Recipes = ({ recipes }: { recipes: IRecipes }) => {
                             {filteredItems?.map((recipe: IRecipe) => {
                                 // Check if the recipe is free and the user has premium membership
                                 const isFree = recipe.contentAvailability === 'free';
-                                const isPremiumUser = user?.membership === 'premium';
+                                const isPremiumUser = user?.data?.membership === 'premium';
 
                                 // Render Recipe or BlurredRecipe based on the conditions
                                 if (isFree || isPremiumUser) {
