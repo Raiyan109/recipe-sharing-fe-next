@@ -1,4 +1,4 @@
-import { createRecipe, deleteRecipe } from "@/services/RecipeService";
+import { createRecipe, deleteRecipe, deleteReview } from "@/services/RecipeService";
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -9,6 +9,21 @@ export const useDeleteRecipe = () => {
         mutationFn: async ({ id }) => await deleteRecipe(id),
         onSuccess: () => {
             toast.success("Recipe deleted successfully.");
+        },
+        onError: (error) => {
+            // Check if the error response contains a message
+            const errorMessage = error.message || 'An unexpected error occurred.';
+            toast.error(errorMessage);
+        },
+    });
+};
+
+export const useDeleteReview = () => {
+    return useMutation<void, Error, { reviewId: string, recipeId: string }>({
+        mutationKey: ["DELETE_REVIEW"],
+        mutationFn: async ({ reviewId, recipeId }) => await deleteReview(reviewId, recipeId),
+        onSuccess: () => {
+            toast.success("Review deleted successfully.");
         },
         onError: (error) => {
             // Check if the error response contains a message

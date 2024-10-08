@@ -38,6 +38,25 @@ export const deleteRecipe = async (id: string) => {
     }
 }
 
+export const deleteReview = async (reviewId: string, recipeId: string) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.delete(`/recipe/${recipeId}/review/${reviewId}`, {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+
+        return data
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        // toast.error(error)
+    }
+}
+
 export const getRecipes = async () => {
     try {
         const { data } = await axiosInstance.get(`/recipe`);

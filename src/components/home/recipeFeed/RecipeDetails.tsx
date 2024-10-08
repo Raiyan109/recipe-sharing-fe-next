@@ -79,9 +79,12 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
 
                     </div>
                     <div>
-                        {recipe.reviews?.map((review: IReview) => (
-                            <Reviews key={review._id} review={review} />
-                        ))}
+                        <h1 className="text-3xl py-5">Reviews</h1>
+                        <div className="space-y-12">
+                            {recipe.reviews?.map((review: IReview) => (
+                                <Reviews key={review._id} review={review} recipe={recipe} />
+                            ))}
+                        </div>
                     </div>
                     <div className="py-10">
                         <ReviewForm recipe={recipe} />
