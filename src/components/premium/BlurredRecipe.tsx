@@ -22,7 +22,7 @@ const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
           <h1 className="font-bold text-sm absolute top-2">{recipe.user?.name}</h1>
           <h1 className="font-semibold capitalize mb-4 mt-6">{recipe.title}</h1>
           <p className="blur-text">
-            { }
+
           </p>
           <p className="blur-text fade-out">
             Donec et orci aliquet nisl suscipit molestie sed sit amet tortor. Duis vel urna ac mi sollicitudin lacinia mollis sit amet lorem. Sed finibus erat nec libero scelerisque fringilla. Morbi at orci sed urna vulputate vulputate. Nulla facilisi.
@@ -32,7 +32,7 @@ const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
         <div id="paywall-wrapper" className="mt-8 p-6 rounded-lg shadow-lg relative mb-8 bg-white">
           <h4 className="text-lg font-semibold mb-2">Premium Recipe Subscription</h4>
           <p>Subscribe for <strong>$12.99/mth</strong> discount</p>
-          <Link href='/subscription' className="btn bg-blue-500 text-white px-6 py-2 mt-4 inline-block rounded-lg">
+          <Link href={`/subscription/${recipe?._id}`} className="btn bg-blue-500 text-white px-6 py-2 mt-4 inline-block rounded-lg">
             Subscribe Today!
           </Link>
         </div>

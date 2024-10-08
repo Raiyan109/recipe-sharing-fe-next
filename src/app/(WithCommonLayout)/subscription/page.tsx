@@ -1,10 +1,10 @@
-import Subscribtion from "@/components/premium/Subscribtion"
+
 
 
 const SubscriptionPage = () => {
     return (
         <div>
-            <Subscribtion />
+
         </div>
     )
 }

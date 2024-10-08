@@ -1,6 +1,14 @@
+'use client'
+import { useCreatePayment } from '@/hooks/payment.hook';
+import { IRecipe } from '@/types';
 import React from 'react'
 
-const Subscribtion = () => {
+const Subscribtion = ({ recipe }: { recipe: IRecipe }) => {
+    const { mutate: handleCreatePayment } = useCreatePayment();
+
+    const handlePayment = (recipeId: string) => {
+        handleCreatePayment({ recipe: recipeId, payableAmount: 1000 })
+    }
     return (
         <div>
             <div className="p-4 h-screen dark:bg-gray-800">
@@ -93,7 +101,9 @@ const Subscribtion = () => {
                         <div className="lg:mt-6">
                             <div className="rounded-md shadow">
                                 <button
-                                    className="flex items-center w-full justify-center px-5 py-3 leading-6 font-medium rounded-md focus:outline-none focus:ring transition duration-200 ease-in-out shadow-teal border-2 border-teal-400 bg-white hover:bg-teal-400 hover:shadow-teal-hover text-teal-400 hover:text-white text-lg relative z-20 dark:bg-teal-400 dark:text-white dark:hover:bg-teal-500 dark:hover:text-white">
+                                    className="flex items-center w-full justify-center px-5 py-3 leading-6 font-medium rounded-md focus:outline-none focus:ring transition duration-200 ease-in-out shadow-teal border-2 border-teal-400 bg-white hover:bg-teal-400 hover:shadow-teal-hover text-teal-400 hover:text-white text-lg relative z-20 dark:bg-teal-400 dark:text-white dark:hover:bg-teal-500 dark:hover:text-white"
+                                    onClick={() => handlePayment(recipe?._id)}
+                                >
                                     Start your 7-day trial
                                 </button>
                             </div>

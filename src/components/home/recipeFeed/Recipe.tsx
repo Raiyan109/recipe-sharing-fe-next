@@ -20,33 +20,11 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                 <h1 className="font-bold text-sm">{recipe.user?.name}</h1>
                 <h1 className="font-semibold capitalize text-xl">{recipe.title}</h1>
                 <h1 className=" text-gray-600 font-medium">{recipe.desc}</h1>
-                <div className="grid grid-cols-4 gap-3">
+                <div className="w-full flex items-center justify-center">
 
                     <Image
                         src={recipe.image}
-                        width={200}
-                        height={200}
-                        alt="recipe photo"
-                        className="rounded-md"
-                    />
-
-                    <Image
-                        src={recipe.image}
-                        width={200}
-                        height={200}
-                        alt="recipe photo"
-                        className="rounded-md"
-                    />
-                    <Image
-                        src={recipe.image}
-                        width={200}
-                        height={200}
-                        alt="recipe photo"
-                        className="rounded-md"
-                    />
-                    <Image
-                        src={recipe.image}
-                        width={200}
+                        width={400}
                         height={200}
                         alt="recipe photo"
                         className="rounded-md"
