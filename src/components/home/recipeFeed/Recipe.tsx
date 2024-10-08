@@ -2,11 +2,11 @@ import { IRecipe } from "@/types"
 import { Forward, Heart, MessagesSquare, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import ReactHtmlParser from 'react-html-parser';
+import parse from "html-react-parser";
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
-    const html = recipe.desc
+
     return (
         <div className=" relative bg-gray-50 p-3 rounded-md cursor-pointer">
             <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">
@@ -22,7 +22,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                 <h1 className="font-bold text-sm">{recipe.user?.name}</h1>
                 <h1 className="font-semibold capitalize text-xl">{recipe.title}</h1>
                 <h1 className=" text-gray-600 font-medium">
-                    {ReactHtmlParser(html)}
+                    {parse(recipe.desc)}
                 </h1>
                 <div className="w-full flex items-center justify-center">
 

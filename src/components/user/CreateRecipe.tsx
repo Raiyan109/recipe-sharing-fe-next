@@ -1,147 +1,110 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import TipTap from "../richTextEditor/TipTap"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-import { createRecipe } from "@/services/RecipeService"
-import { useUser } from "@/context/user.provider"
-import { useCreateRecipe } from "@/hooks/recipe.hook"
+import React, { useState, useMemo } from 'react';
+import dynamic from "next/dynamic";
+import 'react-quill/dist/quill.snow.css';
+import { useCreateRecipe } from '@/hooks/recipe.hook';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+import { IUser } from '@/types';
 
-const formSchema = z.object({
-    _id: z.string().optional(),
-    title: z.string().min(2, {
-        message: "title must be at least 2 characters.",
-    }),
-    image: z
-        .string(),
-    desc: z
-        .string()
-        .min(5, { message: 'Hey the description is not long enough' })
-        .max(100, { message: 'Its too loong' })
-        .trim(),
-    category: z
-        .string(),
-})
 
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
-export function CreateRecipe() {
-    const { user } = useUser()
+type IProps = {
+    success: boolean;
+    statusCode: number;
+    message: string;
+    data: IUser;
+}
+
+export function CreateRecipe({ user }: { user: IProps }) {
+    const [title, setTitle] = useState('');
+    const [image, setImage] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+
     const { mutate: handleCreateRecipe } = useCreateRecipe();
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            title: "",
-            image: '',
-            desc: '',
-            category: '',
-        },
-    })
+    // Load ReactQuill dynamically to avoid SSR issues
+    const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }), []);
+    const toolbarOptions = [['bold', 'italic', 'underline', 'strike']]; // Define toolbar options
 
-    // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    const modules = { toolbar: toolbarOptions };
+
+    const handleCreateRecipeSubmit = () => {
         const recipeData = {
-            ...values,
+            title,
+            image,
+            desc: description,
+            category,
             contentAvailability: 'free',
-            user: user?._id
-        }
-        console.log(recipeData);
-
-        // handleCreateRecipe(recipeData)
-    }
+            user: user?.data?._id
+        };
+        handleCreateRecipe(recipeData);
+    };
 
     return (
         <div>
             <div className="rounded-md space-y-10 py-12">
                 <h1 className="text-3xl md:text-5xl text-grayText text-center font-bold">Create Recipe</h1>
+                <div className="px-2 md:px-24 space-y-8">
+                    {/* Image Input */}
+                    <div>
+                        <label className="block font-semibold text-gray-700">Image</label>
+                        <Input
+                            placeholder="Image URL"
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                        />
+                    </div>
 
-                <div className="px-2 md:px-24">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    {/* Title Input */}
+                    <div>
+                        <label className="block font-semibold text-gray-700">Title</label>
+                        <Input
+                            placeholder="Title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                    </div>
 
-                            <FormField
-                                control={form.control}
-                                name="image"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Image</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Image" {...field} />
+                    {/* Description Editor */}
+                    <div>
+                        <label className="block font-semibold text-gray-700">Description</label>
+                        <ReactQuill
+                            value={description}
+                            onChange={setDescription}
+                            modules={modules}
+                            theme="snow"
+                        />
+                    </div>
 
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                    {/* Category Selector */}
+                    <div>
+                        <label className="block font-semibold text-gray-700">Select Category</label>
+                        <Select value={category} onValueChange={setCategory}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {filters.map((filter) => (
+                                    <SelectItem key={filter} value={filter}>{filter}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
 
-                            <FormField
-                                control={form.control}
-                                name="title"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Title</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Title" {...field} />
-
-                                        </FormControl>
-                                        {/* <FormDescription>
-                                            This is your public display name.
-                                        </FormDescription> */}
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField
-                                control={form.control}
-                                name="desc"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Description</FormLabel>
-                                        <FormControl>
-                                            {/* <TipTap description={field.name} onChange={field.onChange} inputClass='min-h-[150px]' /> */}
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-
-                            <FormField
-                                control={form.control}
-                                name="category"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Select Category</FormLabel>
-                                        <Select value={field.value} onValueChange={field.onChange}>
-                                            <FormControl>
-                                                <SelectTrigger className="w-[180px]">
-                                                    <SelectValue placeholder="Select Category" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                {filters.map((filter) => (
-                                                    <SelectItem key={filter} value={filter}>{filter}</SelectItem>
-                                                ))}
-                                            </SelectContent>
-
-                                        </Select>
-
-                                    </FormItem>
-                                )}
-                            />
-
-
-                            <Button type="submit">Submit</Button>
-                        </form>
-                    </Form>
+                    {/* Submit Button */}
+                    <Button type="button" onClick={handleCreateRecipeSubmit}>
+                        Submit
+                    </Button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default CreateRecipe;
