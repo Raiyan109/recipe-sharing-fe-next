@@ -11,7 +11,7 @@ const HomePage = async () => {
   const user = await getAnUser()
   return (
     <div>
-      <UsersAvatars users={users?.data} />
+      {user && <UsersAvatars users={users?.data} />}
       <Recipes recipes={recipes} user={user} />
     </div>
   )
