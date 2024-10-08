@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { EditorContent, useEditor } from '@tiptap/react'
 import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
@@ -44,7 +45,7 @@ const TipTap = ({ description, onChange, inputClass }: ITipTap) => {
                 class: `rounded-md border border-input ${inputClass}`
             }
         },
-        onUpdate({ editor }) {
+        onUpdate({ editor: any }) {
             onChange(editor.getHTML())
             // console.log(editor.getHTML())
         }
