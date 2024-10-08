@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { forgetPassword, loginUser, registerUser, resetPassword, updateProfile, updateUserIsBlocked } from "@/services/AuthService";
+import { deleteUser, forgetPassword, loginUser, registerUser, resetPassword, updateProfile, updateUserIsBlocked } from "@/services/AuthService";
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -66,6 +66,21 @@ export const useUpdateUserIsBlocked = () => {
         mutationFn: async ({ id, isBlocked }) => await updateUserIsBlocked(id, isBlocked),
         onSuccess: () => {
             toast.success("User status updated successfully.");
+        },
+        onError: (error) => {
+            // Check if the error response contains a message
+            const errorMessage = error.message || 'An unexpected error occurred.';
+            toast.error(errorMessage);
+        },
+    });
+};
+
+export const useDeleteUser = () => {
+    return useMutation<void, Error, { id: string }>({
+        mutationKey: ["DELETE_USER"],
+        mutationFn: async ({ id }) => await deleteUser(id),
+        onSuccess: () => {
+            toast.success("User deleted successfully.");
         },
         onError: (error) => {
             // Check if the error response contains a message

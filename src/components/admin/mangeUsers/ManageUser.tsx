@@ -1,15 +1,22 @@
 'use client'
-import { useUpdateUserIsBlocked } from "@/hooks/auth.hook";
+import { useDeleteUser, useUpdateUserIsBlocked } from "@/hooks/auth.hook";
 import { IUser } from "@/types"
 
 
 const ManageUser = ({ user }: { user: IUser }) => {
     const { mutate: handleUpdateUserIsBlocked } = useUpdateUserIsBlocked();
+    const { mutate: handleDeleteUser } = useDeleteUser();
 
     const handleBlock = () => {
         // Toggle isBlocked status
         handleUpdateUserIsBlocked({ id: user?._id, isBlocked: !user.isBlocked });
     }
+
+    const handleDelete = () => {
+        handleDeleteUser({ id: user?._id });
+    }
+
+
     return (
         <tr >
             <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
@@ -26,6 +33,15 @@ const ManageUser = ({ user }: { user: IUser }) => {
                     onClick={handleBlock}
                 >
                     {user.isBlocked ? 'Unblock' : 'Block'}
+                </button>
+            </td>
+
+            <td className="pr-5 py-4 whitespace-nowrap">
+                <button
+                    className={`px-4 py-2 font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-600`}
+                    onClick={handleDelete}
+                >
+                    Delete
                 </button>
             </td>
         </tr>

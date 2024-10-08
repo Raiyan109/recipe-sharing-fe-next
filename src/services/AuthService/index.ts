@@ -122,6 +122,27 @@ export const updateUserIsBlocked = async (id: string, isBlocked: boolean) => {
     }
 }
 
+export const deleteUser = async (id: string) => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.delete(
+            `/auth/${id}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                },
+            }
+        );
+
+        return data;
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
+    }
+}
+
 export const updateProfile = async (id: string, payload: Record<string, any>) => {
     const accessToken = cookies().get('accessToken')?.value
     try {
