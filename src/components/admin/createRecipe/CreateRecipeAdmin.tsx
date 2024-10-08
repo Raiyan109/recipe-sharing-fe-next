@@ -9,13 +9,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Button } from '@/components/ui/button';
 import { IUser } from '@/types';
 
+
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
-const CreateRecipeAdmin = ({ user }: { user: IUser }) => {
+type IProps = {
+    success: boolean;
+    statusCode: number;
+    message: string;
+    data: IUser;
+}
+
+const CreateRecipeAdmin = ({ user }: { user: IProps }) => {
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    console.log(user);
 
 
     const { mutate: handleCreateRecipe } = useCreateRecipe();
@@ -33,11 +42,8 @@ const CreateRecipeAdmin = ({ user }: { user: IUser }) => {
             desc: description,
             category,
             contentAvailability: 'free',
-            user: user?._id
+            user: user?.data?._id
         };
-        console.log(recipeData);
-
-
         handleCreateRecipe(recipeData);
     };
 
