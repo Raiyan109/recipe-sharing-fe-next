@@ -11,8 +11,6 @@ const ReviewForm = ({ recipe }: { recipe: IRecipe }) => {
     const { register, handleSubmit } = useForm()
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data);
-
         handleCreateReview({
             recipeId: recipe?._id,
             review: data
@@ -28,8 +26,11 @@ const ReviewForm = ({ recipe }: { recipe: IRecipe }) => {
                             Write a review
                         </h2>
                         <div className="flex justify-start items-center space-x-1 mb-4">
+
                             <input type="number"
                                 {...register('rating')}
+                                placeholder="Input a number from 1-5"
+                                className="w-fit py-2 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
                             />
                             {/* <input type="radio" id="5-stars" name="rating" value="5" className="hidden" />
                             <label className="text-yellow-400 text-2xl cursor-pointer hover:scale-110">★</label>
