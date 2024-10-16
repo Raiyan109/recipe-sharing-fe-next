@@ -46,7 +46,7 @@ const AdminSidebar = ({ children }: { children: ReactNode }) => {
                         <p className="font-semibold text-grayText">User</p> */}
                         <div className="flex justify-center items-center">
                             {/* w-fit */}
-                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-grayText font-medium py-2 px-3 rounded-full ease-in-out duration-100">
+                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-white font-medium py-2 px-3 rounded-full ease-in-out duration-100">
                                 <ArrowLeft />
                                 Back
                             </Link>

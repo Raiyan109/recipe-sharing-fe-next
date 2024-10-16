@@ -33,7 +33,7 @@ const FollowButton = ({ userId, followees }: { userId: string, followees: IProps
     return (
         <div>
             <button
-                className={`px-3 py-1 text-xs font-medium ${isFollowing ? 'text-red-400 border border-red-400' : 'text-blue-400 border border-blue-400'} hover:bg-blue-100 rounded-md transition duration-150 ease-in-out `}
+                className={`px-3 py-1 text-xs font-medium ${isFollowing ? 'bg-destructive hover:bg-destructive/80' : 'bg-primary hover:bg-primary/80'} text-primary-foreground hover:bg-blue-100 rounded-md transition duration-150 ease-in-out `}
                 onClick={isFollowing ? handleUnFollowUser : handleFollowUser}
             >
                 {isFollowing ? 'UnFollow' : 'Follow'}

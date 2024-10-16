@@ -97,7 +97,7 @@ const CreateRecipeAdmin = ({ user }: { user: IProps }) => {
                     </div>
 
                     {/* Submit Button */}
-                    <Button type="button" onClick={handleCreateRecipeSubmit}>
+                    <Button type="button" className='bg-primary' onClick={handleCreateRecipeSubmit}>
                         Submit
                     </Button>
                 </div>

@@ -48,7 +48,7 @@ const ReviewForm = ({ recipe }: { recipe: IRecipe }) => {
                             className="block w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your review" />
                         <div className="text-right py-4">
                             <button type="submit"
-                                className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-3">Post Review</button>
+                                className="text-white bg-primary hover:bg-primary/80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-3">Post Review</button>
                         </div>
                     </form>
                 </div>
