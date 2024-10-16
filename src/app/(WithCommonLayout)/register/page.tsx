@@ -32,7 +32,7 @@ const Register = () => {
     }
 
     return (
-        <div className='w-full h-[calc(100vh-85px)] flex items-start'>
+        <div className='w-full h-screen flex items-start'>
             <div className='relative w-1/2 h-full hidden lg:flex flex-col '>
                 <div className='absolute top-[20%] left-[10%] flex flex-col'>
                     <h1 className='text-3xl text-white font-bold my-4'>Turn your ideas into reality</h1>
@@ -48,7 +48,7 @@ const Register = () => {
             </div>
 
             <div className='w-full lg:w-1/2 h-full bg-white flex flex-col p-20 justify-between'>
-                <h1 className='text-xl font-semibold'>Interactive Brand</h1>
+                <h1 className='text-xl font-semibold'>Culinary Circle</h1>
 
                 <div className='w-full flex flex-col max-w-[550px]'>
                     <div className="w-full flex flex-col mb-2">
@@ -84,16 +84,16 @@ const Register = () => {
 
                         </div>
 
-                        <div className='w-full flex items-center justify-center mb-7'>
-                            <div className='w-full flex'>
+                        <div className='w-full flex items-center justify-end mb-7'>
+                            {/* <div className='w-full flex'>
                                 <input type="checkbox" className='w-4 h-4 mr-2' />
                                 <p className='text-sm'>Remember Me for 30 days</p>
-                            </div>
+                            </div> */}
                             <p className='text-sm font-medium whitespace-nowrap underline underline-offset-2 cursor-pointer'>Forgot Password</p>
                         </div>
 
                         <div className="w-full flex flex-col my-4">
-                            <button className='w-full bg-black rounded-md p-4 text-center flex items-center justify-center text-white'>Sign up</button>
+                            <button className='w-full bg-primary font-bold text-lg rounded-md p-4 text-center flex items-center justify-center text-white '>Sign up</button>
                         </div>
                     </ReusableForm>
                 </div>
