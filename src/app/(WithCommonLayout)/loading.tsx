@@ -1,8 +1,11 @@
+import Loading from "@/components/shared/loading/Loading"
 
 
 const loading = () => {
     return (
-        <div>loading...</div>
+        <div className="h-screen flex items-center justify-center">
+            <Loading />
+        </div>
     )
 }
 
