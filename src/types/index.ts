@@ -47,8 +47,8 @@ export interface IRecipe {
     title: string;
     desc: string;
     image: string;
-    reviews?: [IReview],
-    category: [string];
+    reviews?: IReview[],
+    category: string[];
     contentAvailability: string;
     user: IUser;
     createdAt: string;

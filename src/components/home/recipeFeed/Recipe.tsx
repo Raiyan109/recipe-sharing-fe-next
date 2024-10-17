@@ -6,6 +6,23 @@ import parse from "html-react-parser";
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
+    // console.log(recipe?.reviews?.map((review) => review.rating));
+    const calculateReviewsAverage = () => {
+        if (!recipe?.reviews || recipe.reviews.length === 0) {
+            // Return 0 if there are no reviews
+            return 0;
+        }
+
+        // Calculate the average rating safely
+        const total = recipe.reviews.reduce((acc, review) => {
+            return acc + (review.rating || 0); // Default rating to 0 if undefined
+        }, 0);
+
+        const average = total / recipe.reviews.length;
+        return average > 0 ? average.toFixed(1) : "0";
+    };
+
+    const averageRating = calculateReviewsAverage();
 
     return (
         <div className=" relative bg-gray-50 p-3 rounded-md cursor-pointer">
@@ -47,8 +64,8 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                             <h1 className="hidden md:block">Up votes</h1>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Star size={16} />
-                            <h1 className="font-bold">{recipe?.reviews?.length}</h1>
+                            <Star size={18} fill="#ffa200" strokeWidth={0} />
+                            <h1 className="font-bold">{averageRating}</h1>
                             <h1 className="hidden md:block">Rating</h1>
                         </div>
                         <div className="flex items-center gap-1">
