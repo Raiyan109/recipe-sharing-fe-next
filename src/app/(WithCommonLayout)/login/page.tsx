@@ -64,6 +64,27 @@ const Login = () => {
                 <div className='w-full lg:w-1/2 h-full bg-white flex flex-col p-20 justify-between'>
                     <h1 className='text-xl font-semibold'>Culinary Circle</h1>
 
+
+                    <div className="bg-foreground/90 w-96 h-40 rounded-lg">
+                        <div className="flex p-2 gap-1">
+                            <div className="">
+                                <span className="bg-blue-500 inline-block center w-3 h-3 rounded-full"></span>
+                            </div>
+                            <div className="circle">
+                                <span className="bg-purple-500 inline-block center w-3 h-3 rounded-full"></span>
+                            </div>
+                            <div className="circle">
+                                <span className="bg-pink-500 box inline-block center w-3 h-3 rounded-full"></span>
+                            </div>
+                        </div>
+                        <div className="card__content px-2">
+                            <h3 className='text-xl text-white font-semibold mb-4'>Admin Credentials for test</h3>
+                            <p className='text-base mb-2 text-white'>Email: admin1@g.com</p>
+                            <p className='text-base mb-2 text-white'>Password: 1234567</p>
+                        </div>
+                    </div>
+
+
                     <div className='w-full flex flex-col max-w-[550px]'>
                         <div className="w-full flex flex-col mb-2">
                             <h3 className='text-3xl font-semibold mb-4'>Login</h3>
