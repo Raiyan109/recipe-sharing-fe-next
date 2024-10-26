@@ -61,6 +61,24 @@ export const getAllUsers = async () => {
     }
 }
 
+export const getUserGrowth = async () => {
+    const accessToken = cookies().get('accessToken')?.value
+    try {
+        const { data } = await axiosInstance.get("/auth/growth", {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+
+        return data
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+
+    }
+}
+
 export const getAnUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
     try {

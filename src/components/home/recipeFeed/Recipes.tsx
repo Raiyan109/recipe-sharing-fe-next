@@ -48,14 +48,14 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     return (
         <div className="">
 
-            <div className="p-5 bg-slate-200 rounded-md">
+            <div className="p-5 bg-card rounded-md">
                 {/* Categories */}
                 <div className="p-5 rounded-md mb-5">
                     <div className="flex flex-wrap items-center justify-center gap-2">
                         {filters?.map((category, idx) => (
                             <button
                                 onClick={() => handleFilterButtonClick(category)}
-                                className={`flex items-center gap-2  px-3 py-3 rounded-full shadow-xl bg-gray-50 ${selectedFilters?.includes(category) ? "bg-orange-200" : ""
+                                className={`flex items-center gap-2  px-3 py-3 rounded-full shadow-xl bg-gray-100 font-medium ${selectedFilters?.includes(category) ? "bg-primary" : ""
                                     }`}
                                 key={`filters-${idx}`}
                             >
