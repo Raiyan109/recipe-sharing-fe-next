@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react'
 const AdminLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="flex items-start justify-start">
-            <header className=" bg-secondary fixed z-[999]">
+            <header className=" bg-secondary fixed z-20">
                 <AdminSidebar>
                     <SidebarItem
                         icon={<LayoutDashboard size={20} />}

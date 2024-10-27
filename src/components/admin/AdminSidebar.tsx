@@ -92,7 +92,7 @@ const AdminSidebar = ({ children }: { children: ReactNode }) => {
                                 <MoreVertical size={20} className="text-grayText" />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
-                                <DropdownMenuLabel onClick={handleLogout}>Logout</DropdownMenuLabel>
+                                <DropdownMenuLabel onClick={handleLogout} className="cursor-pointer">Logout</DropdownMenuLabel>
                             </DropdownMenuContent>
                         </DropdownMenu>
 

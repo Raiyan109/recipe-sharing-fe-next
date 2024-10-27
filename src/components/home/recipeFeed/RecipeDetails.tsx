@@ -52,34 +52,38 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                             </div>
                         </div> */}
                         </div>
-                        <div className="md:flex-1 px-4">
-                            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 capitalize">{recipe?.title}</h2>
-                            <div className="flex items-center gap-4">
-                                <div className="flex items-center">
-                                    {averageRating && stars.map((_, index) => {
-                                        return (
-                                            <Star
-                                                key={index}
-                                                size={24}
-                                                fill={parseInt(averageRating) > index ? colors.orange : colors.grey}
-                                                strokeWidth={0}
-                                            />
-                                        )
-                                    })}
-                                </div>
-                                <div className="flex gap-1 font-bold uppercase">
-                                    <div>
-                                        {recipe.reviews?.length} Reviews
+                        <div className="md:flex-1 px-4 space-y-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 capitalize">{recipe?.title}</h2>
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center">
+                                        {averageRating && stars.map((_, index) => {
+                                            return (
+                                                <Star
+                                                    key={index}
+                                                    size={18}
+                                                    fill={parseInt(averageRating) > index ? colors.orange : colors.grey}
+                                                    strokeWidth={0}
+                                                />
+                                            )
+                                        })}
                                     </div>
-                                    /
-                                    <div>
-                                        {averageRating} Average
+                                    <div className="flex gap-1 font-bold uppercase text-xs">
+                                        <div>
+                                            {recipe.reviews?.length} Reviews
+                                        </div>
+                                        /
+                                        <div>
+                                            {averageRating} Average
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                {parse(recipe.desc)}
-                            </p>
+                            <div className="">
+                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                                    {parse(recipe.desc)}
+                                </p>
+                            </div>
 
                             <Vote recipe={recipe} />
                             {/* <div className="flex mb-4">
