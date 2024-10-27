@@ -1,13 +1,35 @@
-
 import { IRecipe, IReview } from "@/types"
 import Image from "next/image"
 import Reviews from "../reviews/Reviews";
 import ReviewForm from "../reviews/ReviewForm";
 import Vote from "./Vote";
 import parse from "html-react-parser";
+import { Star } from "lucide-react";
+
+const colors = {
+    orange: "#F2C265",
+    grey: "#D8D8D8"
+}
 
 const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
+    console.log(recipe.reviews?.length, 'from recipe de');
+    const stars = Array(5).fill(0)
+    const calculateReviewsAverage = () => {
+        if (!recipe?.reviews || recipe.reviews.length === 0) {
+            // Return 0 if there are no reviews
+            return 0;
+        }
 
+        // Calculate the average rating safely
+        const total = recipe.reviews.reduce((acc, review) => {
+            return acc + (review.rating || 0); // Default rating to 0 if undefined
+        }, 0);
+
+        const average = total / recipe.reviews.length;
+        return average > 0 ? average.toFixed(1) : "0";
+    };
+
+    const averageRating = calculateReviewsAverage();
 
     // const stars = Array(5).fill(0)
     // console.log(typeof recipe.rating);
@@ -32,6 +54,29 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
                         </div>
                         <div className="md:flex-1 px-4">
                             <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 capitalize">{recipe?.title}</h2>
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center">
+                                    {averageRating && stars.map((_, index) => {
+                                        return (
+                                            <Star
+                                                key={index}
+                                                size={24}
+                                                fill={parseInt(averageRating) > index ? colors.orange : colors.grey}
+                                                strokeWidth={0}
+                                            />
+                                        )
+                                    })}
+                                </div>
+                                <div className="flex gap-1 font-bold uppercase">
+                                    <div>
+                                        {recipe.reviews?.length} Reviews
+                                    </div>
+                                    /
+                                    <div>
+                                        {averageRating} Average
+                                    </div>
+                                </div>
+                            </div>
                             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                                 {parse(recipe.desc)}
                             </p>
