@@ -55,7 +55,7 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
                         {filters?.map((category, idx) => (
                             <button
                                 onClick={() => handleFilterButtonClick(category)}
-                                className={`flex items-center gap-2  px-3 py-3 rounded-full shadow-xl bg-gray-100 font-medium ${selectedFilters?.includes(category) ? "bg-primary" : ""
+                                className={`flex items-center gap-2  px-3 py-3 rounded-full text-black shadow-xl bg-gray-100 font-medium ${selectedFilters?.includes(category) ? "bg-primary" : ""
                                     }`}
                                 key={`filters-${idx}`}
                             >
