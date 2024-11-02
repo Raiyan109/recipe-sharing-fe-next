@@ -6,6 +6,7 @@ import Vote from "./Vote";
 import parse from "html-react-parser";
 import { Star } from "lucide-react";
 import UserCard from "./UserCard";
+import Share from "./Share";
 
 
 const colors = {
@@ -88,7 +89,7 @@ const RecipeDetails = ({ recipe }: { recipe: IRecipe }) => {
 
                                 <Vote recipe={recipe} />
 
-                                {/* <Share recipe={recipe} /> */}
+                                <Share recipe={recipe} />
 
 
                                 {/* <div className="flex mb-4">
