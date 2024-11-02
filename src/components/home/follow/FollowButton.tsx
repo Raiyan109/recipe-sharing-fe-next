@@ -20,7 +20,7 @@ const FollowButton = ({ userId, followees }: { userId: string, followees: IProps
     // console.log(data);
 
     const followeesId = followees?.data?.map((f) => f?._id)
-    const isFollowing = followeesId.includes(userId);
+    const isFollowing = followeesId?.includes(userId);
     console.log(isFollowing);
 
 

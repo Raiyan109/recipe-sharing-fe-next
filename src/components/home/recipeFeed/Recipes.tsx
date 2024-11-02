@@ -14,6 +14,7 @@ import BlurredRecipe from "@/components/premium/BlurredRecipe"
 
 import { useEffect, useState } from "react"
 
+
 const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
@@ -22,7 +23,7 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
     const handleFilterButtonClick = (selectedCategory: string) => {
-        if (selectedFilters.includes(selectedCategory)) {
+        if (selectedFilters?.includes(selectedCategory)) {
             const filters = selectedFilters?.filter((el) => el !== selectedCategory);
             setSelectedFilters(filters);
         } else {
