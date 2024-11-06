@@ -8,9 +8,11 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
         <div className="flex min-h-screen flex-col">
             <Header />
             <div className="mx-auto flex w-full max-w-7xl grow gap-5 p-5">
-                <div className='flex flex-col gap-5'>
-                <MenuBar className="sticky top-[5.25rem] hidden h-fit flex-none space-y-3 rounded-2xl bg-card px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
-                <GetStarted/>
+                <div className='flex flex-col gap-5 sticky top-[5.25rem] h-fit'>
+                <MenuBar className=" hidden h-fit flex-none space-y-3 rounded-2xl bg-card px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
+                <div className='sticky hidden sm:block'>
+                <GetStarted />
+                </div>
                 </div>
                 <div>
                     {children}

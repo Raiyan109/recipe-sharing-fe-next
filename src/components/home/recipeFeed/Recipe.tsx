@@ -38,7 +38,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                 </div>
                 <h1 className="font-bold text-sm">{recipe.user?.name}</h1>
                 <h1 className="font-semibold capitalize text-xl">{recipe.title}</h1>
-                <h1 className=" text-gray-600 font-medium">
+                <h1 className="font-medium text-card-foreground/50">
                     {parse(recipe.desc)}
                 </h1>
                 <div className="w-full flex items-center justify-center">
