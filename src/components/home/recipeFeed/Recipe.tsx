@@ -45,8 +45,8 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
 
                     <Image
                         src={recipe.image}
-                        width={400}
-                        height={200}
+                        width={150}
+                        height={150}
                         alt="recipe photo"
                         className="rounded-md"
                     />

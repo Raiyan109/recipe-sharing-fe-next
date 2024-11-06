@@ -8,7 +8,7 @@ const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
   return (
     <div>
 
-      <div className="p-4 bg-gray-50 rounded-md relative">
+      <div className="p-4 bg-secondary rounded-md relative">
         <article>
           <div className="absolute -left-12 top-0 rounded-full">
             <Image
@@ -29,7 +29,7 @@ const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
           </p>
         </article>
 
-        <div id="paywall-wrapper" className="mt-8 p-6 rounded-lg shadow-lg relative mb-8 bg-white">
+        <div id="paywall-wrapper" className="mt-8 p-6 rounded-lg shadow-lg relative mb-8 bg-card">
           <h4 className="text-lg font-semibold mb-2">Premium Recipe Subscription</h4>
           <p>Subscribe for <strong>$12.99/mth</strong> discount</p>
           <Link href={`/subscription/${recipe?._id}`} className="btn bg-blue-500 text-white px-6 py-2 mt-4 inline-block rounded-lg">
