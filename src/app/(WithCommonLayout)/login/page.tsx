@@ -77,11 +77,11 @@ const Login = () => {
                 </div>
 
 
-                <div className='w-full lg:w-1/2 h-full bg-white flex flex-col p-20 justify-between'
+                <div className='w-full lg:w-1/2 h-full bg-card flex flex-col p-20 justify-between'
                 >
 
                     <GoBack />
-                    <h1 className='text-xl font-semibold'>Culinary Circle</h1>
+                    {/* <h1 className='text-xl font-semibold text-card'>Culinary Circle</h1> */}
 
 
                     <div className="bg-foreground/90 w-96 h-40 rounded-lg">
@@ -97,9 +97,9 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="card__content px-2">
-                            <h3 className='text-xl text-white font-semibold mb-4'>Admin Credentials for test</h3>
-                            <p className='text-base mb-2 text-white'>Email: admin1@g.com</p>
-                            <p className='text-base mb-2 text-white'>Password: 1234567</p>
+                            <h3 className='text-xl text-card font-semibold mb-4'>Admin Credentials for test</h3>
+                            <p className='text-base mb-2 text-card'>Email: admin1@g.com</p>
+                            <p className='text-base mb-2 text-card'>Password: 1234567</p>
                         </div>
                     </div>
 
@@ -114,11 +114,11 @@ const Login = () => {
                             <div className='w-full flex flex-col mb-5'>
                                 <input type="email"
                                     {...register('email')}
-                                    className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
+                                    className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
 
                                 <input type="password"
                                     {...register('password')}
-                                    className='w-full text-black py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
+                                    className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
 
                             </div>
 

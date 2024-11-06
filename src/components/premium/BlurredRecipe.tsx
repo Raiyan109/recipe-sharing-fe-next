@@ -31,8 +31,8 @@ const BlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
 
         <div id="paywall-wrapper" className="mt-8 p-6 rounded-lg shadow-lg relative mb-8 bg-card">
           <h4 className="text-lg font-semibold mb-2">Premium Recipe Subscription</h4>
-          <p>Subscribe for <strong>$12.99/mth</strong> discount</p>
-          <Link href={`/subscription/${recipe?._id}`} className="btn bg-blue-500 text-white px-6 py-2 mt-4 inline-block rounded-lg">
+          <p>Subscribe for <strong>$12.99/mo</strong> discount</p>
+          <Link href={`/subscription/${recipe?._id}`} className="btn bg-primary text-card px-6 py-2 mt-4 inline-block rounded-lg">
             Subscribe Today!
           </Link>
         </div>

@@ -13,7 +13,7 @@ const GetStarted = () => {
         >
           Starter
         </h2>
-        <p className="mt-2 text-sm ">Suitable to grow steadily.</p>
+        <p className="mt-2 text-sm ">Subscribe to get premium contents</p>
       </div>
       <div className="mt-6">
         <p>
@@ -26,9 +26,10 @@ const GetStarted = () => {
     </div>
   </div>
   <div className="flex px-6 pb-8 sm:px-8">
+  {/* hover:bg-transparent hover:border-black hover:text-black */}
     <a
       aria-describedby="tier-company"
-      className="flex items-center justify-center w-full px-6 py-2.5 text-center duration-200 bg-primary text-card  text-xl border-2 border-black rounded-full hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black"
+      className="flex items-center justify-center w-full px-6 py-2.5 text-center duration-200 bg-primary text-card  text-xl border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black"
       href="#"
     >
       Get started
