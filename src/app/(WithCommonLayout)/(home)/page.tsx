@@ -9,6 +9,8 @@ const HomePage = async () => {
   const users = await getAllUsers()
   const recipes = await getRecipes()
   const user = await getAnUser()
+  console.log(user, 'from home page');
+  
   return (
     <div>
       {user && <UsersAvatars users={users?.data} />}

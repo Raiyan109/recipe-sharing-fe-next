@@ -26,7 +26,7 @@ const UserButton = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           {/* <Button variant="outline">Open</Button> */}
-          <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1">
+          <div className="flex items-center gap-2 cursor-pointer hover:bg-accent hover:rounded-2xl transition-all duration-75 p-2">
             <div>
               <Image
                 src={user?.photo ? user?.photo : avatarImg}

@@ -8,7 +8,7 @@ const UsersAvatars = ({ users }: { users: IUser[] }) => {
         <div className="px-5 py-3">
             <div className="flex justify-between items-center">
                 <h1 className="text-3xl py-4">Popular creators</h1>
-                <Link href='/all-users' className="bg-gray-300 px-2 py-1 rounded-md font-medium">See All</Link>
+                <Link href='/all-users' className="bg-primary px-2 py-1 rounded-md font-medium text-card">See All</Link>
             </div>
             <div className="flex gap-5 items-center justify-center flex-wrap py-5">
                 {users?.slice(0, 4).map((user) => (
