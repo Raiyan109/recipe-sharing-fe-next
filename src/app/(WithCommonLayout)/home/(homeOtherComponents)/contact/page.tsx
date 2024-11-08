@@ -1,6 +1,6 @@
 
 
-const page = () => {
+const ContactPage = () => {
     return (
         <div className="flex justify-center items-center container mx-auto">
             <div className="bg-gray-100">
@@ -44,4 +44,4 @@ const page = () => {
     )
 }
 
-export default page
+export default ContactPage
