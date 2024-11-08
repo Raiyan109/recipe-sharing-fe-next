@@ -1,5 +1,5 @@
 import { getAnUser } from "@/services/AuthService";
-import { getRecipes } from "@/services/RecipeService";
+import { getLatestRecipes } from "@/services/RecipeService";
 import { IRecipe } from "@/types";
 import LatestRecipe from "./LatestRecipe";
 
@@ -7,13 +7,13 @@ import LatestRecipe from "./LatestRecipe";
 
 
 const LatestRecipes = async () => {
-    const recipes = await getRecipes();
+    const latestRecipes = await getLatestRecipes();
     const user = await getAnUser();
     return (
         <div>
             <div className="flex flex-col gap-5">
                 <h1 className="font-semibold capitalize text-xl bg-card rounded-2xl py-1 px-3">Latest Recipes</h1>
-                {recipes?.data?.map((recipe: IRecipe) => {
+                {latestRecipes?.data?.map((recipe: IRecipe) => {
                     // Check if the recipe is free and the user has premium membership
                     const isFree = recipe.contentAvailability === 'free';
                     const isPremiumUser = user?.data?.membership === 'premium';

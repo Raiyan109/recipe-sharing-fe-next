@@ -70,6 +70,19 @@ export const getRecipes = async () => {
     }
 }
 
+export const getLatestRecipes = async () => {
+    try {
+        const { data } = await axiosInstance.get(`/recipe/latest`);
+
+        return data
+    } catch (error: any) {
+        if (error.response && error.response.status === 404) {
+            return { data: [] };
+        }
+        // toast.error(error)
+    }
+}
+
 export const getSingleRecipe = async (id: string) => {
     try {
         const { data } = await axiosInstance.get(`/recipe/${id}`);

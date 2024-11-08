@@ -22,7 +22,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 <div>
                     {children}
                 </div>
-                <div className='md:flex flex-col gap-5 sticky top-[5.25rem] h-fit hidden'>
+                <div className='xl:flex flex-col gap-5 sticky top-[5.25rem] h-fit hidden'>
                     <LatestRecipes />
                 </div>
             </div>
