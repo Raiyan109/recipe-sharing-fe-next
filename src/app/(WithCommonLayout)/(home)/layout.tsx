@@ -1,4 +1,6 @@
 import GetStarted from '@/components/home/GetStarted'
+import LatestRecipes from '@/components/home/latestRecipe/LatestRecipes'
+
 import Header from '@/components/shared/Header'
 import MenuBar from '@/components/shared/MenuBar'
 import { ReactNode } from 'react'
@@ -7,7 +9,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="flex min-h-screen flex-col">
             <Header />
-            <div className="mx-auto flex w-full max-w-7xl grow gap-5 p-5">
+            <div className="mx-auto flex w-full max-w-[1400px] grow gap-5 p-5">
                 <div className='flex flex-col gap-5 sticky top-[5.25rem] h-fit'>
                     <MenuBar className="hidden h-fit flex-none space-y-3 rounded-2xl bg-card px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
                     <div className='sticky hidden lg:block'>
@@ -19,6 +21,9 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 </div>
                 <div>
                     {children}
+                </div>
+                <div className='md:flex flex-col gap-5 sticky top-[5.25rem] h-fit hidden'>
+                    <LatestRecipes />
                 </div>
             </div>
             <MenuBar className="sticky bottom-0 flex w-full justify-center gap-5 border-t bg-card p-3 sm:hidden" />

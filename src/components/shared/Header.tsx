@@ -7,16 +7,16 @@ import UserDropdown from "./UserDropdown"
 import { SearchInput } from "./SearchInput"
 import { useSearchParams } from "next/navigation"
 
-const Header =  () => {
+const Header = () => {
     const searchParams = useSearchParams()
 
     // Now get the query 
-  
-    const searchQuery = searchParams && searchParams.get("q"); 
+
+    const searchQuery = searchParams && searchParams.get("q");
 
     return (
         <header className="sticky top-0 z-10 bg-card shadow-sm">
-            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-0 md:gap-5 px-5 py-3">
+            <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-0 md:gap-5 px-5 py-3">
                 <Link href="/" className="text-xl font-bold text-primary">
                     Culinary Circle
                 </Link>
