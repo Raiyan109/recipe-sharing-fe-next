@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 const CommonLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <div>
+        <div className="">
             {children}
         </div>
     )

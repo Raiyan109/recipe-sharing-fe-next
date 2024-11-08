@@ -1,4 +1,6 @@
 import RecipeDetails from "@/components/home/recipeFeed/RecipeDetails";
+import RecipeDetails2 from "@/components/home/recipeFeed/RecipeDetails2";
+import Header from "@/components/shared/Header";
 import { getRecipes, getSingleRecipe } from "@/services/RecipeService";
 import { IRecipe } from "@/types";
 
@@ -19,9 +21,12 @@ const DynamicRecipePage = async ({ params }: RecipeId) => {
 
     const recipe = await getSingleRecipe(params.recipeId)
     return (
-        <div>
-            <RecipeDetails recipe={recipe.data} />
-        </div>
+        <>
+            <Header />
+            <div className="mx-auto flex flex-col w-full max-w-7xl">
+                <RecipeDetails2 recipe={recipe.data} />
+            </div>
+        </>
     )
 }
 
