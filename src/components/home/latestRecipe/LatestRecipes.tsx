@@ -12,6 +12,7 @@ const LatestRecipes = async () => {
     return (
         <div>
             <div className="flex flex-col gap-5">
+                <h1 className="font-semibold capitalize text-xl bg-card rounded-2xl py-1 px-3">Latest Recipes</h1>
                 {recipes?.data?.map((recipe: IRecipe) => {
                     // Check if the recipe is free and the user has premium membership
                     const isFree = recipe.contentAvailability === 'free';

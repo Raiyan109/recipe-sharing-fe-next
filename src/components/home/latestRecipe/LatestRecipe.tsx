@@ -1,4 +1,5 @@
 import { IRecipe } from "@/types"
+import Image from "next/image"
 import Link from "next/link"
 
 
@@ -6,7 +7,15 @@ const LatestRecipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
         <div className="w-80 h-80 bg-card rounded-3xl  p-4 flex flex-col items-start justify-center gap-3 ">
             {/* hover:bg-gray-900 hover:shadow-2xl hover:shadow-sky-400 transition-shadow */}
-            <div className="w-72 h-40 bg-sky-300 rounded-2xl"></div>
+            <div className="w-72 h-40 bg-sky-300 rounded-2xl">
+                <Image
+                    src={recipe.image}
+                    width={150}
+                    height={150}
+                    alt="recipe photo"
+                    className="rounded-md"
+                />
+            </div>
             <div className="">
                 <p className="font-semibold capitalize text-xl">Card title</p>
                 <p className="font-medium text-card-foreground/50">4 popular types of cards in UI design.</p>

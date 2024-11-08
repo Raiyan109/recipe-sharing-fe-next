@@ -49,9 +49,9 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     return (
         <div className="">
 
-            <div className="p-5 bg-card rounded-md">
+            <div className="p-5 bg-card rounded-2xl">
                 {/* Categories */}
-                <div className="p-5 rounded-md mb-5">
+                <div className="p-5 rounded-2xl mb-5">
                     <div className="flex flex-wrap items-center justify-center gap-2">
                         {filters?.map((category, idx) => (
                             <button
