@@ -23,7 +23,7 @@ const DynamicRecipePage = async ({ params }: RecipeId) => {
     return (
         <>
             <Header />
-            <div className="mx-auto flex flex-col w-full max-w-[1900px]">
+            <div className="mx-auto flex flex-col w-full max-w-[1800px]">
                 <RecipeDetails2 recipe={recipe.data} />
             </div>
         </>
