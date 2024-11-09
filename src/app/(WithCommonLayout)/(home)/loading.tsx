@@ -1,10 +1,11 @@
-import Loading from '@/components/shared/loading/Loading'
-import React from 'react'
+import RecipeSkeleton from '@/components/home/recipeFeed/RecipeSkeleton'
+
+
 
 const loading = () => {
     return (
-        <div className="h-screen flex items-center justify-center">
-            <Loading />
+        <div className="">
+            <RecipeSkeleton />
         </div>
     )
 }
