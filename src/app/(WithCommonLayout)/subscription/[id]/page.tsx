@@ -10,7 +10,7 @@ const DynamicSubscriptionRecipePage = async ({ params }: RecipeId) => {
   const recipe = await getSingleRecipe(params.id)
   return (
     <div>
-      <Subscribtion recipe={recipe.data} />
+      <Subscribtion recipe={recipe?.data} />
     </div>
   )
 }

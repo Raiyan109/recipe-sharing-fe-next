@@ -2,6 +2,7 @@ import { getAnUser } from "@/services/AuthService";
 import { getLatestRecipes } from "@/services/RecipeService";
 import { IRecipe } from "@/types";
 import LatestRecipe from "./LatestRecipe";
+import LatestBlurredRecipe from "./LatestBlurredRecipe";
 
 
 
@@ -13,7 +14,7 @@ const LatestRecipes = async () => {
         <div>
             <div className="flex flex-col gap-5">
                 <h1 className="font-semibold capitalize text-xl bg-card rounded-2xl py-1 px-3">Latest Recipes</h1>
-                {latestRecipes?.data?.map((recipe: IRecipe) => {
+                {latestRecipes?.data?.slice(0, 5)?.map((recipe: IRecipe) => {
                     // Check if the recipe is free and the user has premium membership
                     const isFree = recipe.contentAvailability === 'free';
                     const isPremiumUser = user?.data?.membership === 'premium';
@@ -22,7 +23,7 @@ const LatestRecipes = async () => {
                     if (isFree || isPremiumUser) {
                         return <LatestRecipe key={recipe._id} recipe={recipe} />;
                     } else {
-                        return <LatestRecipe key={recipe._id} recipe={recipe} />;
+                        return <LatestBlurredRecipe key={recipe._id} recipe={recipe} />;
                     }
                 })}
             </div>

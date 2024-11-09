@@ -7,6 +7,8 @@ const Subscribtion = ({ recipe }: { recipe: IRecipe }) => {
     const { mutate: handleCreatePayment } = useCreatePayment();
 
     const handlePayment = (recipeId: string) => {
+        console.log(recipeId, 'subscription');
+
         handleCreatePayment({ recipe: recipeId, payableAmount: 1000 })
     }
     return (
