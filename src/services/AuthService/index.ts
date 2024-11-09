@@ -46,7 +46,7 @@ export const loginUser = async (userData: FieldValues) => {
 export const getAllUsers = async (filters: any = {}) => {
     const accessToken = cookies().get('accessToken')?.value;
     if (!accessToken) {
-        console.error("Access token is missing");
+        console.log("Access token is missing");
         return { data: [] };
     }
     try {
@@ -69,7 +69,7 @@ export const getAllUsers = async (filters: any = {}) => {
 export const getUserGrowth = async () => {
     const accessToken = cookies().get('accessToken')?.value
     if (!accessToken) {
-        console.error("Access token is missing");
+        console.log("Access token is missing");
         return { data: [] };
     }
     try {
@@ -91,7 +91,7 @@ export const getUserGrowth = async () => {
 export const getAnUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
     if (!accessToken) {
-        console.error("Access token is missing");
+        console.log("Access token is missing");
         return { data: [] };
     }
     try {
@@ -113,7 +113,7 @@ export const getAnUser = async () => {
 export const getSingleUser = async (id: string) => {
     const accessToken = cookies().get('accessToken')?.value
     if (!accessToken) {
-        console.error("Access token is missing");
+        console.log("Access token is missing");
         return { data: [] };
     }
     try {
