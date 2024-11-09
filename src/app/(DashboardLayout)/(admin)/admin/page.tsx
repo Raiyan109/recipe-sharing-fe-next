@@ -17,7 +17,7 @@ const AdminHomePage = async () => {
     const userGrowth = await getUserGrowth()
     return (
         <div>
-            <AdminHomeComponent userGrowth={userGrowth.data} />
+            <AdminHomeComponent userGrowth={userGrowth?.data} />
         </div>
     )
 }

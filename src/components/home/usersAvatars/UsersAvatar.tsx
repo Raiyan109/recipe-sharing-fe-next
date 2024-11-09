@@ -23,7 +23,7 @@ const UsersAvatar = async ({ user }: { user: IUser }) => {
                 width={60}
                 alt='user image'
                 className='rounded-full object-contain'
-
+                unoptimized
             />
             {/* </Link> */}
             <h1>{user.name}</h1>

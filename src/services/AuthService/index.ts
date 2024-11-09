@@ -45,7 +45,10 @@ export const loginUser = async (userData: FieldValues) => {
 
 export const getAllUsers = async (filters: any = {}) => {
     const accessToken = cookies().get('accessToken')?.value;
-
+    if (!accessToken) {
+        console.error("Access token is missing");
+        return { data: [] };
+    }
     try {
         const query = new URLSearchParams(filters).toString();
         const { data } = await axiosInstance.get(`/auth?${query}`, {
@@ -65,6 +68,10 @@ export const getAllUsers = async (filters: any = {}) => {
 
 export const getUserGrowth = async () => {
     const accessToken = cookies().get('accessToken')?.value
+    if (!accessToken) {
+        console.error("Access token is missing");
+        return { data: [] };
+    }
     try {
         const { data } = await axiosInstance.get("/auth/growth", {
             headers: {
@@ -83,6 +90,10 @@ export const getUserGrowth = async () => {
 
 export const getAnUser = async () => {
     const accessToken = cookies().get('accessToken')?.value
+    if (!accessToken) {
+        console.error("Access token is missing");
+        return { data: [] };
+    }
     try {
         const { data } = await axiosInstance.get("/auth/user", {
             headers: {
@@ -101,6 +112,10 @@ export const getAnUser = async () => {
 
 export const getSingleUser = async (id: string) => {
     const accessToken = cookies().get('accessToken')?.value
+    if (!accessToken) {
+        console.error("Access token is missing");
+        return { data: [] };
+    }
     try {
         const { data } = await axiosInstance.get(
             `/auth/${id}`, // Pass the isBlocked field in the body
