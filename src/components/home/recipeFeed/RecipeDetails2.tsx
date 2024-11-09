@@ -3,6 +3,8 @@ import { Star } from "lucide-react"
 import moment from "moment"
 import Image from "next/image"
 import parse from "html-react-parser";
+import UserCard from "./UserCard";
+import Link from "next/link";
 
 const colors = {
     orange: "#F2C265",
@@ -31,15 +33,18 @@ const RecipeDetails2 = ({ recipe }: { recipe: IRecipe }) => {
     return (
         <div>
             {/* <!-- Blog post with featured image --> */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex items-start w-full">
                 <div className="max-w-3xl mx-auto">
                     {/* <!-- Blog post header --> */}
                     <div className="py-8 space-y-2">
                         <h1 className="text-3xl font-bold mb-2">{recipe?.title}</h1>
                         <div className="flex gap-4">
-                            <p className="text-gray-500 text-sm">Published on <time dateTime="2022-04-05">{moment(recipe?.createdAt).format("MMM Do YY")}</time></p>
-                            <p className="text-gray-500 text-sm">Updated on <time dateTime="2022-04-05">{moment(recipe?.updatedAt).format("MMM Do YY")}</time></p>
+                            <p className="text-gray-500 text-sm">Published on <time dateTime={recipe?.createdAt}>{moment(recipe?.createdAt).format("MMM Do YY")}</time></p>
+                            <p className="text-gray-500 text-sm">Updated on <time dateTime={recipe?.updatedAt}>{moment(recipe?.updatedAt).format("MMM Do YY")}</time></p>
                         </div>
+                        <p className=" text-sm">Author:
+                            <Link href={`/user-dashboard/profile`} className="pl-3 underline text-blue-600">{recipe?.user?.name}</Link>
+                        </p>
                         {/* Ratings */}
                         <div className="flex items-center gap-4">
                             <div className="flex items-center">
@@ -75,6 +80,9 @@ const RecipeDetails2 = ({ recipe }: { recipe: IRecipe }) => {
                     <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto my-8">
                         <p>{parse(recipe.desc)}</p>
                     </div>
+                </div>
+                <div className="max-w-3xl mx-auto pt-10 hidden lg:block">
+                    <UserCard recipe={recipe} />
                 </div>
             </div>
         </div>

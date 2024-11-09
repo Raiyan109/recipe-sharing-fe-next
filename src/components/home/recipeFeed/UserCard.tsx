@@ -11,7 +11,7 @@ const UserCard = async ({ recipe }: { recipe: IRecipe }) => {
     const followees = await getFollowees(anUser?.data?._id)
     return (
         <div
-            className="relative rounded-xl overflow-hidden flex flex-col items-center shadow-lg bg-white font-Roboto-light"
+            className="relative rounded-xl overflow-hidden flex flex-col items-center shadow-lg bg-card w-80"
         >
             <div className="h-24 w-full bg-primary"></div>
             <div className="top-16 z-10 flex items-center flex-col gap-4 px-5 py-5">
@@ -20,8 +20,9 @@ const UserCard = async ({ recipe }: { recipe: IRecipe }) => {
                 </div>
 
                 <div className="flex items-center flex-col">
-                    <p title="name" className="text-black font-Roboto-md">{recipe?.user?.name}</p>
-                    <p title="bio" className="text-xs text-gray-500 font-medium max-w-xs">
+                    <p title="name" className="">About this author</p>
+                    <p title="name" className="text-3xl">{recipe?.user?.name}</p>
+                    <p title="bio" className="text-xs font-medium max-w-xs">
                         {recipe?.user?.bio}
                     </p>
                 </div>

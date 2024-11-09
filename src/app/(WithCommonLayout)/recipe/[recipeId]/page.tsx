@@ -1,4 +1,4 @@
-import RecipeDetails from "@/components/home/recipeFeed/RecipeDetails";
+
 import RecipeDetails2 from "@/components/home/recipeFeed/RecipeDetails2";
 import Header from "@/components/shared/Header";
 import { getRecipes, getSingleRecipe } from "@/services/RecipeService";
@@ -23,7 +23,7 @@ const DynamicRecipePage = async ({ params }: RecipeId) => {
     return (
         <>
             <Header />
-            <div className="mx-auto flex flex-col w-full max-w-7xl">
+            <div className="mx-auto flex flex-col w-full max-w-[1900px]">
                 <RecipeDetails2 recipe={recipe.data} />
             </div>
         </>
