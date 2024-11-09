@@ -45,24 +45,34 @@ export const loginUser = async (userData: FieldValues) => {
 
 export const getAllUsers = async (filters: any = {}) => {
     const accessToken = cookies().get('accessToken')?.value;
+
+    // Check if access token is missing
     if (!accessToken) {
-        console.log("Access token is missing");
+        // Log only in development environment
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Access token is missing");
+        }
+
+        // Return an empty data structure gracefully
         return { data: [] };
     }
+
     try {
         const query = new URLSearchParams(filters).toString();
+        console.log("Sending query:", query);
+
         const { data } = await axiosInstance.get(`/auth?${query}`, {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
             }
         });
-
         return data;
     } catch (error: any) {
-        if (error.response && error.response.status === 404) {
-            return { data: [] };
+        // Log error only in development
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Error fetching users:", error);
         }
-        throw error;
+        return { data: [] };
     }
 };
 
@@ -89,26 +99,30 @@ export const getUserGrowth = async () => {
 }
 
 export const getAnUser = async () => {
-    const accessToken = cookies().get('accessToken')?.value
+    const accessToken = cookies().get('accessToken')?.value;
+
     if (!accessToken) {
-        console.log("Access token is missing");
-        return { data: [] };
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Access token is missing");
+        }
+        return null;
     }
+
     try {
         const { data } = await axiosInstance.get("/auth/user", {
             headers: {
-                "Authorization": `Bearer ${accessToken}`
-            }
+                "Authorization": `Bearer ${accessToken}`,
+            },
         });
-
-        return data
+        return data;
     } catch (error: any) {
-        if (error.response && error.response.status === 404) {
-            return { data: [] };
+        if (process.env.NODE_ENV === 'development') {
+            console.error("Error fetching user:", error);
         }
-
+        return null;
     }
-}
+};
+
 
 export const getSingleUser = async (id: string) => {
     const accessToken = cookies().get('accessToken')?.value
