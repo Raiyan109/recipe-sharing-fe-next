@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { IUser } from "@/types";
 import ManageUser from "./ManageUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "@/components/shared/Pagination";
+import { getAllUsers } from "@/services/AuthService";
 
 type IProps = {
     success: boolean;
@@ -10,17 +12,33 @@ type IProps = {
     message: string;
     data: IUser[];
 }
-
-const ManageUsers = ({ users }: { users: IProps }) => {
+// { users }: { users: IProps }
+const ManageUsers = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const itemsPerPage = 5; // Number of items per page
-    // Calculate the current items to display
+    const itemsPerPage = 10; // Number of items per page
+    const [users, setUsers] = useState<IProps | null>(null);
+    const [role, setRole] = useState('');
+    const [membership, setMembership] = useState('');
+    const [sortBy, setSortBy] = useState('');
+
+    const fetchUsers = async () => {
+        const filters = {
+            role,
+            membership,
+            sortBy,
+        };
+        const data = await getAllUsers(filters);
+        setUsers(data);
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    }, [role, membership, sortBy]);
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentUsers = users?.data?.slice(indexOfFirstItem, indexOfLastItem);
-
-    // Calculate total pages
-    const totalPages = Math.ceil(users?.data?.length / itemsPerPage);
+    const currentUsers = users?.data?.slice(indexOfFirstItem, indexOfLastItem) || [];
+    const totalPages = Math.ceil((users?.data?.length || 0) / itemsPerPage);
 
     // Function to handle page change
     const handlePageChange = (page: number) => {
@@ -30,6 +48,27 @@ const ManageUsers = ({ users }: { users: IProps }) => {
     };
     return (
         <div>
+            {/* Filters */}
+            <div className="flex gap-4 mb-4">
+                <select value={role} onChange={(e) => setRole(e.target.value)} className="border px-3 py-2">
+                    <option value="">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <select value={membership} onChange={(e) => setMembership(e.target.value)} className="border px-3 py-2">
+                    <option value="">All Statuses</option>
+                    <option value="free">Free</option>
+                    <option value="premium">Premium</option>
+                </select>
+                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="border px-3 py-2">
+                    <option value="">Sort By</option>
+                    <option value="name:asc">Name (A-Z)</option>
+                    <option value="name:desc">Name (Z-A)</option>
+                    <option value="createdAt:asc">Date (Oldest)</option>
+                    <option value="createdAt:desc">Date (Newest)</option>
+                </select>
+            </div>
+
             <table className="min-w-full divide-y divide-gray-200">
                 <thead>
                     <tr>

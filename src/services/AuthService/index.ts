@@ -43,23 +43,25 @@ export const loginUser = async (userData: FieldValues) => {
     }
 }
 
-export const getAllUsers = async () => {
-    const accessToken = cookies().get('accessToken')?.value
+export const getAllUsers = async (filters: any = {}) => {
+    const accessToken = cookies().get('accessToken')?.value;
+
     try {
-        const { data } = await axiosInstance.get("/auth", {
+        const query = new URLSearchParams(filters).toString();
+        const { data } = await axiosInstance.get(`/auth?${query}`, {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
             }
         });
 
-        return data
+        return data;
     } catch (error: any) {
         if (error.response && error.response.status === 404) {
             return { data: [] };
         }
-
+        throw error;
     }
-}
+};
 
 export const getUserGrowth = async () => {
     const accessToken = cookies().get('accessToken')?.value

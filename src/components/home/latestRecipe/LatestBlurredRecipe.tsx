@@ -2,7 +2,7 @@ import { IRecipe } from '@/types'
 import './latestBlurredRecipe.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import moment from 'moment'
+
 
 const LatestBlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
