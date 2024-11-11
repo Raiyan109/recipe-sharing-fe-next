@@ -6,8 +6,16 @@ import UserDropdown from "./UserDropdown"
 
 import { SearchInput } from "./SearchInput"
 import { useSearchParams } from "next/navigation"
+import WriteButton from "./WriteButton"
+import { IUser } from "@/types"
 
-const Header = () => {
+interface IProps {
+    data: IUser;
+    message: string;
+    statusCode: number;
+    success: boolean
+}
+const Header = ({ user }: { user: IProps }) => {
     const searchParams = useSearchParams()
 
     // Now get the query 
@@ -24,6 +32,9 @@ const Header = () => {
                 <SearchInput defaultValue={searchQuery} />
                 {/* sm:ms-auto */}
                 <div className="flex gap-2 md:gap-4 items-center">
+                    {user && <div>
+                        <WriteButton user={user} />
+                    </div>}
                     <UserDropdown />
                     <ThemeSwitch />
                 </div>

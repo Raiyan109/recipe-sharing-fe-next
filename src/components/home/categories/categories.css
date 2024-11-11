@@ -17,7 +17,7 @@
 
 .tag__name {
     display: inline-block;
-    color: #fff;
+    /* color: #fff; */
     font-size: 1.1em;
     /* background-color: #9c87c0; */
     padding: 6px 23px 9px;

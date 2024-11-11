@@ -23,7 +23,7 @@ const LatestRecipe = ({ recipe }: { recipe: IRecipe }) => {
                 <p className="font-semibold capitalize text-xl">{recipe.title}</p>
                 <p className="font-medium text-card-foreground/50">{moment(recipe.createdAt).format("MMM Do YY")}</p>
             </div>
-            <Link href={`/recipe/${recipe?._id}`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-card border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
+            <Link href={`/recipe/${recipe?._id}`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-black font-medium border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
                 See more
             </Link>
         </div>

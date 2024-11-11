@@ -30,8 +30,9 @@ const LatestBlurredRecipe = ({ recipe }: { recipe: IRecipe }) => {
                 {/* <p className="font-medium text-card-foreground/50">{moment(recipe.createdAt).format("MMM Do YY")}</p> */}
                 <div id="paywall-wrapper" className="mt-1 p-2 rounded-lg shadow-lg relative bg-card">
                     {/* <h4 className="text-lg font-semibold mb-2">Premium Recipe Subscription</h4> */}
-                    <p>Subscribe for <strong>$12.99/mo</strong> discount</p>
-                    <Link href={`/subscription/${recipe?._id}`} className="btn bg-primary text-card px-6 py-2 mt-4 inline-block rounded-lg">
+                    <p>Subscribe to access premium recipe</p>
+                    <Link href={`/subscription/${recipe?._id}`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-black font-medium border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black mt-2">
+
                         Subscribe!
                     </Link>
                 </div>

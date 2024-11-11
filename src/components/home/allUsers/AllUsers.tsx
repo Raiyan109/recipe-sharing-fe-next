@@ -1,12 +1,14 @@
 import Header from "@/components/shared/Header";
 import AllUser from "./AllUser"
 import { IUser } from "@/types";
+import { getAnUser } from "@/services/AuthService";
 
 
-const AllUsers = ({ users }: { users: IUser[] }) => {
+const AllUsers = async ({ users }: { users: IUser[] }) => {
+    const user = await getAnUser()
     return (
         <div>
-            <Header />
+            <Header user={user} />
             <div className="max-w-sm mx-auto mt-40">
                 <h1 className="text-3xl py-5">All Creators</h1>
 

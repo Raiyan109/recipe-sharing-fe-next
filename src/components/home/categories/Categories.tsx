@@ -25,7 +25,7 @@ const Categories = async () => {
                 <div className="category-card__tags">
                     <ul className="category-tag flex flex-wrap gap-2">
                         {categories.map((category, index) => (
-                            <li key={index} className="tag__name bg-primary">
+                            <li key={index} className="tag__name bg-primary text-black">
                                 <Link href={`/categories?category=${encodeURIComponent(category)}`}>
                                     {category}
                                 </Link>

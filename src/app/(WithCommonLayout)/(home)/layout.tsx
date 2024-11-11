@@ -4,12 +4,14 @@ import LatestRecipes from '@/components/home/latestRecipe/LatestRecipes'
 
 import Header from '@/components/shared/Header'
 import MenuBar from '@/components/shared/MenuBar'
+import { getAnUser } from '@/services/AuthService'
 import { ReactNode } from 'react'
 
-const HomeLayout = ({ children }: { children: ReactNode }) => {
+const HomeLayout = async ({ children }: { children: ReactNode }) => {
+    const user = await getAnUser()
     return (
         <div className="flex min-h-screen flex-col">
-            <Header />
+            <Header user={user} />
             <div className="mx-auto flex w-full max-w-[1400px] grow gap-5 p-5">
                 <div className='flex flex-col gap-5 sticky top-[5.25rem] h-fit'>
                     <MenuBar className="hidden h-fit flex-none space-y-3 rounded-2xl bg-card px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
