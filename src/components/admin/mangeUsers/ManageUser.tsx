@@ -58,7 +58,7 @@ const ManageUser = ({ user }: { user: IUser }) => {
                             </button>
                             {/* Delete Button (hidden on mobile) */}
                             <button
-                                className="hidden md:inline-block px-4 py-2 bg-destructive hover:bg-destructive/80 text-white rounded-md"
+                                className=" px-4 py-2 bg-destructive hover:bg-destructive/80 text-white rounded-md"
                                 onClick={handleDelete}
                             >
                                 Delete
