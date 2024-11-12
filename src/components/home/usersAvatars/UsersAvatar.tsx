@@ -15,7 +15,7 @@ const UsersAvatar = async ({ user }: { user: IUser }) => {
 
 
     return (
-        <div className="flex flex-col items-center border border-gray-300 p-2 rounded-md h-32">
+        <div className="flex flex-col items-center border border-gray-300 p-2 rounded-md h-32 w-32">
             {/* <Link href={{ pathname: '/search', query: { keyword: 'this way' } }}> */}
             <Image
                 src={user.photo}

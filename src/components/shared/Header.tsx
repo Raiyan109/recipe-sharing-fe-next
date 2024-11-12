@@ -8,6 +8,8 @@ import { SearchInput } from "./SearchInput"
 import { useSearchParams } from "next/navigation"
 import WriteButton from "./WriteButton"
 import { IUser } from "@/types"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { MoreVertical } from "lucide-react"
 
 interface IProps {
     data: IUser;
@@ -28,15 +30,39 @@ const Header = ({ user }: { user: IProps }) => {
                 <Link href="/" className="text-xl font-bold text-primary">
                     Culinary Circle
                 </Link>
-                {/* <SearchField recipes={recipes} /> */}
-                <SearchInput defaultValue={searchQuery} />
-                {/* sm:ms-auto */}
-                <div className="flex gap-2 md:gap-4 items-center">
-                    {user && <div>
-                        <WriteButton user={user} />
-                    </div>}
-                    <UserDropdown />
-                    <ThemeSwitch />
+                <div className="flex items-center gap-10">
+                    {/* <SearchField recipes={recipes} /> */}
+                    <SearchInput defaultValue={searchQuery} />
+                    {/* sm:ms-auto */}
+                    <div className="hidden md:flex gap-2 md:gap-4 items-center">
+                        {user && <div>
+                            <WriteButton user={user} />
+                        </div>}
+                        <UserDropdown />
+                        <ThemeSwitch />
+                    </div>
+                    <div className="flex md:hidden gap-2 md:gap-4 items-center">
+                        <DropdownMenu>
+                            <DropdownMenuTrigger>
+                                <MoreVertical size={20} className="text-grayText" />
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="flex flex-col items-center justify-center">
+                                <DropdownMenuLabel className="">
+                                    {user && (
+                                        <div>
+                                            <WriteButton user={user} />
+                                        </div>
+                                    )}
+                                </DropdownMenuLabel>
+                                <DropdownMenuLabel><UserDropdown /></DropdownMenuLabel>
+                                <DropdownMenuLabel> <ThemeSwitch /></DropdownMenuLabel>
+
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+
+
+
+                    </div>
                 </div>
             </div>
         </header>

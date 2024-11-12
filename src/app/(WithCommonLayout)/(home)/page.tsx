@@ -13,7 +13,7 @@ const HomePage = async () => {
   const isLoggedIn = !!user;
 
   return (
-    <div>
+    <div className="space-y-4">
 
       {isLoggedIn && hasUsers && (
         <UsersAvatars users={users?.data} />

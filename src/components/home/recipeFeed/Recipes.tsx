@@ -85,7 +85,7 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
             </div>
 
             <div className="p-5 rounded-md w-full relative">
-                <div className="px-8 space-y-3">
+                <div className="px-1 md:px-8 space-y-3">
                     <div className="grid grid-cols-1 gap-7">
                         {filteredItems?.map((recipe: IRecipe) => {
                             // Check if the recipe is free and the user has premium membership

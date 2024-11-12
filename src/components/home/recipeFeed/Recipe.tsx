@@ -25,9 +25,9 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     const averageRating = calculateReviewsAverage();
 
     return (
-        <div className=" relative bg-secondary py-3 px-16 rounded-md cursor-pointer">
+        <div className=" relative bg-secondary py-3 px-4 md:px-16 rounded-md cursor-pointer">
             <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">
-                <div className="absolute -left-12 top-0 rounded-full">
+                <div className="absolute -left-11 md:-left-12 top-0 rounded-full">
                     <Image
                         src={recipe.user?.photo}
                         width={40}
@@ -57,7 +57,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
             </div> */}
 
                 <div className="flex justify-between items-center pt-3">
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-1 md:gap-5">
                         <div className="flex items-center gap-1">
                             <Heart size={16} />
                             <h1 className="font-bold">{recipe?.votes?.length}</h1>
@@ -77,8 +77,11 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                     <div>
                         <div className="flex items-center gap-1">
                             <MessagesSquare size={16} />
-                            <h1 className="font-bold">
+                            <h1 className="font-bold hidden md:block">
                                 {recipe?.reviews?.length ? `${recipe.reviews.length} Comments` : "No Comments"}
+                            </h1>
+                            <h1 className="font-bold block md:hidden">
+                                {recipe?.reviews?.length ? `${recipe.reviews.length}` : ""}
                             </h1>
                         </div>
                     </div>

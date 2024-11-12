@@ -34,11 +34,11 @@ export const SearchInput = ({ defaultValue }: iDefault) => {
       <Input
         type="text"
         id="inputId"
-        placeholder="Enter your keywords"
+        placeholder="Search recipe"
         value={inputValue ?? ""}
         onChange={handleChange}
         onKeyDown={handleKeyPress}
-        className="bg-[transparent] w-full py-3 pl-2 pr-3"
+        className="bg-[transparent] w-28 md:w-full py-3 pl-2 pr-3"
       />
     </div>
   );
