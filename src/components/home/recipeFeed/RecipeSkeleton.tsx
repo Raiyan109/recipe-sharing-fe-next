@@ -2,7 +2,7 @@
 
 const RecipeSkeleton = () => {
     return (
-        <div className="border rounded-lg p-4 bg-gray-100 shadow-lg animate-pulse w-[700px]">
+        <div className="border rounded-lg p-4 bg-gray-100 shadow-lg animate-pulse w-full md:w-[700px]">
             {/* User Avatar */}
             <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gray-300 rounded-full"></div>

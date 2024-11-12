@@ -59,9 +59,6 @@ const Header = ({ user }: { user: IProps }) => {
 
                             </DropdownMenuContent>
                         </DropdownMenu>
-
-
-
                     </div>
                 </div>
             </div>

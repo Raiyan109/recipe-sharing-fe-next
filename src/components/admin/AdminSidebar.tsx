@@ -123,8 +123,8 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
           font-medium rounded-md cursor-pointer
           transition-colors group bg-grayText
           ${active
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-                    : "hover:bg-indigo-50 text-gray-600"
+                    ? "bg-primary text-indigo-800"
+                    : "hover:bg-primary text-black"
                 }
       `}
         >
