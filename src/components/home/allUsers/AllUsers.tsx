@@ -9,7 +9,7 @@ const AllUsers = async ({ users }: { users: IUser[] }) => {
     return (
         <div>
             <Header user={user} />
-            <div className="max-w-sm mx-auto mt-40">
+            <div className="max-w-sm mx-auto mt-5 md:mt-40 px-5">
                 <h1 className="text-3xl py-5">All Creators</h1>
 
                 <div>

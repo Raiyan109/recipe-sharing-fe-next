@@ -40,7 +40,7 @@ const RecipeDetails2 = ({ recipe }: { recipe: IRecipe }) => {
                     {/* <!-- Blog post header --> */}
                     <div className="py-8 space-y-2">
                         <h1 className="text-3xl font-bold mb-2">{recipe?.title}</h1>
-                        <div className="flex gap-4">
+                        <div className="flex gap-1 md:gap-4 flex-col md:flex-row">
                             <p className="text-gray-500 text-sm">Published on <time dateTime={recipe?.createdAt}>{moment(recipe?.createdAt).format("MMM Do YY")}</time></p>
                             <p className="text-gray-500 text-sm">Updated on <time dateTime={recipe?.updatedAt}>{moment(recipe?.updatedAt).format("MMM Do YY")}</time></p>
                         </div>
