@@ -13,7 +13,7 @@ const WriteButton = ({ user }: { user: IProps }) => {
 
     return (
         <div>
-            <Link href={user?.data?.role === 'user' ? `/user-dashboard/create-recipe` : '/admin/create-recipe'}>
+            <Link href={user?.data?.role === 'user' ? `/user-dashboard/create-recipe` : '/admin/create-recipe'} className="hidden md:block">
                 {/* /admin/create-recipe */}
                 {/* /user-dashboard/create-recipe */}
                 <button
@@ -27,6 +27,18 @@ const WriteButton = ({ user }: { user: IProps }) => {
                     </div>
                     <p className="translate-x-2 text-card">Write</p>
                 </button>
+
+            </Link>
+
+            <Link href={user?.data?.role === 'user' ? `/user-dashboard/create-recipe` : '/admin/create-recipe'} className="block md:hidden">
+                <div className="relative w-10 rounded-2xl h-10 text-center">
+                    <div
+                        className="bg-primary rounded-xl h-9 w-10 flex items-center justify-center absolute left-1 top-[2px] group-hover:w-[120px] z-10 duration-500"
+                    >
+                        <SquarePen />
+                    </div>
+                </div>
+
 
             </Link>
         </div>

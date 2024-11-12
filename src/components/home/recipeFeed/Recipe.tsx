@@ -25,7 +25,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     const averageRating = calculateReviewsAverage();
 
     return (
-        <div className=" relative bg-secondary p-3 rounded-md cursor-pointer">
+        <div className=" relative bg-secondary py-3 px-16 rounded-md cursor-pointer">
             <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">
                 <div className="absolute -left-12 top-0 rounded-full">
                     <Image
