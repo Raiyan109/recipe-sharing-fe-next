@@ -1,6 +1,8 @@
 'use client'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useDeleteUser, useUpdateUserIsBlocked } from "@/hooks/auth.hook";
 import { IUser } from "@/types"
+import { MoreVertical } from "lucide-react";
 
 
 const ManageUser = ({ user }: { user: IUser }) => {
@@ -18,33 +20,56 @@ const ManageUser = ({ user }: { user: IUser }) => {
 
 
     return (
-        <tr >
-            <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
-            <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
-            <td className="px-6 py-4 whitespace-nowrap capitalize">{user.role}</td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 capitalize">{user.membership}</span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                {/* <button className="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button> */}
-                <button
-                    className={`px-4 py-2 font-medium text-white rounded-md transition duration-150 ease-in-out ${user.isBlocked ? 'bg-primary hover:bg-primary/80' : 'bg-destructive hover:bg-destructive/80'
-                        }`}
-                    onClick={handleBlock}
-                >
-                    {user.isBlocked ? 'Unblock' : 'Block'}
-                </button>
+        <tr className="md:table-row flex flex-row justify-between border-b border-gray-200 md:border-0 mb-2 md:mb-0">
+            {/* Name Column */}
+            <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <div className="font-semibold">{user.name}</div>
+                {/* Display email below the name on mobile screens */}
+                <div className="text-gray-500 md:hidden">{user.email}</div>
             </td>
 
-            <td className="pr-5 py-4 whitespace-nowrap">
-                <button
-                    className={`px-4 py-2 font-medium text-white rounded-md transition duration-150 ease-in-out bg-destructive hover:bg-destructive/80`}
-                    onClick={handleDelete}
-                >
-                    Delete
-                </button>
+            {/* Email Column (hidden on mobile) */}
+            <td className="px-6 py-4 whitespace-nowrap text-sm hidden md:table-cell">{user.email}</td>
+
+            {/* Role Column (hidden on mobile) */}
+            <td className="px-6 py-4 whitespace-nowrap capitalize hidden md:table-cell">{user.role}</td>
+
+            {/* Status Column (hidden on mobile) */}
+            <td className="px-6 py-4 whitespace-nowrap hidden md:table-cell">
+                <span className={`px-2 inline-flex text-xs font-semibold rounded-full ${user.membership === 'premium' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                    {user.membership}
+                </span>
+            </td>
+
+            {/* Action Buttons (displayed as a single button on mobile) */}
+            <td className="flex gap-2 md:table-cell md:px-6 md:py-4 whitespace-nowrap space-x-4">
+                {/* Block/Unblock Button */}
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <MoreVertical size={20} className="text-grayText" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="flex flex-col items-center justify-center">
+                        <DropdownMenuLabel className="flex flex-col gap-2">
+                            <button
+                                className={`px-4 py-2 text-white rounded-md transition duration-150 ease-in-out ${user.isBlocked ? 'bg-primary hover:bg-primary/80' : 'bg-red-500 hover:bg-red-400'}`}
+                                onClick={handleBlock}
+                            >
+                                {user.isBlocked ? 'Unblock' : 'Block'}
+                            </button>
+                            {/* Delete Button (hidden on mobile) */}
+                            <button
+                                className="hidden md:inline-block px-4 py-2 bg-destructive hover:bg-destructive/80 text-white rounded-md"
+                                onClick={handleDelete}
+                            >
+                                Delete
+                            </button>
+                        </DropdownMenuLabel>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+
             </td>
         </tr>
+
     )
 }
 
