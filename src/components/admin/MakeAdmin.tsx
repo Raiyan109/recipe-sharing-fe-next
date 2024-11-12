@@ -29,8 +29,8 @@ const MakeAdmin = () => {
         handleUserRegistration(userData)
     }
     return (
-        <div className='flex items-center justify-center pr-5'>
-            <div className=' bg-white flex flex-col p-20 justify-center'>
+        <div className='flex md:items-center md:justify-center pr-0 md:pr-5'>
+            <div className=' bg-white flex flex-col p-5 md:p-20 justify-center'>
 
 
                 <div className='w-full flex flex-col max-w-[550px]'>
