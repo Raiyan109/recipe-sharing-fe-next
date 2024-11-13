@@ -35,7 +35,7 @@ const MyRecipes = ({ recipes, query, currentPage: initialPage, category, sortOrd
     return (
         <section className="py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-                <h2 className="font-manrope font-bold text-4xl text-black mb-8 max-xl:text-center">My Recipes</h2>
+                <h2 className="font-manrope font-bold text-4xl text-black dark:text-white mb-8 max-xl:text-center">My Recipes</h2>
 
                 <div>
                     <SearchingFiltering placeholder="Search for recipes" />

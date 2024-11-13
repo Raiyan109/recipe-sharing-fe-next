@@ -8,22 +8,22 @@ const Profile = ({ user }: { user: IUser }) => {
 
     return (
         <div>
-            <div className="bg-gray-100">
+            <div className="bg-card">
                 <div className="container mx-auto py-8">
                     <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
                         <div className="col-span-4 sm:col-span-3">
-                            <div className="bg-white shadow rounded-lg p-6">
+                            <div className="bg-secondary shadow rounded-lg p-6">
                                 <div className="flex flex-col items-center">
                                     <Image
                                         src={user.photo}
                                         width={200}
                                         height={200}
                                         alt="user image"
-                                        className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                                        className="w-32 h-32 bg-secondary rounded-full mb-4 shrink-0">
 
                                     </Image>
                                     <h1 className="text-xl font-bold">{user.name}</h1>
-                                    <p className="text-gray-700">{user.email}</p>
+                                    <p className="text-gray-700 dark:text-gray-300">{user.email}</p>
                                     {/* <div className="mt-6 flex flex-wrap gap-4 justify-center">
                                         <a href="#" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
                                         <a href="#" className="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
@@ -31,7 +31,7 @@ const Profile = ({ user }: { user: IUser }) => {
                                 </div>
                                 <hr className="my-6 border-t border-gray-300" />
                                 <div className="flex flex-col">
-                                    <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">Membership status</span>
+                                    <span className="text-primary uppercase font-bold tracking-wider mb-2">Membership status</span>
                                     {user.membership}
                                     {/* <ul>
                                         <li className="mb-2">JavaScript</li>
@@ -44,7 +44,7 @@ const Profile = ({ user }: { user: IUser }) => {
                             </div>
                         </div>
                         <div className="col-span-4 sm:col-span-9">
-                            <div className="bg-white shadow rounded-lg p-6">
+                            <div className="bg-secondary shadow rounded-lg p-6">
                                 <div className="flex justify-between items-center">
                                     <h2 className="text-xl font-bold">About Me</h2>
                                     <div className="flex justify-center items-center">

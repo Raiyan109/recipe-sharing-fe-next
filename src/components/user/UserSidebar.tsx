@@ -55,7 +55,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                     <hr />
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-primary hover:bg-primary/80 transition-all duration-100 text-card"
+                        className={`p-1.5 rounded-md bg-primary hover:bg-primary/80 transition-all duration-100 text-card ${expanded ? '-mr-7' : 'ml-0'}`}
                     >
                         {expanded ? <ChevronLeft /> : <ChevronRight />}
                     </button>
