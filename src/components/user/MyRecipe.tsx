@@ -1,6 +1,7 @@
 'use client'
 import { useDeleteRecipe } from "@/hooks/recipe.hook";
 import { IRecipe } from "@/types";
+import moment from "moment";
 import Image from "next/image"
 import Link from "next/link";
 
@@ -13,33 +14,29 @@ const MyRecipe = ({ recipe }: { recipe: IRecipe }) => {
     }
 
     return (
-        <div
-            className="relative bg-cover group rounded-3xl bg-center overflow-hidden mx-auto sm:mr-0 xl:mx-auto cursor-pointer w-full bg-white">
-            <Link href={`/user-dashboard/my-recipes/${recipe?._id}`}>
-                <div className="">
-                    <Image className="rounded-t-2xl object-cover" src={recipe?.image} alt="Jacket image" height={400} width={400} />
-                </div>
-                <span className="absolute top-2 right-2 bg-white rounded-sm p-1">
-                    {recipe?.contentAvailability}
-                </span>
-                <div
-                    className="absolute z-10 top-64 left-0 mx-3 p-3 bg-white w-[calc(100%-24px)] rounded-xl shadow-sm shadow-transparent transition-all duration-500 group-hover:shadow-indigo-200 group-hover:bg-indigo-50">
+        <div className=" bg-card rounded-3xl  p-4 flex flex-col  gap-3 ">
+            {/* hover:bg-gray-900 hover:shadow-2xl hover:shadow-sky-400 transition-shadow */}
+            <div className="w-full h-40 flex items-center justify-center">
+                <Image
+                    src={recipe.image}
+                    width={150}
+                    height={150}
+                    alt="recipe photo"
+                    className="rounded-md"
+                    style={{ width: '270px', height: '150px', objectFit: 'cover' }}
+                />
+            </div>
 
-                    <div className="flex items-center justify-between">
-                        <h6 className="font-semibold text-base leading-7 text-black ">{recipe?.title}</h6>
-                    </div>
-                    {/* <p className="text-xs leading-5 text-gray-500">Women Winter Wear</p> */}
-                </div>
-                <div className="absolute bottom-3 right-5">
-                    <button
-                        className={`px-4 py-2 font-medium text-white rounded-md transition duration-150 ease-in-out bg-red-500`}
-                        onClick={() => deleteRecipe(recipe._id)}
-                    >
-                        {/* {user.isBlocked ? 'Unblock' : 'Block'} */}
-                        Delete
-                    </button>
-                </div>
+            <div className="">
+                <p className="font-semibold capitalize text-xl">{recipe.title}</p>
+                <p className="font-medium text-card-foreground/50">{moment(recipe.createdAt).format("MMM Do YY")}</p>
+            </div>
+            <Link href={`/recipe/${recipe?._id}`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-black font-medium border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
+                See more
             </Link>
+            <button onClick={() => deleteRecipe(recipe._id)} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-destructive text-black font-medium border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
+                Delete
+            </button>
         </div>
     )
 }

@@ -40,7 +40,7 @@ const MyRecipes = ({ recipes, query, currentPage: initialPage, category, sortOrd
                 <div>
                     <SearchingFiltering placeholder="Search for recipes" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
                     {filteredRecipes.map((recipe: IRecipe) => (
                         <MyRecipe key={recipe?._id}
                             recipe={recipe}
