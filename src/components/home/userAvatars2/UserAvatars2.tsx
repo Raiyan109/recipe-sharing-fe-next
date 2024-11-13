@@ -12,8 +12,8 @@ const UserAvatars2 = ({ users }: { users: IUser[] }) => {
                 >
                     Members
                 </h2>
-                <div className="category-card__tags">
-                    <ul className="category-tag flex flex-wrap gap-2">
+                <div className="">
+                    <ul className="category-tag grid grid-cols-1 w-80 gap-2">
                         {users?.slice(0, 4).map((user) => (
                             <UserAvatar2 user={user} key={user._id} />
                         ))}

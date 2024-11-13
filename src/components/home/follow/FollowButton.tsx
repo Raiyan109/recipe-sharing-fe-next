@@ -38,17 +38,16 @@ const FollowButton = ({
   return (
     <div>
       <button
-        className={`px-3 py-1 text-xs font-medium ${
-          isFollowing
-            ? "bg-destructive hover:bg-destructive/80"
-            : "bg-primary hover:bg-primary/80"
-        } text-primary-foreground hover:bg-blue-100 rounded-md transition duration-150 ease-in-out `}
+        className={`px-3 py-2 w-20 text-sm font-medium ${isFollowing
+          ? "bg-destructive hover:bg-destructive/80"
+          : "bg-primary hover:bg-primary/80"
+          } text-black dark:text-white hover:bg-blue-100 rounded-md transition duration-150 ease-in-out `}
         onClick={isFollowing ? handleUnFollowUser : handleFollowUser}
       >
         {isFollowing ? (
           <div className="flex items-center gap-2">
             <p>Following</p>
-            <Check size={20} />
+            <Check size={10} />
           </div>
         ) : (
           "Follow"
