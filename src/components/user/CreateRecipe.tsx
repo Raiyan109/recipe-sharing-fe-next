@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Button } from '@/components/ui/button';
 import { IUser } from '@/types';
 import { Trash2 } from 'lucide-react';
+import './createRecipe.css'
 
 
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
@@ -36,13 +37,13 @@ export function CreateRecipe({ user }: { user: IProps }) {
     const modules = { toolbar: toolbarOptions };
 
     // Ingredients function
-    const handleIngredientChange = (index, value) => {
+    const handleIngredientChange = (index: number, value: string) => {
         const newIngredients = [...ingredients]
         newIngredients[index] = value
         setIngredients(newIngredients)
     }
     const addIngredientField = () => setIngredients([...ingredients, ''])
-    const removeIngredientField = (index) => setIngredients(ingredients.filter((_, i) => i !== index))
+    const removeIngredientField = (index: number) => setIngredients(ingredients.filter((_, i) => i !== index))
 
     // Recipe form handling function
     const handleCreateRecipeSubmit = () => {
@@ -65,7 +66,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
                 <div className="px-2 md:px-24 space-y-8">
                     {/* Image Input */}
                     <div>
-                        <label className="block font-semibold text-gray-700">Image</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Image</label>
                         <Input
                             placeholder="Image URL"
                             value={image}
@@ -75,7 +76,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Title Input */}
                     <div>
-                        <label className="block font-semibold text-gray-700">Title</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Title</label>
                         <Input
                             placeholder="Title"
                             value={title}
@@ -85,7 +86,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Description Editor */}
                     <div>
-                        <label className="block font-semibold text-gray-700">Description</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Description</label>
                         <ReactQuill
                             value={description}
                             onChange={setDescription}
@@ -96,7 +97,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Category Selector */}
                     <div>
-                        <label className="block font-semibold text-gray-700">Select Category</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Select Category</label>
                         <Select value={category} onValueChange={setCategory}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select Category" />
@@ -111,7 +112,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Ingredients */}
                     <div className='relative'>
-                        <label className="block font-semibold text-gray-700">Add Ingredients</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Add Ingredients</label>
                         <div className='space-y-2'>
                             {ingredients.map((ingredient, i) => (
                                 <div key={i} className='flex items-center gap-2'>
@@ -120,15 +121,15 @@ export function CreateRecipe({ user }: { user: IProps }) {
                                         value={ingredient}
                                         onChange={(e) => handleIngredientChange(i, e.target.value)}
                                     />
-                                    <Button type='button' className='bg-primary hover:bg-primary/80' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
+                                    <Button type='button' className='bg-primary dark:bg-primary hover:bg-primary/80' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
                                 </div>
                             ))}
                         </div>
-                        <Button className='bg-primary hover:bg-primary/80 mt-2' type="button" onClick={addIngredientField}>Add Ingredient</Button>
+                        <Button className='bg-primary dark:bg-primary hover:bg-primary/80 mt-2' type="button" onClick={addIngredientField}>Add Ingredient</Button>
                     </div>
 
                     {/* Submit Button */}
-                    <Button type="button" className='bg-primary hover:bg-primary/80' onClick={handleCreateRecipeSubmit}>
+                    <Button type="button" className='bg-primary dark:bg-primary hover:bg-primary/80' onClick={handleCreateRecipeSubmit}>
                         Submit
                     </Button>
                 </div>

@@ -38,7 +38,7 @@ const CategorySlug = ({ recipes }: { recipes: IRecipes }) => {
                                     width={300}
                                     height={300}
                                     className="w-full h-48 object-cover rounded-lg mb-4" />
-                                <h2 className="text-xl font-bold">{recipe.title}</h2>
+                                <h2 className="text-xl font-bold text-black">{recipe.title}</h2>
                             </div>
                         ))
                     ) : (
