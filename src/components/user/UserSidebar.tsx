@@ -46,7 +46,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                         <p className="font-semibold text-grayText">User</p> */}
                         <div className="flex justify-center items-center">
                             {/* w-fit */}
-                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-grayText font-medium py-2 px-3 rounded-full ease-in-out duration-100">
+                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-card font-medium py-2 px-3 rounded-full ease-in-out duration-100">
                                 <ArrowLeft />
                                 Back
                             </Link>
@@ -55,7 +55,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                     <hr />
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-grayText hover:bg-grayText/80 transition-all duration-100"
+                        className="p-1.5 rounded-lg bg-primary hover:bg-primary/80 transition-all duration-100 text-card"
                     >
                         {expanded ? <ChevronLeft /> : <ChevronRight />}
                     </button>
@@ -75,7 +75,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
                             className="rounded-full"
                         />
                     ) : (
-                        <User size={40} className="text-grayText" />
+                        <User size={40} className="text-card" />
                     )}
                     <div
                         className={`
@@ -84,7 +84,7 @@ const UserSidebar = ({ children }: { children: ReactNode }) => {
             `}
                     >
                         <div className="">
-                            <h4 className="font-semibold text-grayText text-xl">{user?.name}</h4>
+                            <h4 className="font-semibold text-primary text-xl">{user?.name}</h4>
                             <span className="text-xs text-gray-600">{user?.email}</span>
                         </div>
                         <DropdownMenu>
@@ -121,10 +121,10 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
             className={`
           relative flex items-center justify-center ${expanded ? 'py-2 px-3' : 'py-0 px-0'} my-1
           font-medium rounded-md cursor-pointer
-          transition-colors group bg-grayText
+          transition-colors group
           ${active
-                    ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-                    : "hover:bg-indigo-50 text-gray-600"
+                    ? "bg-primary text-indigo-800"
+                    : "hover:bg-primary text-black dark:text-white"
                 }
       `}
         >
@@ -137,7 +137,7 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
             </span>
             {alert && (
                 <div
-                    className={`absolute right-2 w-2 h-2 rounded bg-secondary ${expanded ? "" : "top-2"
+                    className={`absolute right-2 w-2 h-2 rounded bg-primary ${expanded ? "" : "top-2"
                         }`}
                 />
             )}
@@ -146,7 +146,7 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
                 <div
                     className={`
             absolute left-full rounded-md px-2 py-1 ml-6
-            bg-blue-400 text-secondary text-sm
+            bg-primary text-card text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
         `}

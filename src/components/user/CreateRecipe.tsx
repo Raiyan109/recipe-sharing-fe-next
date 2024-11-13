@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { IUser } from '@/types';
+import { Trash2 } from 'lucide-react';
 
 
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
@@ -25,21 +26,32 @@ export function CreateRecipe({ user }: { user: IProps }) {
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    const [ingredients, setIngredients] = useState(['']);
 
     const { mutate: handleCreateRecipe } = useCreateRecipe();
 
     // Load ReactQuill dynamically to avoid SSR issues
     const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }), []);
-    const toolbarOptions = [['bold', 'italic', 'underline', 'strike']]; // Define toolbar options
-
+    const toolbarOptions = [['bold', 'italic', 'underline', 'strike']];
     const modules = { toolbar: toolbarOptions };
 
+    // Ingredients function
+    const handleIngredientChange = (index, value) => {
+        const newIngredients = [...ingredients]
+        newIngredients[index] = value
+        setIngredients(newIngredients)
+    }
+    const addIngredientField = () => setIngredients([...ingredients, ''])
+    const removeIngredientField = (index) => setIngredients(ingredients.filter((_, i) => i !== index))
+
+    // Recipe form handling function
     const handleCreateRecipeSubmit = () => {
         const recipeData = {
             title,
             image,
             desc: description,
             category,
+            ingredients,
             contentAvailability: 'free',
             user: user?.data?._id
         };
@@ -97,8 +109,26 @@ export function CreateRecipe({ user }: { user: IProps }) {
                         </Select>
                     </div>
 
+                    {/* Ingredients */}
+                    <div className='relative'>
+                        <label className="block font-semibold text-gray-700">Add Ingredients</label>
+                        <div className='space-y-2'>
+                            {ingredients.map((ingredient, i) => (
+                                <div key={i} className='flex items-center gap-2'>
+                                    <Input
+                                        placeholder="Add an ingredient"
+                                        value={ingredient}
+                                        onChange={(e) => handleIngredientChange(i, e.target.value)}
+                                    />
+                                    <Button type='button' className='bg-primary hover:bg-primary/80' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
+                                </div>
+                            ))}
+                        </div>
+                        <Button className='bg-primary hover:bg-primary/80 mt-2' type="button" onClick={addIngredientField}>Add Ingredient</Button>
+                    </div>
+
                     {/* Submit Button */}
-                    <Button type="button" onClick={handleCreateRecipeSubmit}>
+                    <Button type="button" className='bg-primary hover:bg-primary/80' onClick={handleCreateRecipeSubmit}>
                         Submit
                     </Button>
                 </div>
