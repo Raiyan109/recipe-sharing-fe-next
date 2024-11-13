@@ -1,14 +1,19 @@
 import Categories from '@/components/home/categories/Categories'
 import GetStarted from '@/components/home/GetStarted'
 import LatestRecipes from '@/components/home/latestRecipe/LatestRecipes'
+import UserAvatars2 from '@/components/home/userAvatars2/UserAvatars2'
 
 import Header from '@/components/shared/Header'
 import MenuBar from '@/components/shared/MenuBar'
-import { getAnUser } from '@/services/AuthService'
+import { getAllUsers, getAnUser } from '@/services/AuthService'
 import { ReactNode } from 'react'
 
 const HomeLayout = async ({ children }: { children: ReactNode }) => {
     const user = await getAnUser()
+    const users = await getAllUsers();
+    // Check if users data is available and if the user is logged in
+    const hasUsers = users?.data?.length > 0;
+    const isLoggedIn = !!user;
     return (
         <div className="flex min-h-screen flex-col">
             <Header user={user} />
@@ -29,6 +34,9 @@ const HomeLayout = async ({ children }: { children: ReactNode }) => {
                     {children}
                 </div>
                 <div className='xl:flex flex-col gap-5 sticky top-[5.25rem] h-fit hidden'>
+                    {isLoggedIn && hasUsers && (
+                        <UserAvatars2 users={users?.data} />
+                    )}
                     <LatestRecipes />
                 </div>
             </div>
