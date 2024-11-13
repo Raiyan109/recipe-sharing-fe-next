@@ -26,7 +26,7 @@ const Categories = async () => {
                     <ul className="category-tag flex flex-wrap gap-2">
                         {categories.map((category, index) => (
                             <li key={index} className="tag__name bg-primary text-black">
-                                <Link href={`/categories?category=${encodeURIComponent(category)}`}>
+                                <Link href={`/categories?category=${encodeURIComponent(category)}`} className='capitalize font-medium'>
                                     {category}
                                 </Link>
                             </li>

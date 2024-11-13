@@ -25,7 +25,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     const averageRating = calculateReviewsAverage();
 
     return (
-        <div className=" relative bg-secondary py-3 px-4 md:px-16 rounded-md cursor-pointer">
+        <div className=" relative bg-secondary py-3 px-4 md:px-5 rounded-md cursor-pointer">
             <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">
                 <div className="absolute -left-11 md:-left-12 top-0 rounded-full">
                     <Image
@@ -49,6 +49,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                         height={150}
                         alt="recipe photo"
                         className="rounded-md"
+                        style={{ width: '600px', height: '250px', objectFit: 'cover' }}
                     />
                 </div>
 
