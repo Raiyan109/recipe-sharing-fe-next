@@ -3,7 +3,7 @@
 import { createContext, ReactNode, useContext, useState } from "react"
 
 import { ArrowLeft, ChevronLeft, ChevronRight, MoreVertical, User } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/context/user.provider";
 import { logout } from "@/services/AuthService";
 import Link from "next/link";
@@ -112,8 +112,11 @@ interface SidebarItemProps {
     active?: boolean; // Make this optional
 }
 
-export function SidebarItem({ icon, text, alert, link, active = false }: SidebarItemProps) {
+export function SidebarItem({ icon, text, alert, link }: SidebarItemProps) {
     const { expanded } = useContext(SidebarContext)
+    const pathname = usePathname()
+
+    const isActive = pathname === link
 
     return (
         <Link
@@ -122,7 +125,7 @@ export function SidebarItem({ icon, text, alert, link, active = false }: Sidebar
           relative flex items-center justify-center ${expanded ? 'py-2 px-3' : 'py-0 px-0'} my-1
           font-medium rounded-md cursor-pointer
           transition-colors group bg-grayText
-          ${active
+          ${isActive
                     ? "bg-primary text-indigo-800"
                     : "hover:bg-primary text-black"
                 }

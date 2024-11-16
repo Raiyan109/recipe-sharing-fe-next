@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation"
 import WriteButton from "./WriteButton"
 import { IUser } from "@/types"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu"
-import { MoreVertical } from "lucide-react"
+import { Grip } from "lucide-react"
 
 interface IProps {
     data: IUser;
@@ -44,7 +44,7 @@ const Header = ({ user }: { user: IProps }) => {
                     <div className="flex md:hidden gap-2 md:gap-4 items-center">
                         <DropdownMenu>
                             <DropdownMenuTrigger>
-                                <MoreVertical size={20} className="text-grayText" />
+                                <Grip size={20} className="text-grayText" />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="flex flex-col items-center justify-center">
                                 <DropdownMenuLabel className="">
