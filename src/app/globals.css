@@ -90,3 +90,26 @@
     @apply text-black bg-transparent
   }
 }
+
+
+/* Swiper classes */
+.mySwiper {
+  width: 520px;
+  height: auto;
+  /* background-color: rebeccapurple; */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+ 
+}
+
+.swiper-wrapper{
+  width: 15%;
+}
