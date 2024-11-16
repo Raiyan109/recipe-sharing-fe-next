@@ -1,5 +1,6 @@
 import { IUser } from "@/types"
 import UserAvatar2 from "./UserAvatar2"
+import Link from "next/link"
 
 
 const UserAvatars2 = ({ users }: { users: IUser[] }) => {
@@ -21,7 +22,7 @@ const UserAvatars2 = ({ users }: { users: IUser[] }) => {
                     </ul>
                 </div>
             </div>
-
+            <Link href='/all-users' className=" pb-4 text-center font-bold text-primary text-sm md:text-xl underline">Show more</Link>
         </div>
     )
 }
