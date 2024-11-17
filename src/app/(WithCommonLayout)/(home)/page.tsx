@@ -30,11 +30,14 @@ const HomePage = async () => {
       {/* Mobile view */}
       <div className="block md:hidden">
         {isLoggedIn && hasUsers && (
-          <div className="overflow-x-hidden">
+          <div className={`overflow-x-hidden w-full mb-4 ${isLoggedIn && hasUsers ? 'block' : 'hidden'}`}>
             <MobileUserAvatars users={users?.data} />
           </div>
         )}
 
+
+      </div>
+      <div className={` block md:hidden `}>
         <MobileRecipes recipes={recipes} user={user} />
       </div>
     </div>
