@@ -6,16 +6,17 @@ import 'swiper/css';
 
 import MobileUserAvatar from "./MobileUserAvatar";
 import { Plus } from "lucide-react";
+import Link from "next/link";
 
 
 const MobileUserAvatars = ({ users }: { users: IUser[] }) => {
     return (
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-hidden px-8 border-b pb-5">
             {/* <div className="w-16 h-16 object-cover bg-secondary rounded-full mb-4 shrink-0 border-primary border-dashed border-4 absolute left-20 z-20">
                 <Plus />
             </div> */}
             <Swiper
-                slidesPerView={7}
+                slidesPerView={6}
                 spaceBetween={0}
                 className={'mySwiper'}
                 navigation={false}
@@ -45,12 +46,12 @@ const MobileUserAvatars = ({ users }: { users: IUser[] }) => {
 
                 {/* Plus Icon Slide */}
                 <SwiperSlide key="plus-icon" className="flex items-center justify-center">
-                    <div
+                    <Link href='/user-dashboard/create-recipe'
                         className="w-16 h-16 flex items-center justify-center bg-secondary rounded-full border-dashed border-4 border-primary cursor-pointer"
-                        onClick={() => window.location.href = '/user-dashboard/create-recipe'}
+
                     >
                         <Plus size={24} />
-                    </div>
+                    </Link>
                 </SwiperSlide>
 
 

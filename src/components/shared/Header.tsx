@@ -26,7 +26,7 @@ const Header = ({ user }: { user: IProps }) => {
 
     return (
         <header className="sticky top-0 z-10 bg-card shadow-sm">
-            <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-0 md:gap-5 px-5 py-3">
+            <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-0 md:gap-5 px-7 md:px-5 py-3">
                 <Link href="/" className="text-xl font-bold text-primary">
                     Culinary Circle
                 </Link>

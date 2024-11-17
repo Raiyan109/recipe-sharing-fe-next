@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IRecipes, IUser } from "@/types";
+import { IRecipe, IRecipes, IUser } from "@/types";
+import MobileRecipe from "./MobileRecipe";
 
 type IProps = {
     data: IUser;
@@ -10,7 +11,15 @@ type IProps = {
 
 const MobileRecipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     return (
-        <div>MobileRecipes</div>
+        <div className="mx-auto">
+            <div className="flex flex-col gap-5 w-full py-5 px-5">
+                {recipes?.data?.map((recipe: IRecipe) => {
+                    return (
+                        <MobileRecipe key={recipe._id} recipe={recipe} />
+                    )
+                })}
+            </div>
+        </div>
     )
 }
 
