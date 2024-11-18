@@ -32,7 +32,9 @@ const Header = ({ user }: { user: IProps }) => {
                 </Link>
                 <div className="flex items-center gap-10">
                     {/* <SearchField recipes={recipes} /> */}
-                    <SearchInput defaultValue={searchQuery} />
+                    <div className="hidden md:block">
+                        <SearchInput defaultValue={searchQuery} />
+                    </div>
                     {/* sm:ms-auto */}
                     <div className="hidden md:flex gap-2 md:gap-4 items-center">
                         {user && <div>
