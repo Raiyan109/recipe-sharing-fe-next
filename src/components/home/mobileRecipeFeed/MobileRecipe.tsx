@@ -8,7 +8,7 @@ import Link from "next/link"
 const MobileRecipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
         <div className="border-b pb-5 w-[490px]">
-            <article className=" bg-card rounded-lg w-full mx-auto ">
+            <article className=" bg-card rounded-lg mx-auto w-[490px]">
                 <footer className="card__footer flex gap-4 p-3 text-sm items-center justify-between">
                     <div className="card__job-summary flex items-center gap-3">
                         <div className="card__job-icon">

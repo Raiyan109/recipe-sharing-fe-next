@@ -12,7 +12,7 @@ type IProps = {
 const MobileRecipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
     return (
         <div className="mx-auto">
-            <div className="flex flex-col gap-5 w-full py-5 px-5">
+            <div className="space-y-5  py-5 px-5">
                 {recipes?.data?.map((recipe: IRecipe) => {
                     return (
                         <MobileRecipe key={recipe._id} recipe={recipe} />

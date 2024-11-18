@@ -17,7 +17,7 @@ export default function MenuBar({ className }: MenuBarProps) {
         <div className={className}>
             <Button
                 variant="ghost"
-                className={`flex items-center justify-start gap-3 ${pathname === '/' ? 'bg-primary text-black' : ''}`}
+                className={`flex items-center justify-start gap-3 hover:bg-primary ${pathname === '/' ? 'bg-primary text-black' : ''}`}
                 title="Home"
                 asChild
             >
@@ -32,7 +32,7 @@ export default function MenuBar({ className }: MenuBarProps) {
       <MessagesButton initialState={{ unreadCount: unreadMessagesCount }} /> */}
             <Button
                 variant="ghost"
-                className={`flex items-center justify-start gap-3 ${pathname === '/home/about' ? 'bg-primary text-black' : ''}`}
+                className={`flex items-center justify-start gap-3 hover:bg-primary ${pathname === '/home/about' ? 'bg-primary text-black' : ''}`}
                 title="About"
                 asChild
             >
@@ -44,7 +44,7 @@ export default function MenuBar({ className }: MenuBarProps) {
 
             <Button
                 variant="ghost"
-                className={`flex items-center justify-start gap-3 ${pathname === '/home/contact' ? 'bg-primary text-black' : ''}`}
+                className={`flex items-center justify-start gap-3 hover:bg-primary ${pathname === '/home/contact' ? 'bg-primary text-black' : ''}`}
                 title="Contact Us"
                 asChild
             >

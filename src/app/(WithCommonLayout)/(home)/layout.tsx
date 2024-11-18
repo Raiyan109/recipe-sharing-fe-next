@@ -15,7 +15,7 @@ const HomeLayout = async ({ children }: { children: ReactNode }) => {
     const hasUsers = users?.data?.length > 0;
     const isLoggedIn = !!user;
     return (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col w-full">
             <Header user={user} />
             <div className="mx-auto flex w-auto md:w-full max-w-[1400px] flex-grow gap-0 md:gap-5 py-5 px-0 md:px-5">
                 <div className='flex flex-col gap-5 sticky top-[5.25rem] h-fit'>
@@ -40,7 +40,7 @@ const HomeLayout = async ({ children }: { children: ReactNode }) => {
                     <LatestRecipes />
                 </div>
             </div>
-            <MenuBar className="sticky bottom-0 flex w-full justify-center gap-5 border-t bg-card p-3 md:hidden" />
+            <MenuBar className="sticky bottom-0 flex w-[530px] md:w-full justify-center gap-5 border-t bg-card p-3 md:hidden" />
         </div>
     )
 }
