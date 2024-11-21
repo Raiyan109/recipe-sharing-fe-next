@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 import { useCreateRecipe } from '@/hooks/recipe.hook';
@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { IUser } from '@/types';
 import { Trash2 } from 'lucide-react';
 import './createRecipe.css'
+import UploadImages from './uploadImages/UploadImages';
 
 
 const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
@@ -67,11 +68,12 @@ export function CreateRecipe({ user }: { user: IProps }) {
                     {/* Image Input */}
                     <div>
                         <label className="block font-semibold text-gray-700 dark:text-gray-300">Image</label>
-                        <Input
+                        <UploadImages setImage={setImage} />
+                        {/* <Input
                             placeholder="Image URL"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
-                        />
+                        /> */}
                     </div>
 
                     {/* Title Input */}

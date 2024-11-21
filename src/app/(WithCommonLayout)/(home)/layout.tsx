@@ -40,7 +40,8 @@ const HomeLayout = async ({ children }: { children: ReactNode }) => {
                     <LatestRecipes />
                 </div>
             </div>
-            <MenuBar className="sticky bottom-0 flex w-[530px] md:w-full justify-center gap-5 border-t bg-card p-3 md:hidden" />
+            {/* w-[530px] md: */}
+            <MenuBar className="sticky bottom-0 flex w-full justify-center gap-5 border-t bg-card p-3 md:hidden" />
         </div>
     )
 }
