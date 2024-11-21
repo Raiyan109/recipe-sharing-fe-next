@@ -113,3 +113,10 @@
 .swiper-wrapper{
   width: 15%;
 }
+
+/* Quill */
+.ql-editor{
+  height: 450px;
+  max-height: 250px;
+  overflow: auto;
+}

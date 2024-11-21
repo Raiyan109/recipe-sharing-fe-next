@@ -94,6 +94,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
                             onChange={setDescription}
                             modules={modules}
                             theme="snow"
+                        // className='overflow-auto'
                         />
                     </div>
 
