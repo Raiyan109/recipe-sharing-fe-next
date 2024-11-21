@@ -83,6 +83,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
                             placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
+                            className='dark:border-white'
                         />
                     </div>
 
@@ -123,6 +124,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
                                         placeholder="Add an ingredient"
                                         value={ingredient}
                                         onChange={(e) => handleIngredientChange(i, e.target.value)}
+                                        className='dark:border-white'
                                     />
                                     <Button type='button' className='bg-primary dark:bg-primary hover:bg-primary/80 dark:hover:bg-primary/90 text-black' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
                                 </div>

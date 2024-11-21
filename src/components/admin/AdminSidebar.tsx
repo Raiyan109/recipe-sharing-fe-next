@@ -46,7 +46,7 @@ const AdminSidebar = ({ children }: { children: ReactNode }) => {
                         <p className="font-semibold text-grayText">User</p> */}
                         <div className="flex justify-center items-center">
                             {/* w-fit */}
-                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-white font-medium py-2 px-3 rounded-full ease-in-out duration-100">
+                            <Link href='/' className="w-fit flex items-center justify-between gap-4 bg-primary hover:bg-primary/80 text-card font-medium py-2 px-3 rounded-full ease-in-out duration-100">
                                 <ArrowLeft />
                                 Back
                             </Link>
@@ -55,7 +55,7 @@ const AdminSidebar = ({ children }: { children: ReactNode }) => {
                     <hr />
                     <button
                         onClick={() => setExpanded((curr) => !curr)}
-                        className="p-1.5 rounded-lg bg-grayText hover:bg-grayText/80 transition-all duration-100"
+                        className={`p-1.5 rounded-md bg-primary hover:bg-primary/80 transition-all duration-100 text-card ${expanded ? '-mr-7' : 'ml-0'}`}
                     >
                         {expanded ? <ChevronLeft /> : <ChevronRight />}
                     </button>
@@ -126,8 +126,8 @@ export function SidebarItem({ icon, text, alert, link }: SidebarItemProps) {
           font-medium rounded-md cursor-pointer
           transition-colors group bg-grayText
           ${isActive
-                    ? "bg-primary text-indigo-800"
-                    : "hover:bg-primary text-black"
+                    ? "bg-primary text-black"
+                    : "hover:bg-primary text-black dark:text-white"
                 }
       `}
         >
@@ -149,7 +149,7 @@ export function SidebarItem({ icon, text, alert, link }: SidebarItemProps) {
                 <div
                     className={`
             absolute left-full rounded-md px-2 py-1 ml-6
-            bg-blue-400 text-secondary text-sm
+            bg-primary text-card text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
         `}
