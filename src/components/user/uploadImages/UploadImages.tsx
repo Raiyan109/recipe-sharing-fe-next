@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button';
+import { CloudUpload } from 'lucide-react';
 import { CldUploadWidget } from 'next-cloudinary';
 
 interface Props {
@@ -17,7 +18,8 @@ const UploadImages = ({ setImage }: Props) => {
         }}>
             {({ open }) => {
                 return (
-                    <Button className='bg-primary dark:bg-primary hover:bg-primary/80' onClick={() => open()}>
+                    <Button className='bg-primary dark:bg-primary hover:bg-primary/80 dark:hover:bg-primary/90 flex items-center gap-3 text-black' onClick={() => open()}>
+                        <CloudUpload />
                         Upload an Image
                     </Button>
                 );

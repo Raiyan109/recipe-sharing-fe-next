@@ -67,7 +67,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
                 <div className="px-2 md:px-24 space-y-8">
                     {/* Image Input */}
                     <div>
-                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Image</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300 mb-1">Image</label>
                         <UploadImages setImage={setImage} />
                         {/* <Input
                             placeholder="Image URL"
@@ -78,7 +78,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Title Input */}
                     <div>
-                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Title</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300 mb-1">Title</label>
                         <Input
                             placeholder="Title"
                             value={title}
@@ -88,7 +88,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Description Editor */}
                     <div>
-                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Description</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300 mb-1">Description</label>
                         <ReactQuill
                             value={description}
                             onChange={setDescription}
@@ -99,7 +99,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Category Selector */}
                     <div>
-                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Select Category</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300 mb-1">Select Category</label>
                         <Select value={category} onValueChange={setCategory}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select Category" />
@@ -114,7 +114,7 @@ export function CreateRecipe({ user }: { user: IProps }) {
 
                     {/* Ingredients */}
                     <div className='relative'>
-                        <label className="block font-semibold text-gray-700 dark:text-gray-300">Add Ingredients</label>
+                        <label className="block font-semibold text-gray-700 dark:text-gray-300 mb-1">Add Ingredients</label>
                         <div className='space-y-2'>
                             {ingredients.map((ingredient, i) => (
                                 <div key={i} className='flex items-center gap-2'>
@@ -123,15 +123,15 @@ export function CreateRecipe({ user }: { user: IProps }) {
                                         value={ingredient}
                                         onChange={(e) => handleIngredientChange(i, e.target.value)}
                                     />
-                                    <Button type='button' className='bg-primary dark:bg-primary hover:bg-primary/80' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
+                                    <Button type='button' className='bg-primary dark:bg-primary hover:bg-primary/80 dark:hover:bg-primary/90 text-black' onClick={() => removeIngredientField(i)}><Trash2 size={17} /></Button>
                                 </div>
                             ))}
                         </div>
-                        <Button className='bg-primary dark:bg-primary hover:bg-primary/80 mt-2' type="button" onClick={addIngredientField}>Add Ingredient</Button>
+                        <Button className='bg-primary dark:bg-primary hover:bg-primary/80 dark:hover:bg-primary/90 mt-2 text-black' type="button" onClick={addIngredientField}>Add Ingredient</Button>
                     </div>
 
                     {/* Submit Button */}
-                    <Button type="button" className='bg-primary dark:bg-primary hover:bg-primary/80' onClick={handleCreateRecipeSubmit}>
+                    <Button type="button" className='bg-primary dark:bg-primary hover:bg-primary/80 dark:hover:bg-primary/90 text-black' onClick={handleCreateRecipeSubmit}>
                         Submit
                     </Button>
                 </div>
