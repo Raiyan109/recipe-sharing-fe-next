@@ -5,14 +5,19 @@ import ReusableForm from '@/components/form/ReusableForm'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
 import GlassSpinner from '@/components/shared/spinner/GlassSpinner'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useUserLogin } from '@/hooks/auth.hook'
 import { useUser } from '@/context/user.provider'
 import Link from 'next/link'
 import GoBack from '@/components/GoBack'
+import DummyAdminCred from '@/components/DummyAdminCred'
 
 
 const Login = () => {
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: '',
+    });
     const router = useRouter()
     const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
     const { setIsLoading: userLoading } = useUser()
@@ -27,8 +32,11 @@ const Login = () => {
         }
     });
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        handleUserLogin(data);
-        userLoading(true)
+        if (credentials.email && credentials.password) {
+            handleUserLogin(data);
+            userLoading(true)
+        }
+
     }
 
     useEffect(() => {
@@ -42,7 +50,19 @@ const Login = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPending, isSuccess]);
 
+    const fillAdminCredentials = () => {
+        setCredentials({
+            email: "admin1@g.com",
+            password: "1234567",
+        });
+    };
 
+    const fillUserCredentials = () => {
+        setCredentials({
+            email: "user2@g.com",
+            password: "123456",
+        });
+    };
 
     return (
         <>
@@ -84,24 +104,7 @@ const Login = () => {
                     {/* <h1 className='text-xl font-semibold text-card'>Culinary Circle</h1> */}
 
 
-                    <div className="bg-foreground/90 w-full md:w-96 h-36 md:h-40 rounded-lg">
-                        <div className="flex p-2 gap-1">
-                            <div className="">
-                                <span className="bg-blue-500 inline-block center w-3 h-3 rounded-full"></span>
-                            </div>
-                            <div className="circle">
-                                <span className="bg-purple-500 inline-block center w-3 h-3 rounded-full"></span>
-                            </div>
-                            <div className="circle">
-                                <span className="bg-pink-500 box inline-block center w-3 h-3 rounded-full"></span>
-                            </div>
-                        </div>
-                        <div className="card__content px-2">
-                            <h3 className='text-sm md:text-xl text-card font-semibold mb-1 md:mb-4'>Admin Credentials for test</h3>
-                            <p className='text-base mb-1 md:mb-2 text-card'>Email: admin1@g.com</p>
-                            <p className='text-base mb-0 md:mb-2 text-card'>Password: 1234567</p>
-                        </div>
-                    </div>
+                    <DummyAdminCred fillAdminCredentials={fillAdminCredentials} fillUserCredentials={fillUserCredentials} />
 
 
                     <div className='w-full flex flex-col max-w-[550px]'>
@@ -114,10 +117,12 @@ const Login = () => {
                             <div className='w-full flex flex-col mb-5'>
                                 <input type="email"
                                     {...register('email')}
+                                    value={credentials.email}
                                     className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
 
                                 <input type="password"
                                     {...register('password')}
+                                    value={credentials.password}
                                     className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
 
                             </div>
