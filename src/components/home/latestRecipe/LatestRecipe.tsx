@@ -6,7 +6,7 @@ import moment from 'moment'
 
 const LatestRecipe = ({ recipe }: { recipe: IRecipe }) => {
     return (
-        <div className=" h-80 bg-secondary rounded-3xl  p-4 flex flex-col  gap-3 ">
+        <div className=" h-full bg-secondary rounded-3xl  p-4 flex flex-col  gap-3 ">
             {/* hover:bg-gray-900 hover:shadow-2xl hover:shadow-sky-400 transition-shadow */}
             <div className="w-full h-40 flex items-center justify-center">
                 <Image
