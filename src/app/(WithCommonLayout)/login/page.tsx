@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import Image from 'next/image'
 import loginImg from '@/assets/recipe-sharing-for-login.png'
@@ -32,10 +33,12 @@ const Login = () => {
         }
     });
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        if (credentials.email && credentials.password) {
-            handleUserLogin(data);
-            userLoading(true)
-        }
+        handleUserLogin(data);
+        userLoading(true)
+        // if (credentials.email && credentials.password) {
+        //     handleUserLogin(data);
+        //     userLoading(true)
+        // }
 
     }
 
@@ -117,12 +120,12 @@ const Login = () => {
                             <div className='w-full flex flex-col mb-5'>
                                 <input type="email"
                                     {...register('email')}
-                                    value={credentials.email}
+                                    // value={credentials.email}
                                     className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Email' />
 
                                 <input type="password"
                                     {...register('password')}
-                                    value={credentials.password}
+                                    // value={credentials.password}
                                     className='w-full  py-2 bg-transparent my-2 border-b border-black outline-none focus:outline-none' placeholder='Password' />
 
                             </div>

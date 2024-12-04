@@ -35,7 +35,7 @@ export const useGetFollowees = (id: string) => {
     return useQuery({
         queryKey: ["FOLLOWEES", id],
         queryFn: () => getFollowees(id), // No arguments are passed directly to queryFn
-        staleTime: 0, // Keep data fresh for 5 minutes
+        staleTime: 1000, // Keep data fresh for 5 minutes
         enabled: !!id, // Only run the query if `id` is defined
     });
 };
