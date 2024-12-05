@@ -33,7 +33,7 @@ export const useUnfollow = () => {
 
 export const useGetFollowees = (id: string) => {
     return useQuery({
-        queryKey: ["FOLLOWEES", id],
+        queryKey: ["FOLLOWEES"],
         queryFn: () => getFollowees(id), // No arguments are passed directly to queryFn
         staleTime: 1000, // Keep data fresh for 5 minutes
         enabled: !!id, // Only run the query if `id` is defined
