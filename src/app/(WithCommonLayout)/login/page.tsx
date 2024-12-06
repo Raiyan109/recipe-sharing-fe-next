@@ -12,6 +12,7 @@ import { useUser } from '@/context/user.provider'
 import Link from 'next/link'
 import GoBack from '@/components/GoBack'
 import DummyAdminCred from '@/components/DummyAdminCred'
+import ReCaptchaProvider from '@/components/recaptcha/ReCaptchaProvider'
 
 
 const Login = () => {
@@ -19,6 +20,8 @@ const Login = () => {
         email: '',
         password: '',
     });
+    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+
     const router = useRouter()
     const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
     const { setIsLoading: userLoading } = useUser()
@@ -32,7 +35,12 @@ const Login = () => {
             password: ''
         }
     });
+
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        if (!recaptchaToken) {
+            alert("Please complete the ReCAPTCHA challenge before logging in.");
+            return;
+        }
         handleUserLogin(data);
         userLoading(true)
         // if (credentials.email && credentials.password) {
@@ -109,6 +117,9 @@ const Login = () => {
 
                     <DummyAdminCred fillAdminCredentials={fillAdminCredentials} fillUserCredentials={fillUserCredentials} />
 
+                    {/* ReCAPTCHA */}
+                    <ReCaptchaProvider setToken={setRecaptchaToken} />
+
 
                     <div className='w-full flex flex-col max-w-[550px]'>
                         <div className="w-full flex flex-col mb-2">
@@ -139,7 +150,7 @@ const Login = () => {
                             </div>
 
                             <div className="w-full flex flex-col my-4">
-                                <button className='w-full bg-primary font-bold text-lg rounded-md p-4 text-center flex items-center justify-center text-white'>Log in</button>
+                                <button className='w-full bg-primary font-bold text-lg rounded-md p-4 text-center flex items-center justify-center text-white'>{isPending ? 'Logging in...' : 'Login'}</button>
                             </div>
                         </ReusableForm>
                     </div>
