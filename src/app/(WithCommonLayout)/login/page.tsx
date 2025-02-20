@@ -12,7 +12,7 @@ import { useUser } from '@/context/user.provider'
 import Link from 'next/link'
 import GoBack from '@/components/GoBack'
 import DummyAdminCred from '@/components/DummyAdminCred'
-import ReCaptchaProvider from '@/components/recaptcha/ReCaptchaProvider'
+// import ReCaptchaProvider from '@/components/recaptcha/ReCaptchaProvider'
 
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
         email: '',
         password: '',
     });
-    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+    // const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
     const router = useRouter()
     const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
@@ -37,10 +37,10 @@ const Login = () => {
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        if (!recaptchaToken) {
-            alert("Please complete the ReCAPTCHA challenge before logging in.");
-            return;
-        }
+        // if (!recaptchaToken) {
+        //     alert("Please complete the ReCAPTCHA challenge before logging in.");
+        //     return;
+        // }
         handleUserLogin(data);
         userLoading(true)
         // if (credentials.email && credentials.password) {
@@ -118,7 +118,7 @@ const Login = () => {
                     <DummyAdminCred fillAdminCredentials={fillAdminCredentials} fillUserCredentials={fillUserCredentials} />
 
                     {/* ReCAPTCHA */}
-                    <ReCaptchaProvider setToken={setRecaptchaToken} />
+                    {/* <ReCaptchaProvider setToken={setRecaptchaToken} /> */}
 
 
                     <div className='w-full flex flex-col max-w-[550px]'>
