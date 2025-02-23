@@ -5,7 +5,7 @@ const GetStarted = () => {
   return (
     <div>
       <div className="flex flex-col bg-card rounded-2xl">
-        <div className="px-3 py-4 lg:px-6 lg:py-8">
+        <div className="px-3 py-4 lg:px-6 lg:py-4">
           <div className="grid items-center justify-center w-full grid-cols-1 text-left">
             <div>
               <h2
@@ -25,10 +25,10 @@ const GetStarted = () => {
             </div>
           </div>
         </div>
-        <div className="flex px-4 py-2 lg:px-6 lg:py-8">
+        <div className="flex px-4 py-2 lg:px-6 lg:py-4">
           {/* hover:bg-transparent hover:border-black hover:text-black */}
-          <Link href={`/subscription`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-card border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
-            Go
+          <Link href={`/subscription`} className="flex items-center justify-center w-full px-6 py-2.5 text-center text-xs lg:text-xl duration-200 bg-primary text-black font-medium border-2 border-card rounded-full  focus:outline-none focus-visible:outline-black focus-visible:ring-black">
+            Subscribe
           </Link>
         </div>
       </div>

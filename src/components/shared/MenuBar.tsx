@@ -1,5 +1,5 @@
 'use client'
-import { Contact, Home, Search, Users } from "lucide-react";
+import { Contact, Home, Users } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ export default function MenuBar({ className }: MenuBarProps) {
 
     return (
         <div className={className}>
-            <Button
+            {/* <Button
                 variant="ghost"
                 className={`flex items-center justify-start gap-3 hover:bg-primary ${pathname === '/home/home-search' ? 'bg-primary text-black' : ''}`}
                 title="Home"
@@ -25,7 +25,7 @@ export default function MenuBar({ className }: MenuBarProps) {
                     <Search />
                     <span className="hidden lg:inline">Search</span>
                 </Link>
-            </Button>
+            </Button> */}
             <Button
                 variant="ghost"
                 className={`flex items-center justify-start gap-3 hover:bg-primary ${pathname === '/' ? 'bg-primary text-black' : ''}`}
