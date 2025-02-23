@@ -37,24 +37,24 @@ const SearchingFiltering = ({ placeholder }: { placeholder: string }) => {
     };
     return (
         <div>
-            <form className="flex flex-col md:flex-row gap-3 max-w-3xl mx-auto container">
-                <div className="flex">
+            <form className="flex flex-col md:flex-row gap-3 lg:gap-12">
+                <div className="">
                     <input
                         type="text"
                         placeholder={placeholder}
                         onChange={(e) => handleSearch(e.target.value)}
                         // defaultValue={searchParams.get("query")?.toString() || ""}
                         value={query}
-                        className="w-full md:w-80 px-3 h-10 rounded-l border-2 border-sky-500 focus:outline-none focus:border-sky-500"
+                        className="w-full md:w-80 lg:w-[400px] px-3 h-7 lg:h-10 rounded-l border-2 border-primary focus:outline-none "
                     />
                     {/* <button type="submit" className="bg-sky-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button> */}
                 </div>
 
-                <div>
+                <div className='space-y-1 md:space-y-0 space-x-0 lg:space-x-2'>
                     <select
                         onChange={(e) => handleCategoryChange(e.target.value)}
                         value={category}
-                        className="px-3 h-10 border-2 border-sky-500 rounded"
+                        className="px-3 h-7 lg:h-10 border-2 border-primary rounded text-xs md:text-sm lg:text-lg"
                     >
                         <option value="">All Categories</option>
                         {filters.map((filter) => (
@@ -65,7 +65,7 @@ const SearchingFiltering = ({ placeholder }: { placeholder: string }) => {
                     <select
                         onChange={(e) => handleSortChange(e.target.value)}
                         value={sortOrder}
-                        className="px-3 h-10 border-2 border-sky-500 rounded"
+                        className="px-3 h-7 lg:h-10 border-2 border-primary rounded  text-xs md:text-sm lg:text-lg"
                     >
                         <option value="asc">Sort Ascending</option>
                         <option value="desc">Sort Descending</option>

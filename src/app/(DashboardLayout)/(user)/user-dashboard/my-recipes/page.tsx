@@ -19,6 +19,8 @@ const MyRecipePage = async ({ searchParams }: {
     const sortOrder = searchParams?.sortOrder || '';
     try {
         const recipes = await getRecipesOfUser(query, currentPage);
+        console.log(recipes);
+
         return (
             <div>
                 {recipes?.data?.length > 0 ? (

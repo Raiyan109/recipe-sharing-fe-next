@@ -32,7 +32,7 @@ const PaginationComponent = ({ currentPage, onPageChange, totalPages }: {
         <button
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
-          className="px-4 py-2 bg-gray-300 rounded"
+          className="px-4 py-2 bg-card rounded"
         >
           Previous
         </button>
@@ -40,7 +40,7 @@ const PaginationComponent = ({ currentPage, onPageChange, totalPages }: {
         <button
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(currentPage + 1)}
-          className="px-4 py-2 bg-gray-300 rounded"
+          className="px-4 py-2 bg-card rounded"
         >
           Next
         </button>
