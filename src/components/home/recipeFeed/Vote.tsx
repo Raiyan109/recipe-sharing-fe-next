@@ -16,17 +16,20 @@ const Vote = ({ recipe }: { recipe: IRecipe }) => {
         handleDownVote({ recipeId: recipeId })
     }
     return (
-        <div>
-            <h1 className="text-xl mb-4">Give a vote</h1>
+        <div className="mb-5">
+            <div className="flex items-center gap-5  mb-4">
+                <h1 className="text-3xl">Give a vote</h1>
+                <p className="text-sm">
+                    ({recipe.votes.length} votes)
+                </p>
+            </div>
             <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center gap-2">
                     {<ThumbsUp onClick={() => handleUpVoteIntoRecipe(recipe?._id)} className="cursor-pointer" />}
 
                     <ThumbsDown onClick={() => handleDownVoteIntoRecipe(recipe?._id)} className="cursor-pointer" />
                 </div>
-                <div className="text-xl">
-                    {recipe.votes.length} votes
-                </div>
+
             </div>
         </div>
     )

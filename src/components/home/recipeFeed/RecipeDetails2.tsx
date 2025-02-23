@@ -7,6 +7,7 @@ import UserCard from "./UserCard";
 import Link from "next/link";
 import Reviews from "../reviews/Reviews";
 import ReviewForm from "../reviews/ReviewForm";
+import Vote from "./Vote";
 
 const colors = {
     orange: "#F2C265",
@@ -82,7 +83,7 @@ const RecipeDetails2 = ({ recipe }: { recipe: IRecipe }) => {
 
                     {/* <!-- Featured image --> */}
                     <div className="w-full">
-                        <Image className="w-full h-full object-cover" src={recipe?.image} alt="Product Image" height={500} width={500}
+                        <Image className="w-full h-full object-cover" src={recipe?.image} alt="Author Image" height={500} width={500}
                         // style={{ height: '500px', width: '100%', objectFit: 'cover' }}
                         />
                     </div>
@@ -91,6 +92,8 @@ const RecipeDetails2 = ({ recipe }: { recipe: IRecipe }) => {
                     <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto my-8">
                         <p>{parse(recipe.desc)}</p>
                     </div>
+
+                    <Vote recipe={recipe} />
 
                     {/* Reviews */}
                     <div id="reviews">
