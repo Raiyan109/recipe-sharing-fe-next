@@ -1,7 +1,23 @@
-import { createRecipe, deleteRecipe, deleteReview } from "@/services/RecipeService";
-import { useMutation } from "@tanstack/react-query";
+import { createRecipe, deleteRecipe, deleteReview, getRecipes } from "@/services/RecipeService";
+import { IRecipes } from "@/types";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+
+// export const useRecipes = () => {
+//     return useQuery({
+//         queryKey: ["recipes"],
+//         queryFn: getRecipes,
+//         staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
+//     });
+// };
+export const useRecipes = () => {
+    return useQuery<IRecipes>({
+        queryKey: ["recipes"],
+        queryFn: async () => await getRecipes(), // Explicitly using async/await
+        staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
+    });
+};
 
 export const useDeleteRecipe = () => {
     return useMutation<void, Error, { id: string }>({

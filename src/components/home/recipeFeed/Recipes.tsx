@@ -1,5 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
+import Recipe from "./Recipe"
+import { IRecipe, IRecipes, IUser } from "@/types"
+import BlurredRecipe from "@/components/premium/BlurredRecipe"
+import { useEffect, useState } from "react"
+import { useRecipes } from "@/hooks/recipe.hook";
 
 type IProps = {
     data: IUser;
@@ -8,17 +13,14 @@ type IProps = {
     success: boolean;
 }
 
-import Recipe from "./Recipe"
-import { IRecipe, IRecipes, IUser } from "@/types"
-import BlurredRecipe from "@/components/premium/BlurredRecipe"
-
-import { useEffect, useState } from "react"
-
-
-const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
+// const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
+const Recipes = ({ user }: { user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
+    const { data: recipesFromTanstack, isLoading, error } = useRecipes();
 
+    // Ensure we get the recipes array safely
+    const recipes = recipesFromTanstack?.data || [];
 
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
@@ -33,16 +35,16 @@ const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
 
     useEffect(() => {
         filterItems();
-    }, [selectedFilters, recipes?.data]);
+    }, [selectedFilters, recipes]);
 
     const filterItems = () => {
         if (selectedFilters.length > 0) {
-            const tempItems = recipes?.data?.filter((item) =>
+            const tempItems = recipes?.filter((item) =>
                 item.category.some((cat) => selectedFilters.includes(cat))
             );
             setFilteredItems(tempItems);
         } else {
-            setFilteredItems(recipes?.data || []);
+            setFilteredItems(recipes || []);
         }
     };
 

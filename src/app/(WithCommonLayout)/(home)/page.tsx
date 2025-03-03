@@ -1,6 +1,7 @@
 
 
 import Recipes from "@/components/home/recipeFeed/Recipes";
+import { useRecipes } from "@/hooks/recipe.hook";
 import { getAnUser } from "@/services/AuthService";
 import { getRecipes } from "@/services/RecipeService";
 
@@ -24,7 +25,8 @@ const HomePage = async () => {
       {/* Desktop view */}
       {/* hidden md:block */}
       <div className="">
-        <Recipes recipes={recipes} user={user} />
+        <Recipes user={user} />
+        {/* <Recipes recipes={recipes} user={user} /> */}
       </div>
 
       {/* Mobile view */}
