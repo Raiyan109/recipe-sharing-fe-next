@@ -1,5 +1,5 @@
 import { IRecipe } from "@/types"
-import { Forward, Heart, MessagesSquare, Star } from "lucide-react"
+import { Forward, MessagesSquare, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import parse from "html-react-parser";
