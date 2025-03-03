@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import Recipe from "./Recipe"
-import { IRecipe, IRecipes, IUser } from "@/types"
+import { IRecipe, IUser } from "@/types"
 import BlurredRecipe from "@/components/premium/BlurredRecipe"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import { useRecipes } from "@/hooks/recipe.hook";
 
 type IProps = {
@@ -17,7 +17,7 @@ type IProps = {
 const Recipes = ({ user }: { user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     // const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
-    const { data: recipesFromTanstack, isLoading, error } = useRecipes();
+    const { data: recipesFromTanstack } = useRecipes();
 
     // Ensure we get the recipes array safely
     const recipes = recipesFromTanstack?.data || [];

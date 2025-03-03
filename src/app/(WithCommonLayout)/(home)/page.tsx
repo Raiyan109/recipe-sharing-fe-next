@@ -1,13 +1,11 @@
 
 
 import Recipes from "@/components/home/recipeFeed/Recipes";
-import { useRecipes } from "@/hooks/recipe.hook";
 import { getAnUser } from "@/services/AuthService";
-import { getRecipes } from "@/services/RecipeService";
 
 const HomePage = async () => {
   // const users = await getAllUsers();
-  const recipes = await getRecipes();
+  // const recipes = await getRecipes();
   const user = await getAnUser();
 
   // Check if users data is available and if the user is logged in
