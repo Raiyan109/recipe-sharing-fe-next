@@ -114,7 +114,7 @@ const Recipes = ({ user }: { user: IProps }) => {
 
                             // Render Recipe or BlurredRecipe based on the conditions
                             if (isFree || isPremiumUser) {
-                                return <Recipe key={recipe._id} recipe={recipe} />;
+                                return <Recipe key={recipe._id} recipe={recipe} user={user.data} />;
                             } else {
                                 return <BlurredRecipe key={recipe._id} recipe={recipe} />;
                             }

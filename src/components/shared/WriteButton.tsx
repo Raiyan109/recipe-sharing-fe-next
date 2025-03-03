@@ -9,7 +9,6 @@ interface IProps {
     success: boolean
 }
 const WriteButton = ({ user }: { user: IProps }) => {
-    console.log(user?.data?.role);
 
     return (
         <div>

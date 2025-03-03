@@ -1,4 +1,4 @@
-import { IRecipe } from "@/types"
+import { IRecipe, IUser } from "@/types"
 import { Forward, MessagesSquare, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -6,7 +6,9 @@ import parse from "html-react-parser";
 import VoteRecipe from "./VoteRecipe";
 
 
-const Recipe = ({ recipe }: { recipe: IRecipe }) => {
+const Recipe = ({ recipe, user }: { recipe: IRecipe, user: IUser }) => {
+    console.log(user);
+
     // console.log(recipe?.reviews?.map((review) => review.rating));
     const calculateReviewsAverage = () => {
         if (!recipe?.reviews || recipe.reviews.length === 0) {
@@ -69,7 +71,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                         {/* New upvote button */}
 
                         <div className="flex items-center gap-1">
-                            <VoteRecipe recipe={recipe} />
+                            <VoteRecipe recipe={recipe} userId={user?._id} />
                         </div>
 
                         <div className="flex items-center gap-1">
