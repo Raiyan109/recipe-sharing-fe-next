@@ -3,6 +3,7 @@ import { Forward, Heart, MessagesSquare, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import parse from "html-react-parser";
+import VoteRecipe from "./VoteRecipe";
 
 
 const Recipe = ({ recipe }: { recipe: IRecipe }) => {
@@ -58,13 +59,19 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                 <h1 className="font-semibold capitalize text-xl">Ingredients</h1>
             </div> */}
 
-                <div className="flex justify-between items-center pt-3">
-                    <div className="flex items-center gap-1 md:gap-5">
-                        <div className="flex items-center gap-1">
+                <div className="flex justify-between items-start pt-3">
+                    <div className="flex items-start gap-1 md:gap-5">
+                        {/* <div className="flex items-center gap-1">
                             <Heart size={16} />
                             <h1 className="font-bold">{recipe?.votes?.length}</h1>
                             <h1 className="hidden md:block">Up votes</h1>
+                        </div> */}
+                        {/* New upvote button */}
+
+                        <div className="flex items-center gap-1">
+                            <VoteRecipe recipe={recipe} />
                         </div>
+
                         <div className="flex items-center gap-1">
                             <Star size={18} fill="#ffa200" strokeWidth={0} />
                             <h1 className="font-bold">{averageRating}</h1>

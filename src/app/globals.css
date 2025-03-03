@@ -107,15 +107,15 @@
 
 .swiper-slide img {
   display: block;
- 
+
 }
 
-.swiper-wrapper{
+.swiper-wrapper {
   width: 15%;
 }
 
 /* Quill */
-.ql-editor{
+.ql-editor {
   height: 450px;
   max-height: 250px;
   overflow: auto;
