@@ -3,7 +3,7 @@
 import Recipe from "./Recipe"
 import { IRecipe, IRecipes, IUser } from "@/types"
 import BlurredRecipe from "@/components/premium/BlurredRecipe"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useRecipes } from "@/hooks/recipe.hook";
 
 type IProps = {
@@ -16,7 +16,7 @@ type IProps = {
 // const Recipes = ({ recipes, user }: { recipes: IRecipes, user: IProps }) => {
 const Recipes = ({ user }: { user: IProps }) => {
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-    const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
+    // const [filteredItems, setFilteredItems] = useState<IRecipe[]>([]);
     const { data: recipesFromTanstack, isLoading, error } = useRecipes();
 
     // Ensure we get the recipes array safely
@@ -25,28 +25,46 @@ const Recipes = ({ user }: { user: IProps }) => {
     const filters = ["Dinner", "Vegetarian", "Breakfast", "Healthy"];
 
     const handleFilterButtonClick = (selectedCategory: string) => {
-        if (selectedFilters?.includes(selectedCategory)) {
-            const filters = selectedFilters?.filter((el) => el !== selectedCategory);
-            setSelectedFilters(filters);
-        } else {
-            setSelectedFilters([...selectedFilters, selectedCategory]);
-        }
+        setSelectedFilters((prev) =>
+            prev.includes(selectedCategory)
+                ? prev.filter((el) => el !== selectedCategory)
+                : [...prev, selectedCategory]
+        );
     };
 
-    useEffect(() => {
-        filterItems();
-    }, [selectedFilters, recipes]);
-
-    const filterItems = () => {
+    // ✅ Use useMemo instead of useEffect to avoid infinite re-renders
+    const filteredItems = useMemo(() => {
         if (selectedFilters.length > 0) {
-            const tempItems = recipes?.filter((item) =>
+            return recipes.filter((item) =>
                 item.category.some((cat) => selectedFilters.includes(cat))
             );
-            setFilteredItems(tempItems);
-        } else {
-            setFilteredItems(recipes || []);
         }
-    };
+        return recipes;
+    }, [selectedFilters, recipes]);
+
+    // const handleFilterButtonClick = (selectedCategory: string) => {
+    //     if (selectedFilters?.includes(selectedCategory)) {
+    //         const filters = selectedFilters?.filter((el) => el !== selectedCategory);
+    //         setSelectedFilters(filters);
+    //     } else {
+    //         setSelectedFilters([...selectedFilters, selectedCategory]);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     filterItems();
+    // }, [selectedFilters, recipes]);
+
+    // const filterItems = () => {
+    //     if (selectedFilters.length > 0) {
+    //         const tempItems = recipes?.filter((item) =>
+    //             item.category.some((cat) => selectedFilters.includes(cat))
+    //         );
+    //         setFilteredItems(tempItems);
+    //     } else {
+    //         setFilteredItems(recipes || []);
+    //     }
+    // };
 
     return (
         <div className="p-5 bg-card rounded-2xl">
