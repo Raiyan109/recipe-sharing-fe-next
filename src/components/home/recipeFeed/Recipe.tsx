@@ -25,8 +25,8 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
     const averageRating = calculateReviewsAverage();
 
     return (
-        <div className=" relative bg-secondary py-3 px-4 md:px-5 rounded-md cursor-pointer">
-            <Link href={`/recipe/${recipe?._id}`} className="flex flex-col gap-4">
+        <div className=" relative bg-secondary py-3 px-4 md:px-5 rounded-md">
+            <div className="flex flex-col gap-4">
                 <div className="absolute -left-11 md:-left-12 top-0 rounded-full">
                     <Image
                         src={recipe.user?.photo}
@@ -42,15 +42,16 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                     {parse(recipe.desc)}
                 </h1>
                 <div className="w-full flex items-center justify-center">
-
-                    <Image
-                        src={recipe.image}
-                        width={150}
-                        height={150}
-                        alt="recipe photo"
-                        className="rounded-md"
-                        style={{ width: '600px', height: '250px', objectFit: 'cover' }}
-                    />
+                    <Link href={`/recipe/${recipe?._id}`}>
+                        <Image
+                            src={recipe.image}
+                            width={150}
+                            height={150}
+                            alt="recipe photo"
+                            className="rounded-md"
+                            style={{ width: '600px', height: '250px', objectFit: 'cover' }}
+                        />
+                    </Link>
                 </div>
 
                 {/* <div>
@@ -87,7 +88,7 @@ const Recipe = ({ recipe }: { recipe: IRecipe }) => {
                         </div>
                     </div>
                 </div>
-            </Link>
+            </div>
         </div>
     )
 }
